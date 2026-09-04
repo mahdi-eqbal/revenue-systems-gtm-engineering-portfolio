@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mahdi Eqbal — Revenue Systems Engineer building controlled CRM, automation, data, and GTM intelligence systems.">
+  <meta name="theme-color" content="#0b1220">
+  <meta property="og:title" content="Mahdi Eqbal — Revenue Systems & GTM Engineering">
+  <meta property="og:description" content="Selected implementations across HubSpot, Salesforce, n8n, PostgreSQL, Supabase, Clay, and AI-assisted GTM intelligence.">
+  <meta property="og:type" content="website">
+  <title>Mahdi Eqbal | Revenue Systems & GTM Engineering</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Mahdi Eqbal home">
+        <span class="brand-mark" aria-hidden="true">ME</span>
+        <span>Mahdi Eqbal</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" data-menu-button>
+        <span class="sr-only">Open navigation</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links" data-nav-links>
+        <a href="#systems">Systems</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#principles">Principles</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Revenue Systems Engineer · GTM Systems &amp; RevOps</p>
+        <h1>Turning fragmented GTM signals into <em>controlled action.</em></h1>
+        <p class="hero-lead">I design and build end-to-end revenue infrastructure connecting CRM, automation, product signals, operational data, qualification, routing, and AI-assisted intelligence.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#systems">Review selected systems</a>
+          <a class="button button-secondary" href="https://github.com/mahdi-eqbal" target="_blank" rel="noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="availability">Open to remote opportunities and relocation.</p>
+      </div>
+
+      <div class="hero-system" aria-label="Revenue system flow illustration">
+        <div class="system-label">CONTROL PLANE</div>
+        <div class="flow-node signal-node">
+          <span class="node-dot blue"></span>
+          <div><strong>GTM signals</strong><small>Product · Lead · Account</small></div>
+        </div>
+        <div class="flow-line" aria-hidden="true"><span>→</span></div>
+        <div class="flow-node control-node">
+          <span class="node-dot violet"></span>
+          <div><strong>Decision layer</strong><small>Identity · Rules · State</small></div>
+        </div>
+        <div class="flow-line" aria-hidden="true"><span>→</span></div>
+        <div class="flow-node action-node">
+          <span class="node-dot green"></span>
+          <div><strong>Operational action</strong><small>CRM · Routing · Handoff</small></div>
+        </div>
+        <div class="system-status"><span></span> Auditable by design</div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Portfolio highlights">
+      <div class="shell proof-grid">
+        <div><strong>3</strong><span>End-to-end systems</span></div>
+        <div><strong>2</strong><span>CRM ecosystems</span></div>
+        <div><strong>1</strong><span>Operational design discipline</span></div>
+        <div><strong>Evidence</strong><span>Architecture · Tests · Failure paths</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="systems">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> Selected implementations</p>
+          <h2>Revenue systems built around real operating problems.</h2>
+        </div>
+        <p>Each project is independently designed and implemented using synthetic or public-safe data, with explicit architecture, edge cases, controls, evidence, and handoff documentation.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card p1">
+          <div class="project-topline"><span>P1</span><span>HubSpot-centered</span></div>
+          <h3>Product-Led Revenue Qualification &amp; Sales Handoff</h3>
+          <p>Converts product and signup events into validated, identity-resolved, qualified, and auditable sales handoffs.</p>
+          <ul>
+            <li>Identity resolution and CRM context</li>
+            <li>Deterministic qualification and routing</li>
+            <li>Duplicate-event and active-deal guards</li>
+            <li>Persistent state and failure handling</li>
+          </ul>
+          <div class="stack" aria-label="Technology stack"><span>HubSpot</span><span>n8n</span><span>PostgreSQL</span><span>JavaScript</span></div>
+          <div class="card-actions">
+            <a href="https://github.com/mahdi-eqbal/p1-product-led-revenue-system" target="_blank" rel="noreferrer">Repository <span>↗</span></a>
+            <a href="https://github.com/mahdi-eqbal/p1-product-led-revenue-system/releases/latest" target="_blank" rel="noreferrer">v1.0.0</a>
+          </div>
+        </article>
+
+        <article class="project-card p2">
+          <div class="project-topline"><span>P2</span><span>Salesforce-centered</span></div>
+          <h3>Lead-to-Opportunity Revenue Operations System</h3>
+          <p>Controls the lead lifecycle from intake through qualification, routing, SLA enforcement, CRM handoff, and recovery.</p>
+          <ul>
+            <li>Inbound validation and normalization</li>
+            <li>Qualification and ownership routing</li>
+            <li>SLA-controlled sales follow-up</li>
+            <li>API failure and retry handling</li>
+          </ul>
+          <div class="stack" aria-label="Technology stack"><span>Salesforce</span><span>Flow</span><span>n8n</span><span>Supabase</span></div>
+          <div class="card-actions">
+            <a href="https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system" target="_blank" rel="noreferrer">Repository <span>↗</span></a>
+            <a href="https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/releases/latest" target="_blank" rel="noreferrer">v1.0.0</a>
+          </div>
+        </article>
+
+        <article class="project-card p3">
+          <div class="project-topline"><span>P3</span><span>AI-assisted</span></div>
+          <h3>GTM Intelligence &amp; Account Prioritization</h3>
+          <p>Transforms account data and GTM signals into enriched, evidence-aware, prioritized, and reviewable decisions.</p>
+          <ul>
+            <li>Firmographic and signal enrichment</li>
+            <li>Structured Claygent research</li>
+            <li>Explainable deterministic scoring</li>
+            <li>Human review for uncertainty</li>
+          </ul>
+          <div class="stack" aria-label="Technology stack"><span>Clay</span><span>Claygent</span><span>Signals</span><span>AI Governance</span></div>
+          <div class="card-actions">
+            <a href="https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system" target="_blank" rel="noreferrer">Repository <span>↗</span></a>
+            <a href="https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/releases/latest" target="_blank" rel="noreferrer">v1.0.0</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-panel" id="capabilities">
+      <div class="shell">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow"><span></span> Capability map</p>
+            <h2>Across the revenue infrastructure lifecycle.</h2>
+          </div>
+        </div>
+        <div class="capability-grid">
+          <div><span>01</span><h3>CRM architecture</h3><p>Lifecycle fields, object relationships, ownership, associations, and operational source-of-truth boundaries.</p></div>
+          <div><span>02</span><h3>Automation</h3><p>Event-driven orchestration, webhooks, API operations, branching, retries, and controlled handoffs.</p></div>
+          <div><span>03</span><h3>Data controls</h3><p>Validation, normalization, identity resolution, idempotency, persistent state, and auditability.</p></div>
+          <div><span>04</span><h3>Revenue operations</h3><p>Qualification, routing, SLA enforcement, exception handling, and sales-ready operational outputs.</p></div>
+          <div><span>05</span><h3>AI-assisted intelligence</h3><p>Structured research, evidence preservation, explainable scoring, confidence controls, and human review.</p></div>
+          <div><span>06</span><h3>Delivery discipline</h3><p>Requirements, architecture decisions, scenario testing, failure-path evidence, documentation, and handoff.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell principles" id="principles">
+      <div class="principles-copy">
+        <p class="eyebrow"><span></span> Engineering principles</p>
+        <h2>Automation is only useful when the operating logic is trustworthy.</h2>
+        <p>The portfolio emphasizes the controls that make revenue automation maintainable: clear ownership, durable state, deterministic business rules, visible failure paths, and evidence that the system behaves as designed.</p>
+      </div>
+      <div class="principle-list">
+        <div><span>01</span><div><strong>Source-of-truth clarity</strong><p>Each system assigns the right responsibility to CRM, orchestration, and operational data layers.</p></div></div>
+        <div><span>02</span><div><strong>Deterministic control</strong><p>Critical qualification and routing outcomes remain explainable and testable.</p></div></div>
+        <div><span>03</span><div><strong>Failure-aware design</strong><p>Duplicate events, missing identities, API errors, and uncertain AI outputs have explicit paths.</p></div></div>
+        <div><span>04</span><div><strong>Evidence before claims</strong><p>Capabilities are supported by architecture, configuration, test scenarios, and implementation artifacts.</p></div></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="shell contact-card">
+        <div>
+          <p class="eyebrow"><span></span> Contact</p>
+          <h2>Let’s discuss the revenue system behind the workflow.</h2>
+          <p>Available for relevant remote opportunities, project-based work, and relocation conversations.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:m.mahdi.eqbal@gmail.com">m.mahdi.eqbal@gmail.com</a>
+          <button class="copy-button" type="button" data-copy-email data-email="m.mahdi.eqbal@gmail.com">Copy email</button>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/mahdi-eqbal-b50329296" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/mahdi-eqbal" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>© <span data-year></span> Mahdi Eqbal</span>
+    <span>Revenue Systems · GTM Engineering · RevOps</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
