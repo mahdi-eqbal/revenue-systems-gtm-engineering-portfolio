@@ -1,8 +1,8 @@
-﻿# Revenue Systems / GTM Engineering Portfolio
+# Revenue Systems / GTM Engineering Portfolio
 
 A portfolio of independently designed and built Revenue Systems and GTM Engineering implementations demonstrating practical capability across CRM architecture, automation, data infrastructure, AI-assisted GTM workflows, reliability, and operational governance.
 
-The portfolio is organized around three end-to-end systems covering product-led revenue operations, Salesforce-centered lead-to-opportunity execution, and AI-assisted account intelligence.
+The portfolio currently highlights selected end-to-end systems across product-led revenue operations, Salesforce-centered lead-to-opportunity execution, and AI-assisted account intelligence.
 
 ---
 
@@ -18,19 +18,19 @@ HubSpot, n8n, PostgreSQL / Supabase, REST APIs, Webhooks, JavaScript
 
 ## Key Capabilities
 
-- Product-event ingestion
-- Identity resolution
-- Qualification logic
-- HubSpot synchronization
-- Deal and handoff controls
-- Database-backed processing
-- Idempotency
-- Failure handling
-- End-to-end Revenue Systems orchestration
+* Product-event ingestion
+* Identity resolution
+* Qualification logic
+* HubSpot synchronization
+* Deal and handoff controls
+* Database-backed processing
+* Idempotency
+* Failure handling
+* End-to-end Revenue Systems orchestration
 
 ## Repository
 
-https://github.com/eliascoding2000-create/p1-product-led-revenue-system
+https://github.com/mahdi-eqbal/p1-product-led-revenue-system
 
 ---
 
@@ -46,21 +46,21 @@ Salesforce, n8n, PostgreSQL / Supabase, Salesforce REST API, JavaScript, Salesfo
 
 ## Key Capabilities
 
-- Inbound lead validation
-- Data-readiness controls
-- ICP and buying-intent qualification
-- Lead routing
-- SLA calculation
-- Salesforce identity resolution
-- Existing Lead reuse and new Lead creation
-- CRM-native follow-up Tasks
-- API retry and failure handling
-- Processing-state persistence
-- Event-level idempotency
+* Inbound lead validation
+* Data-readiness controls
+* ICP and buying-intent qualification
+* Lead routing
+* SLA calculation
+* Salesforce identity resolution
+* Existing Lead reuse and new Lead creation
+* CRM-native follow-up Tasks
+* API retry and failure handling
+* Processing-state persistence
+* Event-level idempotency
 
 ## Repository
 
-https://github.com/eliascoding2000-create/p2-lead-to-opportunity-revenue-system
+https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system
 
 ---
 
@@ -76,23 +76,23 @@ Clay, Claygent, Clay Signals, Web Research, Structured JSON, Formula-Based Scori
 
 ## Key Capabilities
 
-- Company enrichment
-- GTM hiring-signal monitoring
-- Multi-table signal resolution
-- Signal-to-account linkage
-- AI-assisted company research
-- Evidence vs. inference separation
-- ICP classification
-- Buyer-persona selection
-- Deterministic scoring
-- Signal recency logic
-- Human-in-the-loop governance
-- Actionable-account delivery
-- Downstream CSV export
+* Company enrichment
+* GTM hiring-signal monitoring
+* Multi-table signal resolution
+* Signal-to-account linkage
+* AI-assisted company research
+* Evidence vs. inference separation
+* ICP classification
+* Buyer-persona selection
+* Deterministic scoring
+* Signal recency logic
+* Human-in-the-loop governance
+* Actionable-account delivery
+* Downstream CSV export
 
 ## Repository
 
-https://github.com/eliascoding2000-create/p3-ai-gtm-intelligence-system
+https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system
 
 ---
 
@@ -100,76 +100,79 @@ https://github.com/eliascoding2000-create/p3-ai-gtm-intelligence-system
 
 ## Revenue Systems Architecture
 
-- Lifecycle and qualification architecture
-- CRM orchestration
-- Lead and account routing
-- Sales handoff
-- SLA management
-- Operational state management
+* Lifecycle and qualification architecture
+* CRM orchestration
+* Lead and account routing
+* Sales handoff
+* SLA management
+* Operational state management
 
 ## Automation & Integration
 
-- n8n
-- REST APIs
-- Webhooks
-- JavaScript
-- HubSpot
-- Salesforce
+* n8n
+* REST APIs
+* Webhooks
+* JavaScript
+* HubSpot
+* Salesforce
 
 ## Data Infrastructure
 
-- PostgreSQL
-- Supabase
-- Identity resolution
-- Persistent processing state
-- Idempotency
-- Auditability
+* PostgreSQL
+* Supabase
+* Identity resolution
+* Persistent processing state
+* Idempotency
+* Auditability
 
 ## GTM Engineering
 
-- Product-led signals
-- Inbound lead processing
-- GTM hiring signals
-- Account enrichment
-- Account prioritization
-- Sales handoff orchestration
+* Product-led signals
+* Inbound lead processing
+* GTM hiring signals
+* Account enrichment
+* Account prioritization
+* Sales handoff orchestration
 
 ## AI-Assisted GTM Systems
 
-- Claygent
-- Structured AI outputs
-- Evidence-aware research
-- AI guardrails
-- Confidence and uncertainty handling
-- Deterministic post-AI scoring
-- Human-review routing
+* Claygent
+* Structured AI outputs
+* Evidence-aware research
+* AI guardrails
+* Confidence and uncertainty handling
+* Deterministic post-AI scoring
+* Human-review routing
 
 ## Reliability & Governance
 
-- Duplicate prevention
-- Retry behavior
-- Explicit failure states
-- Negative-path testing
-- Controlled exception paths
-- Failure metadata persistence
-- Human-in-the-loop review
+* Duplicate prevention
+* Retry behavior
+* Explicit failure states
+* Negative-path testing
+* Controlled exception paths
+* Failure metadata persistence
+* Human-in-the-loop review
 
 ---
 
 # Portfolio Architecture
 
-The three projects demonstrate progressively different Revenue Systems problems:
+The current selected projects demonstrate different Revenue Systems problems:
 
 **P1**
+
 Product/User Signal → Qualification → CRM → Sales Handoff
 
 **P2**
+
 Inbound Lead → Qualification → Routing → Salesforce → Sales Execution
 
 **P3**
+
 Target Account → Enrichment → GTM Signals → AI Intelligence → Prioritization → Human Review → Action
 
-Together, they demonstrate the ability to design and implement systems across the revenue lifecycle rather than proficiency in a single tool.
+Together, these systems demonstrate the ability to design and implement workflows across the revenue lifecycle rather than proficiency in a single tool.
 
 ---
 
