@@ -1,185 +1,187 @@
-# Revenue Systems / GTM Engineering Portfolio
+# Revenue Systems & GTM Engineering Portfolio
 
-A portfolio of independently designed and built Revenue Systems and GTM Engineering implementations demonstrating practical capability across CRM architecture, automation, data infrastructure, AI-assisted GTM workflows, reliability, and operational governance.
+Selected end-to-end implementations across CRM architecture, GTM automation, operational data, qualification and routing, AI-assisted intelligence, reliability, and governance.
 
-The portfolio currently highlights selected end-to-end systems across product-led revenue operations, Salesforce-centered lead-to-opportunity execution, and AI-assisted account intelligence.
+![Focus](https://img.shields.io/badge/focus-Revenue_Systems-1f2937)
+![Discipline](https://img.shields.io/badge/discipline-GTM_Engineering-0f766e)
+![CRM](https://img.shields.io/badge/CRM-HubSpot_%7C_Salesforce-2563eb)
+![Automation](https://img.shields.io/badge/automation-n8n_%7C_Make-ea4b71)
+![Data](https://img.shields.io/badge/data-PostgreSQL_%7C_Supabase-3ecf8e)
 
----
+> I design revenue infrastructure that turns fragmented product, lead, company, and GTM signals into controlled business decisions—with explicit ownership, persistent state, failure handling, and operational evidence.
 
-# P1 — End-to-End Product-Led Revenue Qualification & Sales Handoff System
+## Portfolio at a Glance
 
-## Focus
+| System | Revenue problem | Core stack | Primary capability |
+|---|---|---|---|
+| [P1 — Product-Led Revenue Qualification & Sales Handoff](https://github.com/mahdi-eqbal/p1-product-led-revenue-system) | Product signals do not become reliable sales action | HubSpot, n8n, PostgreSQL/Supabase, APIs, JavaScript | Identity resolution, qualification, deal guards, and sales handoff |
+| [P2 — Lead-to-Opportunity Revenue Operations](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system) | Inbound leads enter the CRM with inconsistent quality, routing, and follow-up | Salesforce, Salesforce Flow, n8n, PostgreSQL/Supabase, APIs | Validation, routing, SLA, CRM identity, and failure handling |
+| [P3 — AI-Assisted GTM Intelligence & Account Prioritization](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system) | Target-account lists lack evidence, timing, prioritization, and uncertainty controls | Clay, Claygent, GTM Signals, structured AI, deterministic scoring | Enrichment, evidence-aware research, scoring, and human review |
 
-Product-led qualification, CRM orchestration, identity resolution, revenue handoff, and workflow reliability.
-
-## Stack
-
-HubSpot, n8n, PostgreSQL / Supabase, REST APIs, Webhooks, JavaScript
-
-## Key Capabilities
-
-* Product-event ingestion
-* Identity resolution
-* Qualification logic
-* HubSpot synchronization
-* Deal and handoff controls
-* Database-backed processing
-* Idempotency
-* Failure handling
-* End-to-end Revenue Systems orchestration
-
-## Repository
-
-https://github.com/mahdi-eqbal/p1-product-led-revenue-system
+These are current selected implementations. The portfolio is not limited to these projects and will expand as additional Revenue Systems capabilities are implemented and validated.
 
 ---
 
-# P2 — End-to-End Lead-to-Opportunity Revenue Operations System
+## P1 — Product-Led Revenue Qualification & Sales Handoff
 
-## Focus
+[![View Repository](https://img.shields.io/badge/View-Repository-24292f?style=for-the-badge&logo=github)](https://github.com/mahdi-eqbal/p1-product-led-revenue-system)
 
-Salesforce-centered lead processing, qualification, routing, SLA management, and sales execution.
+A product-led B2B SaaS may collect signup and usage signals without a controlled way to convert them into sales action. P1 introduces an operational decision layer that authenticates and validates product events, resolves contact and company identity, calculates product intent, applies deterministic qualification rules, checks existing handoffs and active deals, routes eligible records, and creates an auditable HubSpot sales handoff.
 
-## Stack
+### System Flow
 
-Salesforce, n8n, PostgreSQL / Supabase, Salesforce REST API, JavaScript, Salesforce Flow
+```text
+Product Signal
+→ Validation & Persistence
+→ Identity Resolution
+→ Intent + ICP + Data Readiness
+→ Qualification
+→ Handoff & Active-Deal Guards
+→ Routing
+→ HubSpot Sales Handoff
+```
 
-## Key Capabilities
+### Key Controls
 
-* Inbound lead validation
-* Data-readiness controls
-* ICP and buying-intent qualification
-* Lead routing
-* SLA calculation
-* Salesforce identity resolution
-* Existing Lead reuse and new Lead creation
-* CRM-native follow-up Tasks
-* API retry and failure handling
-* Processing-state persistence
-* Event-level idempotency
+- authenticated webhook ingress;
+- durable event persistence;
+- event-level idempotency;
+- email and product-user identity resolution;
+- rolling product-intent state;
+- deterministic qualification;
+- duplicate-handoff protection;
+- active-deal suppression;
+- retry-safe completion and audit history.
 
-## Repository
+![P1 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p1-product-led-revenue-system/master/evidence/n8n/final-workflow-overview.png)
 
-https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system
-
----
-
-# P3 — AI-Assisted GTM Intelligence & Account Prioritization System
-
-## Focus
-
-AI-assisted account research, company enrichment, GTM signals, evidence-aware reasoning, prioritization, and human-review governance.
-
-## Stack
-
-Clay, Claygent, Clay Signals, Web Research, Structured JSON, Formula-Based Scoring
-
-## Key Capabilities
-
-* Company enrichment
-* GTM hiring-signal monitoring
-* Multi-table signal resolution
-* Signal-to-account linkage
-* AI-assisted company research
-* Evidence vs. inference separation
-* ICP classification
-* Buyer-persona selection
-* Deterministic scoring
-* Signal recency logic
-* Human-in-the-loop governance
-* Actionable-account delivery
-* Downstream CSV export
-
-## Repository
-
-https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system
+**Review:** [Architecture](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/architecture) · [Workflow](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/workflows) · [Evidence](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/evidence)
 
 ---
 
-# Capability Coverage
+## P2 — Lead-to-Opportunity Revenue Operations
 
-## Revenue Systems Architecture
+[![View Repository](https://img.shields.io/badge/View-Repository-24292f?style=for-the-badge&logo=github)](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system)
 
-* Lifecycle and qualification architecture
-* CRM orchestration
-* Lead and account routing
-* Sales handoff
-* SLA management
-* Operational state management
+Inbound leads frequently arrive with incomplete data, duplicate submissions, inconsistent qualification, unclear ownership, and no reliable follow-up SLA. P2 controls the lead lifecycle before and during Salesforce handoff, preserving processing state separately from CRM availability.
 
-## Automation & Integration
+### System Flow
 
-* n8n
-* REST APIs
-* Webhooks
-* JavaScript
-* HubSpot
-* Salesforce
+```text
+Inbound Lead
+→ Validation & Idempotency
+→ Data Readiness
+→ Qualification
+→ Routing & SLA
+→ Salesforce Identity Resolution
+→ Lead Reuse or Creation
+→ Salesforce Flow Task
+```
 
-## Data Infrastructure
+### Key Controls
 
-* PostgreSQL
-* Supabase
-* Identity resolution
-* Persistent processing state
-* Idempotency
-* Auditability
+- invalid-lead rejection;
+- incomplete-data review routing;
+- deterministic ICP and buying-intent qualification;
+- event identity separated from lead identity;
+- Salesforce Lead lookup before creation;
+- SLA state persisted before CRM handoff;
+- CRM-native follow-up task;
+- explicit API retry and failure states.
 
-## GTM Engineering
+![P2 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/master/evidence/n8n/00-final-workflow-architecture.png)
 
-* Product-led signals
-* Inbound lead processing
-* GTM hiring signals
-* Account enrichment
-* Account prioritization
-* Sales handoff orchestration
-
-## AI-Assisted GTM Systems
-
-* Claygent
-* Structured AI outputs
-* Evidence-aware research
-* AI guardrails
-* Confidence and uncertainty handling
-* Deterministic post-AI scoring
-* Human-review routing
-
-## Reliability & Governance
-
-* Duplicate prevention
-* Retry behavior
-* Explicit failure states
-* Negative-path testing
-* Controlled exception paths
-* Failure metadata persistence
-* Human-in-the-loop review
+**Review:** [Architecture](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/master/architecture) · [Test Matrix](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/blob/master/TEST-MATRIX.md) · [Evidence](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/master/evidence/n8n)
 
 ---
 
-# Portfolio Architecture
+## P3 — AI-Assisted GTM Intelligence & Account Prioritization
 
-The current selected projects demonstrate different Revenue Systems problems:
+[![View Repository](https://img.shields.io/badge/View-Repository-24292f?style=for-the-badge&logo=github)](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system)
 
-**P1**
+A target-account list does not explain which accounts fit, what recent GTM signals exist, why timing matters, or when AI research is too uncertain for action. P3 combines company enrichment, job-posting signals, Claygent research, structured output, deterministic scoring, and human-review governance.
 
-Product/User Signal → Qualification → CRM → Sales Handoff
+### System Flow
 
-**P2**
+```text
+Target Accounts
+→ Company Enrichment
+→ GTM Signal Monitoring
+→ Signal-to-Account Resolution
+→ Evidence-Aware AI Research
+→ Deterministic Scoring
+→ Human Review Gate
+→ Actionable Accounts or Review Queue
+```
 
-Inbound Lead → Qualification → Routing → Salesforce → Sales Execution
+### Key Controls
 
-**P3**
+- real and synthetic record separation;
+- multi-row signal-to-account lookup;
+- evidence and inference separation;
+- structured AI output preservation;
+- deterministic post-AI scoring;
+- signal-recency logic;
+- confidence and uncertainty handling;
+- manual review before uncertain action.
 
-Target Account → Enrichment → GTM Signals → AI Intelligence → Prioritization → Human Review → Action
+![P3 actionable accounts](https://raw.githubusercontent.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/master/evidence/clay/09-actionable-accounts-view.png)
 
-Together, these systems demonstrate the ability to design and implement workflows across the revenue lifecycle rather than proficiency in a single tool.
+**Review:** [Implementation Summary](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/docs/implementation-summary.md) · [Prioritization Model](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/docs/prioritization-model.md) · [Evidence Manifest](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/evidence/EVIDENCE-MANIFEST.md)
 
 ---
 
-# Project Positioning
+## Capability Matrix
 
-These projects are independently designed and built professional implementations and case studies.
+| Capability | P1 | P2 | P3 |
+|---|:---:|:---:|:---:|
+| CRM architecture | HubSpot | Salesforce | — |
+| Event or signal processing | Product events | Inbound lead events | GTM signals |
+| Identity resolution | Contact and company | Lead and CRM record | Account and signal |
+| Deterministic qualification/scoring | Yes | Yes | Yes |
+| Operational database state | PostgreSQL/Supabase | PostgreSQL/Supabase | Structured Clay tables |
+| API/webhook integration | Yes | Yes | Platform integrations |
+| Idempotency/duplicate controls | Yes | Yes | Record and signal controls |
+| SLA/sales execution | Sales handoff | Salesforce task and SLA | Actionable-account delivery |
+| AI-assisted research | — | — | Claygent |
+| Human review | Identity exceptions | Data readiness | Confidence and uncertainty |
+| Test/evidence package | Yes | Yes | Yes |
 
-They do not represent client deployments, employer projects, paid engagements, or claimed commercial results.
+## Engineering Principles
 
-The portfolio is intended to demonstrate practical Revenue Systems / GTM Engineering capability through implemented, tested, documented, and evidence-backed systems.
+- The CRM is the revenue lifecycle and execution layer—not the raw event store.
+- Operational state must survive transient workflow execution and integration failure.
+- Deterministic rules should control repeatable business decisions.
+- AI-generated research should expose evidence, inference, confidence, and uncertainty.
+- Duplicate events, missing data, partial failures, and retry behavior are architecture requirements.
+- Evidence is part of implementation, not an afterthought added during packaging.
+
+## Technology Coverage
+
+| Area | Tools and methods |
+|---|---|
+| CRM & RevOps | HubSpot, Salesforce, HubSpot Workflows, Salesforce Flow |
+| Automation | n8n, Make, event-driven and scheduled workflows |
+| Data | PostgreSQL, Supabase, SQL, operational state, audit trails |
+| Integration | REST APIs, webhooks, JSON, authentication, pagination, JavaScript |
+| GTM Intelligence | Clay, Claygent, enrichment, GTM signals, ICP rules, deterministic scoring |
+| Reliability | Idempotency, validation, retries, failure paths, testing, observability |
+| Governance | Source-of-truth design, architecture decisions, human review, evidence capture |
+
+## Project Positioning
+
+These projects are independently designed and built professional implementations and case studies using synthetic or public-safe data.
+
+They do not represent client deployments, employer projects, paid engagements, production implementations, or claimed commercial revenue results.
+
+The portfolio is intended to demonstrate practical Revenue Systems and GTM Engineering capability through implemented, tested, documented, and evidence-backed systems.
+
+## Contact
+
+- **GitHub:** [github.com/mahdi-eqbal](https://github.com/mahdi-eqbal)
+- **LinkedIn:** [linkedin.com/in/mahdi-eqbal-b50329296](https://www.linkedin.com/in/mahdi-eqbal-b50329296)
+- **Email:** [m.mahdi.eqbal@gmail.com](mailto:m.mahdi.eqbal@gmail.com)
+
+---
+
+Built and maintained by [Mahdi Eqbal](https://github.com/mahdi-eqbal).
