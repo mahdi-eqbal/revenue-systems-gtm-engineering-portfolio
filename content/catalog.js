@@ -9,7 +9,7 @@ window.PORTFOLIO = {
       built: ['Event validation and persistent processing state', 'Contact and company identity resolution', 'Qualification, routing and active-deal guards', 'Explicit failure handling and test evidence'],
       tools: ['HubSpot','n8n','PostgreSQL','REST APIs','JavaScript'],
       repo: 'https://github.com/mahdi-eqbal/p1-product-led-revenue-system',
-      evidence: 'https://github.com/mahdi-eqbal/p1-product-led-revenue-system/blob/main/TEST-MATRIX.md',
+      evidence: 'https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/main/evidence',
       video: 'https://youtu.be/Q-sc8ETdLwk', accent: 'blue'
     },
     {
