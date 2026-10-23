@@ -1,0 +1,119 @@
+{
+  "name": "CLE - Campaign Event Intake (Demo)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "campaign-learning-event",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "15c5e383-77e4-4ea4-97f8-173c46eda5af",
+      "name": "Receive campaign event",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const raw = $input.first().json;\nconst body = raw.body && typeof raw.body === 'object' ? raw.body : raw;\nconst allowedTypes = new Set(['delivered','bounced','replied','qualified','not_qualified','meeting_booked','meeting_held','opportunity','no_opportunity','opted_out']);\nconst required = ['event_id','campaign_id','prospect_id','variant','event_type','occurred_at'];\nconst missing = required.filter(k => body[k] === undefined || body[k] === null || String(body[k]).trim() === '');\nif (missing.length) throw new Error(`Missing required fields: ${missing.join(', ')}`);\nif (!allowedTypes.has(body.event_type)) throw new Error(`Unsupported event_type: ${body.event_type}`);\nif (body.event_type === 'sent') throw new Error('This demo does not accept or send outbound messages.');\nif (!['A','B'].includes(String(body.variant))) throw new Error('variant must be A or B');\nconst occurred = new Date(body.occurred_at);\nif (Number.isNaN(occurred.getTime())) throw new Error('occurred_at must be a valid ISO-8601 date');\nconst safe = {\n  event_id: String(body.event_id).trim(),\n  campaign_id: String(body.campaign_id).trim(),\n  prospect_id: String(body.prospect_id).trim(),\n  variant: String(body.variant),\n  event_type: String(body.event_type),\n  occurred_at: occurred.toISOString(),\n  source: body.source ? String(body.source).slice(0, 200) : 'manual_demo',\n  evidence_note: body.evidence_note ? String(body.evidence_note).slice(0, 500) : '',\n  authorization: 'demo_only',\n  send_enabled: false\n};\nreturn [{json:safe}];"
+      },
+      "id": "5ff413a4-c537-48fa-828d-9284cf4f43e1",
+      "name": "Validate and normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "cle_campaign_events",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "id": "908aa9a1-dec5-40e3-b6fd-800b543c3361",
+      "name": "Insert event row",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({accepted: true, event_id: $json.event_id, campaign_id: $json.campaign_id, mode: \"demo_only\", send_enabled: false}) }}",
+        "options": {
+          "responseCode": 201
+        }
+      },
+      "id": "1b49819b-ab46-4842-a458-af2a9f9a29fb",
+      "name": "Return receipt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1020,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Receive campaign event": {
+      "main": [
+        [
+          {
+            "node": "Validate and normalize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate and normalize": {
+      "main": [
+        [
+          {
+            "node": "Insert event row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert event row": {
+      "main": [
+        [
+          {
+            "node": "Return receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "aa55f33d-f433-4517-83db-d3ede4bda7b0",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
