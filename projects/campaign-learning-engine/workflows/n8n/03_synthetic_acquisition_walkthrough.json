@@ -1,0 +1,77 @@
+{
+  "name": "CLE - Synthetic Acquisition Walkthrough (Demo)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2db697e2-90f8-4c4d-909e-98ae61af2c11",
+      "name": "Start walkthrough manually",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Every account and signal below is fabricated. The example.com URLs are placeholders, not research evidence.\nconst campaignId = 'synthetic-acquisition-walkthrough';\nconst accounts = [\n  { account_id: 'demo-uae-001', company_name: 'Northstar Logistics (fictional)', region: 'United Arab Emirates', company_type: 'B2B employer', persona: 'People / HR leader (role placeholder)', trigger_signal: 'Synthetic example: People team hiring', source_url: 'https://example.com/demo/northstar-signal', signal_verified: false },\n  { account_id: 'demo-uae-002', company_name: 'Harborline Systems (fictional)', region: 'United Arab Emirates', company_type: 'B2B employer', persona: 'People / HR leader (role placeholder)', trigger_signal: 'Synthetic example: regional expansion', source_url: 'https://example.com/demo/harborline-signal', signal_verified: false },\n  { account_id: 'demo-uae-003', company_name: 'Cedar Retail Group (fictional)', region: 'United Arab Emirates', company_type: 'Consumer-only example', persona: 'Unverified role', trigger_signal: '', source_url: '', signal_verified: false }\n];\nreturn accounts.map((account, index) => ({ json: { ...account, campaign_id: campaignId, variant: index % 2 === 0 ? 'A' : 'B', data_mode: 'synthetic_only', send_enabled: false, authorization: 'not_authorized_for_outreach' } }));"
+      },
+      "id": "bbd27360-7c43-4509-b1fa-e2c904114af9",
+      "name": "Load fictional account signals",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Illustrative rules only. No real accounts are researched, contacted, or approved here.\nconst rows = $input.all().map(item => item.json);\nconst output = rows.map(row => {\n  const marketFit = row.region === 'United Arab Emirates';\n  const employerFit = row.company_type === 'B2B employer';\n  const roleSignal = Boolean(row.persona && row.persona.includes('People / HR leader'));\n  const triggerPresent = Boolean(row.trigger_signal && row.source_url);\n  const fitScore = (marketFit ? 25 : 0) + (employerFit ? 25 : 0) + (roleSignal ? 20 : 0) + (triggerPresent ? 30 : 0);\n  const reviewStatus = !triggerPresent ? 'hold_missing_evidence' : 'human_verification_required';\n  const variantCopy = row.variant === 'A'\n    ? 'If [verified signal] is current, would it be useful to compare how teams measure participation in employee wellbeing programs?'\n    : 'If [verified signal] is current, would it be useful to discuss how teams launch employee wellbeing programs with low operational overhead?';\n  return {\n    ...row,\n    fit_score: fitScore,\n    score_explanation: { market_fit: marketFit, b2b_employer_fit: employerFit, role_signal_present: roleSignal, trigger_and_source_present: triggerPresent },\n    research_status: row.signal_verified ? 'verified_by_reviewer' : 'unverified_synthetic_placeholder',\n    review_status: reviewStatus,\n    draft_status: triggerPresent ? 'illustrative_draft_pending_human_review' : 'not_created_missing_evidence',\n    draft_message: triggerPresent ? `Hi [verified recipient name] \u2014 ${variantCopy} This is sample copy for review only.` : null,\n    contact_status: 'not_contacted',\n    sent: false,\n    send_enabled: false,\n    next_action: triggerPresent ? 'Replace placeholders with verified evidence, confirm ICP and offer, then obtain human approval before any real outreach.' : 'Hold until a real source and role are verified.'\n  };\n});\nconst reviewQueue = output.filter(row => row.review_status === 'human_verification_required').length;\nreturn [{ json: {\n  workflow: 'synthetic_acquisition_walkthrough',\n  campaign_id: 'synthetic-acquisition-walkthrough',\n  data_mode: 'synthetic_only',\n  records_created: output.length,\n  review_queue_count: reviewQueue,\n  held_for_missing_evidence: output.length - reviewQueue,\n  messages_sent: 0,\n  send_enabled: false,\n  authorization: 'not_authorized_for_outreach',\n  interpretation: 'Workflow demonstration only; scores, accounts, signals, and message copy are fabricated and are not company-specific recommendations.',\n  accounts: output\n} }];"
+      },
+      "id": "c8e4cb9b-bfc4-4a8a-a4d6-8c451f633226",
+      "name": "Score, draft, and hold for review",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Start walkthrough manually": {
+      "main": [
+        [
+          {
+            "node": "Load fictional account signals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load fictional account signals": {
+      "main": [
+        [
+          {
+            "node": "Score, draft, and hold for review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "89b11d15-c986-4a9a-9812-1b7d60b03fa1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
