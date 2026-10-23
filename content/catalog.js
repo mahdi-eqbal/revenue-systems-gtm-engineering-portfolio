@@ -31,7 +31,8 @@ window.PORTFOLIO = {
       repo: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system',
       evidence: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/evidence/EVIDENCE-MANIFEST.md',
       video: null, accent: 'violet'
-    }    ,{
+    },
+    {
       id: 'cle', number: '04', category: 'n8n / GTM Operations', title: 'Campaign learning with evidence and review gates',
       description: 'A review-first n8n prototype for validating campaign outcomes, comparing variants cautiously and holding synthetic account examples for human verification.',
       problem: 'Campaign activity needs clean event data and evidence checks before teams draw conclusions or take action.',
@@ -39,7 +40,7 @@ window.PORTFOLIO = {
       tools: ['n8n','JavaScript','Data Tables','Synthetic data','Human review'],
       repo: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/campaign-learning-engine/',
       evidence: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/campaign-learning-engine/evidence/n8n-execution.md',
-      video: null, accent: 'mint'
+      video: null, accent: 'blue'
     }
   ],
   videos: [
