@@ -1,0 +1,86 @@
+{
+  "name": "CLE - Variant Outcome Report (Demo)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c0a08d30-838e-4fdf-a1ea-0d129fc78ceb",
+      "name": "Run report manually",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "cle_campaign_events",
+          "mode": "name"
+        },
+        "returnAll": true,
+        "filters": {
+          "conditions": []
+        }
+      },
+      "id": "c494a3a7-804d-41c2-9f4a-bbaf9249975e",
+      "name": "Read campaign events",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Change this value to report on a different campaign.\nconst CAMPAIGN_ID = 'cle-synthetic-demo';\nconst rows = $input.all().map(x => x.json);\nconst campaignRows = rows.filter(r => String(r.campaign_id) === CAMPAIGN_ID);\nconst variants = ['A','B'];\nconst unique = (items) => new Set(items.map(r => String(r.prospect_id)).filter(Boolean));\nconst intersectionSize = (left, right) => [...left].filter(id => right.has(id)).length;\nconst result = variants.map(variant => {\n  const v = campaignRows.filter(r => String(r.variant) === variant);\n  const idsFor = type => unique(v.filter(r => r.event_type === type));\n  const deliveredIds = idsFor('delivered');\n  const repliedIds = idsFor('replied');\n  const qualifiedIds = idsFor('qualified');\n  const meetingIds = idsFor('meeting_booked');\n  const replies = intersectionSize(deliveredIds, repliedIds);\n  const qualified = [...deliveredIds].filter(id => repliedIds.has(id) && qualifiedIds.has(id)).length;\n  const meetings = intersectionSize(deliveredIds, meetingIds);\n  const delivered = deliveredIds.size;\n  return {\n    variant,\n    events: v.length,\n    delivered,\n    replies,\n    qualified_replies: qualified,\n    meetings_booked: meetings,\n    reply_rate: delivered ? replies / delivered : null,\n    qualified_reply_rate: delivered ? qualified / delivered : null,\n    meeting_rate: delivered ? meetings / delivered : null,\n    rate_basis: 'unique_delivered_prospects',\n    interpretation: delivered < 10 ? 'directional_only_small_sample' : 'review_context_before_inference'\n  };\n});\nreturn [{json:{campaign_learning_engine:true,campaign_id:CAMPAIGN_ID,mode:'demo_only',send_enabled:false,events_included:campaignRows.length,variants:result}}];"
+      },
+      "id": "b52864de-0352-4199-9a04-c1449937efb2",
+      "name": "Compare variants",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Run report manually": {
+      "main": [
+        [
+          {
+            "node": "Read campaign events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read campaign events": {
+      "main": [
+        [
+          {
+            "node": "Compare variants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "75dd99d8-1147-4895-92f4-bbfdfbf2c24f",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
