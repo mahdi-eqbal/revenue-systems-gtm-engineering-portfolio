@@ -11,6 +11,7 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | 2026-10-29 | First **private GitHub** baseline of v0.4 | One recorded import commit; GitHub Actions execution on three Python versions | Earlier v0.1–v0.3 work **was not** separate GitHub history |
 | 2026-10-29 | Private security hardening merged after review | Browser-cache protection on authenticated reports/configuration; regression test added; private PR passed CI on Python 3.11–3.13 and was merged to the commercial codebase | Response headers are a limited safeguard; no production security certification or multi-tenant deployment |
 | 2026-10-29 | First **public GitHub** case-study publication | This public evidence pack, architecture note and portfolio entry | Public documentation only, no proprietary source or live demo hosting |
+| 2026-10-29 | v0.5 development candidate — workspace isolation foundation | Private code PR reviewed and merged; one operator can separate multiple clients' audit histories and rule profiles. GitHub CI passed on Python 3.11/3.12/3.13, including 21 Django integration/migration tests and preservation of legacy policy/report snapshots | Development code only; Windows installation still v0.4. Not a production-ready multi-user tenant or a live CRM integration |
 
 ## Future update standard
 
