@@ -13,6 +13,8 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | 2026-10-29 | First **public GitHub** case-study publication | This public evidence pack, architecture note and portfolio entry | Public documentation only, no proprietary source or live demo hosting |
 | 2026-10-29 | v0.5 development candidate — workspace isolation foundation | Private code PR reviewed and merged; one operator can separate multiple clients' audit histories and rule profiles. GitHub CI passed on Python 3.11/3.12/3.13, including 21 Django integration/migration tests and preservation of legacy policy/report snapshots | Development code only; Windows installation still v0.4. Not a production-ready multi-user tenant or a live CRM integration |
 
+| 2026-10-29 | v0.5 Windows backup-and-migration rehearsal tool | Private-code PR reviewed and merged after synthetic SQLite backup and disposable-copy migration tests passed: 71 Python and 21 Django tests across Python 3.11–3.13 | The owner’s real Windows installation has NOT been upgraded or rehearsed yet; BAT launcher not yet tested on-device. A separate live-upgrade and rollback gate remains open |
+
 ## Future update standard
 
 For every **subsequent** change that deserves a public claim:
