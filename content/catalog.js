@@ -41,6 +41,20 @@ window.PORTFOLIO = {
       repo: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/campaign-learning-engine/',
       evidence: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/campaign-learning-engine/evidence/n8n-execution.md',
       video: null, accent: 'blue'
+    },
+    {
+      id: 'rlm', number: '05', category: 'Python / Django / RevOps',
+      title: 'Revenue Leak Monitor: verify the handoff, not just the workflow',
+      description: 'In-development, evidence-first audit product. Reconciles source and CRM events, explains missing or uncertain handoffs, and versions customer-specific SLA rules.',
+      problem: 'A successful sync or CRM write is not proof of ownership, task evidence or a complete sales handoff.',
+      built: ['Read-only deterministic CSV reconciliation and explanatory reports',
+              'Local Django audit history, exports and versioned rule profiles',
+              'Synthetic SLA boundary tests, access-control tests and private CI',
+              'Experimental HubSpot contact-read adapter (mock-tested; not live)'],
+      tools: ['Python','Django','CSV','Audit Evidence','GitHub Actions'],
+      repo: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/revenue-leak-monitor',
+      evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/revenue-leak-monitor/EVIDENCE.md',
+      video: null, accent: 'blue'
     }
   ],
   videos: [
