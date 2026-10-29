@@ -15,6 +15,8 @@
 | Same inputs: 24-hour rule | 1 needed review, 2 handoffs verified; one task remained absent but was not overdue | Local UI screenshot reviewed |
 | Private source repository import | One baseline commit covering v0.4 source and tests | GitHub private-repository metadata verified |
 | GitHub Actions | Baseline CI and PR CI green; PR jobs were verified as successful for Python 3.11, 3.12 and 3.13 | GitHub workflow status in private repository; **not publicly inspectable** |
+| v0.5 client workspace controls | Same-operator client A/B report, download, deletion and rule-profile access was tested with forged workspace identifiers and cross-client URLs. Unauthorized access was rejected | Private GitHub-hosted Django integration suite; synthetic records |
+| v0.5 migration backfill | Legacy v0.4 user-specific reports and rule profiles were migrated to separate Personal workspaces in an isolated test database; existing policy/report JSON remained unchanged | MigrationExecutor regression test, not yet performed on owner's working Windows database |
 
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
 
