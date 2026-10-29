@@ -19,6 +19,9 @@ Selected end-to-end implementations across CRM architecture, GTM automation, ope
 | [P2 â€” Lead-to-Opportunity Revenue Operations](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system) | Inbound leads enter the CRM with inconsistent quality, routing, and follow-up | Salesforce, Salesforce Flow, n8n, PostgreSQL/Supabase, APIs | Validation, routing, SLA, CRM identity, and failure handling |
 | [P3 â€” AI-Assisted GTM Intelligence & Account Prioritization](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system) | Target-account lists lack evidence, timing, prioritization, and uncertainty controls | Clay, Claygent, GTM Signals, structured AI, deterministic scoring | Enrichment, evidence-aware research, scoring, and human review |
 
+| [Campaign Learning Engine — controlled experiment learning](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/campaign-learning-engine) | Campaign signals can drive premature conclusions or outreach | n8n, JavaScript, Data Tables | Synthetic-only, review-first outcome analysis |
+| [Revenue Leak Monitor — product in development](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/revenue-leak-monitor) | Successful automation can still leave an unverified or overdue lead handoff | Python, Django, CSV, GitHub Actions | Read-only reconciliation, explainable evidence, versioned SLA profiles |
+
 These are current selected implementations. The portfolio is not limited to these projects and will expand as additional Revenue Systems capabilities are implemented and validated.
 
 ---
@@ -132,6 +135,19 @@ Target Accounts
 
 ---
 
+## Revenue Leak Monitor — Private Commercial Product, Public Engineering Record
+
+**In development (local v0.4 milestone; not customer production-ready).** The proprietary Revenue Leak Monitor source remains in a **private repository**. A separate public case study shares the engineering rationale, synthetic-data validation, the limits of current tests, and an honest chronology of the build without revealing commercial source code.
+
+- [Public technical case study](projects/revenue-leak-monitor/README.md)
+- [Verification evidence and limitations](projects/revenue-leak-monitor/EVIDENCE.md)
+- [Dated build log](projects/revenue-leak-monitor/BUILD_LOG.md)
+- [Architecture decisions](projects/revenue-leak-monitor/ARCHITECTURE.md)
+
+The prototype reconciles source and CRM exports, explains exceptions and provides versioned operational rules through a local Django application. An experimental HubSpot contact-read adapter has **only** been tested with mock API responses. No customer CRM deployment or revenue recovery is claimed.
+
+---
+
 ## Capability Matrix
 
 | Capability | P1 | P2 | P3 |
@@ -171,9 +187,9 @@ Target Accounts
 
 ## Project Positioning
 
-These projects are independently designed and built professional implementations and case studies using synthetic or public-safe data.
+These projects and the in-development product are documented engineering implementations using synthetic or public-safe evidence. Some were built with AI-assisted implementation, guided by explicit engineering requirements and local validation.
 
-They do not represent client deployments, employer projects, paid engagements, production implementations, or claimed commercial revenue results.
+They do not represent client deployments, employer projects, paid engagements, production SaaS implementations, or claimed commercial revenue results. The Revenue Leak Monitor source is private and not licensed under this public portfolio's MIT license.
 
 The portfolio is intended to demonstrate practical Revenue Systems and GTM Engineering capability through implemented, tested, documented, and evidence-backed systems.
 
