@@ -13,10 +13,10 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | 2026-10-29 | First **public GitHub** case-study publication | This public evidence pack, architecture note and portfolio entry | Public documentation only, no proprietary source or live demo hosting |
 | 2026-10-29 | v0.5 development candidate — workspace isolation foundation | Private code PR reviewed and merged; one operator can separate multiple clients' audit histories and rule profiles. GitHub CI passed on Python 3.11/3.12/3.13, including 21 Django integration/migration tests and preservation of legacy policy/report snapshots | Development code only; Windows installation still v0.4. Not a production-ready multi-user tenant or a live CRM integration |
 | 2026-10-29 | v0.5 Windows backup-and-migration rehearsal tool | Private-code PR reviewed and merged after synthetic SQLite backup and disposable-copy migration tests passed: 71 Python and 21 Django tests across Python 3.11–3.13 | The owner’s real Windows installation has NOT been upgraded or rehearsed yet; BAT launcher not yet tested on-device. A separate live-upgrade and rollback gate remains open |
-
 | 2026-10-29 | Windows-specific migration rehearsal defect fixed | The first on-device backup-only rehearsal exposed a Windows temporary-file lock; private source was patched to close SQLite handles, and synthetic rehearsal subsequently passed on a Windows GitHub Actions runner plus the three existing Linux Python jobs | Actual Windows installation has **not** yet been re-tested with the patched tool. Original database was not upgraded |
-
 | 2026-10-29 | Local Windows rehearsal accepted; separate v0.5 preview prepared | Actual Windows backup and disposable migration returned PASS, the original database remained unchanged; a subsequent private-code change added an isolated v0.5 preview based on the verified backup, with Windows and Linux synthetic CI success | Preview UI has not yet been checked on the owner's Windows PC; v0.4 remains installed and no live overwrite occurred |
+
+| 2026-10-29 | v0.5 on-device workspace acceptance | The owner's isolated Windows preview opened preserved saved reports and a versioned rule profile; a second synthetic client workspace showed empty audit/profile lists; requesting an original-workspace report URL while in the second workspace returned HTTP 404 | Verified only on local synthetic-data preview and private regression tests, not production multi-tenant hosting; debug diagnostics remain enabled locally |
 
 ## Future update standard
 
