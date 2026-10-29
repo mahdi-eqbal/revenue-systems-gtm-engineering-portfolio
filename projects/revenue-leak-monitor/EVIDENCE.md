@@ -19,6 +19,9 @@
 | v0.5 migration backfill | Legacy v0.4 user-specific reports and rule profiles were migrated to separate Personal workspaces in an isolated test database; existing policy/report JSON remained unchanged | MigrationExecutor regression test, not yet performed on owner's working Windows database |
 | v0.5 Windows backup and copy-only migration rehearsal | Synthetic v0.4 SQLite records backed up and verified; migration ran on a disposable copy, historical account/report/profile fingerprints matched, and unsafe path/already-migrated inputs were rejected | Private CI: 71 Python tests and 21 Django tests on 3 Python versions; no on-device Windows acceptance yet |
 
+| v0.5 local Windows workspace acceptance | Preserved historical saved reports and v2 profile remained accessible in the original workspace; a separate synthetic workspace had empty audit/profile lists; direct URL to an original-workspace report returned HTTP 404 while the second workspace was active | Owner-provided localhost screenshots and existing private CI; not a penetration test or production authorization assessment |
+
+
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
 
 ## Baseline development and test history
