@@ -22,6 +22,8 @@
 | v0.5 local Windows workspace acceptance | Preserved historical saved reports and v2 profile remained accessible in the original workspace; a separate synthetic workspace had empty audit/profile lists; direct URL to an original-workspace report returned HTTP 404 while the second workspace was active | Owner-provided localhost screenshots and existing private CI; not a penetration test or production authorization assessment |
 
 
+| v0.5 local/deployment configuration gate | Automated checks reject non-loopback local requests, unsafe local Host settings and insecure production-mode environment configuration | Private CI passed on Python 3.11-3.13 and Windows regression; not a production deployment security assessment |
+
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
 
 ## Baseline development and test history
