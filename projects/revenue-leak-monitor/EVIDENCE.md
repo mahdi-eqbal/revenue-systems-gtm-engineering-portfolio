@@ -17,7 +17,6 @@
 | GitHub Actions | Baseline CI and PR CI green; PR jobs were verified as successful for Python 3.11, 3.12 and 3.13 | GitHub workflow status in private repository; **not publicly inspectable** |
 | v0.5 client workspace controls | Same-operator client A/B report, download, deletion and rule-profile access was tested with forged workspace identifiers and cross-client URLs. Unauthorized access was rejected | Private GitHub-hosted Django integration suite; synthetic records |
 | v0.5 migration backfill | Legacy v0.4 user-specific reports and rule profiles were migrated to separate Personal workspaces in an isolated test database; existing policy/report JSON remained unchanged | MigrationExecutor regression test, not yet performed on owner's working Windows database |
-
 | v0.5 Windows backup and copy-only migration rehearsal | Synthetic v0.4 SQLite records backed up and verified; migration ran on a disposable copy, historical account/report/profile fingerprints matched, and unsafe path/already-migrated inputs were rejected | Private CI: 71 Python tests and 21 Django tests on 3 Python versions; no on-device Windows acceptance yet |
 
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
