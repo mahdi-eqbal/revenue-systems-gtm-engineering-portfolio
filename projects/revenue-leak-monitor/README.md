@@ -1,6 +1,6 @@
 # Revenue Leak Monitor — Evidence-first lead handoff assurance
 
-**Status:** Local development milestone v0.4.0 · **Source:** proprietary/private · **Case study updated:** 2026-10-29
+**Status:** v0.5 development code merged in private GitHub; currently installed Windows prototype remains v0.4 · **Source:** proprietary/private · **Case study updated:** 2026-10-29
 
 **Engineering direction, requirements and local acceptance testing:** Mahdi Eqbal. Implementation and testing have included AI-assisted development. This is an independent product-development project, **not** a claim of a paid customer deployment or recovered revenue.
 
