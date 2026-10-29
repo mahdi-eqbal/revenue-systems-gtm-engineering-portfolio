@@ -9,7 +9,7 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | October 2026, prior to GitHub import | v0.3 explainable findings and Rule Profiles | Local rule-profile creation, change from four- to 24-hour SLA, observed different classifications | Complete-source coverage manually declared |
 | October 2026, prior to GitHub import | v0.4 reliability and connector foundation | Pending/breach distinction; mocked HubSpot contact-read adapter; independent Python tests | No customer CRM access or multi-tenant service |
 | 2026-10-29 | First **private GitHub** baseline of v0.4 | One recorded import commit; GitHub Actions execution on three Python versions | Earlier v0.1–v0.3 work **was not** separate GitHub history |
-| 2026-10-29 | Private security review follow-up | Pull Request for cache protection of authenticated reports and configuration, CI green on Python 3.11–3.13 | Private PR initially awaiting merge; no hosted security certification |
+| 2026-10-29 | Private security hardening merged after review | Browser-cache protection on authenticated reports/configuration; regression test added; private PR passed CI on Python 3.11–3.13 and was merged to the commercial codebase | Response headers are a limited safeguard; no production security certification or multi-tenant deployment |
 | 2026-10-29 | First **public GitHub** case-study publication | This public evidence pack, architecture note and portfolio entry | Public documentation only, no proprietary source or live demo hosting |
 
 ## Future update standard
