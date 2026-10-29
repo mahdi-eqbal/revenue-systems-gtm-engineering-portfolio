@@ -3,7 +3,6 @@
 **Evidence scope:** Fictional input data, observed local application behavior and CI metadata. No live customer data, commercial deployment or revenue-recovery claims.
 
 ## Recorded local acceptance tests
-
 | Check | Observed outcome | Evidence level |
 |---|---|---|
 | CSV reconciliation, five unique events from six source rows and three CRM rows | Two verified handoffs; one missing CRM record; one owner-related exception; one intentional exclusion; duplicated E105 evaluated once | Local Windows web UI and CSV/JSON export reviewed |
@@ -18,13 +17,12 @@
 | v0.5 client workspace controls | Same-operator client A/B report, download, deletion and rule-profile access was tested with forged workspace identifiers and cross-client URLs. Unauthorized access was rejected | Private GitHub-hosted Django integration suite; synthetic records |
 | v0.5 migration backfill | Legacy v0.4 user-specific reports and rule profiles were migrated to separate Personal workspaces in an isolated test database; existing policy/report JSON remained unchanged | MigrationExecutor regression test, not yet performed on owner's working Windows database |
 | v0.5 Windows backup and copy-only migration rehearsal | Synthetic v0.4 SQLite records backed up and verified; migration ran on a disposable copy, historical account/report/profile fingerprints matched, and unsafe path/already-migrated inputs were rejected | Private CI: 71 Python tests and 21 Django tests on 3 Python versions; no on-device Windows acceptance yet |
-
 | v0.5 local Windows workspace acceptance | Preserved historical saved reports and v2 profile remained accessible in the original workspace; a separate synthetic workspace had empty audit/profile lists; direct URL to an original-workspace report returned HTTP 404 while the second workspace was active | Owner-provided localhost screenshots and existing private CI; not a penetration test or production authorization assessment |
 
-
 | v0.5 local/deployment configuration gate | Automated checks reject non-loopback local requests, unsafe local Host settings and insecure production-mode environment configuration | Private CI passed on Python 3.11-3.13 and Windows regression; not a production deployment security assessment |
-
 | HubSpot connector resilience (synthetic only) | Rejects invalid pagination data, duplicate source event keys across contacts, and concurrent overwrite of CRM CSV snapshots; GET-only optional API path tested with mocks | Private Linux Python CI and Windows regression suite passed; no live API integration verified |
+
+| Contact–Task candidate evidence (synthetic only) | A bounded GET-only reader retrieves associated Task IDs plus creation timestamps, status and owner metadata, while refusing to claim lead-specific follow-up or task completeness; HTTP failures and malformed IDs/pages abort | Private 3× Linux CI plus 36 Windows synthetic regression tests passed; no live HubSpot calls or completed follow-up evidence |
 
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
 
