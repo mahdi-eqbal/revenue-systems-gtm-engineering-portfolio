@@ -24,6 +24,8 @@
 
 | v0.5 local/deployment configuration gate | Automated checks reject non-loopback local requests, unsafe local Host settings and insecure production-mode environment configuration | Private CI passed on Python 3.11-3.13 and Windows regression; not a production deployment security assessment |
 
+| HubSpot connector resilience (synthetic only) | Rejects invalid pagination data, duplicate source event keys across contacts, and concurrent overwrite of CRM CSV snapshots; GET-only optional API path tested with mocks | Private Linux Python CI and Windows regression suite passed; no live API integration verified |
+
 **Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
 
 ## Baseline development and test history
