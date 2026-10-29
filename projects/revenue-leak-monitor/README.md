@@ -19,7 +19,7 @@ Revenue Leak Monitor is being built as a **read-only assurance layer** that reco
 - Evidence-first reporting with reason codes, human-readable explanations, CSV/JSON exports, policy identifiers and file fingerprints.
 - A local Django web application for authenticated uploads, audit history, owner-scoped access and named, versioned rule profiles.
 - Temporal SLA evaluation: task evidence is distinguished from actual human outreach; an event can be *within* its permitted window without being labeled a breach.
-- Synthetic-only public-facing demonstration logic. A **HubSpot contact-read adapter** has been implemented and tested against mocked API responses; it is **not** a validated live HubSpot integration.
+- A demonstration page using synthetic fixtures, currently available **only in the local development app**, not as a hosted public service. A **HubSpot contact-read adapter** has been implemented and tested against mocked API responses; it is **not** a validated live HubSpot integration.
 
 ### High-level system boundary
 
