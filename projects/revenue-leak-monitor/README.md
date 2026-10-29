@@ -17,7 +17,7 @@ Revenue Leak Monitor is being built as a **read-only assurance layer** that reco
 - A deterministic Python engine for comparing source-event exports with CRM exports using an **explicit shared event ID**; no speculative identity matching.
 - Separate states for matched records, duplicate submissions, intentional exclusions, missing CRM records, ambiguous matches, stale snapshots, ownership gaps and follow-up timing.
 - Evidence-first reporting with reason codes, human-readable explanations, CSV/JSON exports, policy identifiers and file fingerprints.
-- A local Django web application for authenticated uploads, audit history, owner-scoped access and named, versioned rule profiles.
+- A local Django web application for authenticated uploads, audit history and named, versioned rule profiles. The **v0.5 development code** additionally supports owner-verified workspaces to separate one operator's clients, but has not yet been installed on the original Windows environment.
 - Temporal SLA evaluation: task evidence is distinguished from actual human outreach; an event can be *within* its permitted window without being labeled a breach.
 - A demonstration page using synthetic fixtures, currently available **only in the local development app**, not as a hosted public service. A **HubSpot contact-read adapter** has been implemented and tested against mocked API responses; it is **not** a validated live HubSpot integration.
 
@@ -57,7 +57,7 @@ The local prototype was exercised on a Windows machine using fictional CSVs. Git
 
 ## Current limitations
 
-This is a **development prototype**, not a production multi-tenant SaaS or a certified secure service. Completeness of CSV snapshots is currently operator-attested, the local database is SQLite, and authorization is scoped to individual users rather than production-ready organizations/workspaces. Live HubSpot OAuth, full Task evidence collection, tenant isolation, encryption/retention controls and operational deployment require further work.
+This is a **development prototype**, not a production multi-tenant SaaS or a certified secure service. Completeness of CSV snapshots is currently operator-attested, the local database is SQLite, and the v0.5 workspace model covers one operator's client contexts, **not** production organization membership or complete multi-tenant authorization. Live HubSpot OAuth, full Task evidence collection, tenant isolation, encryption/retention controls and operational deployment require further work.
 
 ## Source and IP boundary
 
