@@ -16,6 +16,8 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 
 | 2026-10-29 | Windows-specific migration rehearsal defect fixed | The first on-device backup-only rehearsal exposed a Windows temporary-file lock; private source was patched to close SQLite handles, and synthetic rehearsal subsequently passed on a Windows GitHub Actions runner plus the three existing Linux Python jobs | Actual Windows installation has **not** yet been re-tested with the patched tool. Original database was not upgraded |
 
+| 2026-10-29 | Local Windows rehearsal accepted; separate v0.5 preview prepared | Actual Windows backup and disposable migration returned PASS, the original database remained unchanged; a subsequent private-code change added an isolated v0.5 preview based on the verified backup, with Windows and Linux synthetic CI success | Preview UI has not yet been checked on the owner's Windows PC; v0.4 remains installed and no live overwrite occurred |
+
 ## Future update standard
 
 For every **subsequent** change that deserves a public claim:
