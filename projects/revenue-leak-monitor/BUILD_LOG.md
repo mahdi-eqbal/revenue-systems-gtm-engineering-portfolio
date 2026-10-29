@@ -14,6 +14,8 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | 2026-10-29 | v0.5 development candidate — workspace isolation foundation | Private code PR reviewed and merged; one operator can separate multiple clients' audit histories and rule profiles. GitHub CI passed on Python 3.11/3.12/3.13, including 21 Django integration/migration tests and preservation of legacy policy/report snapshots | Development code only; Windows installation still v0.4. Not a production-ready multi-user tenant or a live CRM integration |
 | 2026-10-29 | v0.5 Windows backup-and-migration rehearsal tool | Private-code PR reviewed and merged after synthetic SQLite backup and disposable-copy migration tests passed: 71 Python and 21 Django tests across Python 3.11–3.13 | The owner’s real Windows installation has NOT been upgraded or rehearsed yet; BAT launcher not yet tested on-device. A separate live-upgrade and rollback gate remains open |
 
+| 2026-10-29 | Windows-specific migration rehearsal defect fixed | The first on-device backup-only rehearsal exposed a Windows temporary-file lock; private source was patched to close SQLite handles, and synthetic rehearsal subsequently passed on a Windows GitHub Actions runner plus the three existing Linux Python jobs | Actual Windows installation has **not** yet been re-tested with the patched tool. Original database was not upgraded |
+
 ## Future update standard
 
 For every **subsequent** change that deserves a public claim:
