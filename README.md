@@ -20,7 +20,7 @@ Selected end-to-end implementations across CRM architecture, GTM automation, ope
 | [P3 â€” AI-Assisted GTM Intelligence & Account Prioritization](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system) | Target-account lists lack evidence, timing, prioritization, and uncertainty controls | Clay, Claygent, GTM Signals, structured AI, deterministic scoring | Enrichment, evidence-aware research, scoring, and human review |
 
 | [Campaign Learning Engine — controlled experiment learning](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/campaign-learning-engine) | Campaign signals can drive premature conclusions or outreach | n8n, JavaScript, Data Tables | Synthetic-only, review-first outcome analysis |
-| [Revenue Leak Monitor — product in development](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/revenue-leak-monitor) | Successful automation can still leave an unverified or overdue lead handoff | Python, Django, CSV, GitHub Actions | Read-only reconciliation, explainable evidence, versioned SLA profiles |
+| [HandoffTrace — public interactive preview](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/revenue-leak-monitor) | Successful automation can still leave lead handoff evidence unverified | Python, Django, CSV, JavaScript | Deterministic event reconciliation, explainable findings, configurable rules; synthetic public showcase |
 
 These are current selected implementations. The portfolio is not limited to these projects and will expand as additional Revenue Systems capabilities are implemented and validated.
 
@@ -135,16 +135,19 @@ Target Accounts
 
 ---
 
-## Revenue Leak Monitor — Private Commercial Product, Public Engineering Record
+## HandoffTrace — Standalone Lead Handoff Assurance Product
 
-**In development (local v0.4 milestone; not customer production-ready).** The proprietary Revenue Leak Monitor source remains in a **private repository**. A separate public case study shares the engineering rationale, synthetic-data validation, the limits of current tests, and an honest chronology of the build without revealing commercial source code.
+**Public [interactive synthetic preview v0.5](https://handofftrace.htlabs.workers.dev/) published on 2026-11-03; commercial product remains under active development.** HandoffTrace is a standalone, evidence-first audit product built under the earlier code name Revenue Leak Monitor. It is **not** another CRM workflow or a hosted customer-connected SaaS.
 
+The private Python engine compares source events with CRM evidence, evaluates event identity, ownership, Task and timing expectations under configurable rules, and returns reason codes and next checks. A private local Django application supports saved audits and operator review. The **public site** is a safe, static replay of engine-generated results on five fictional events; it does not accept user records or connect to a CRM.
+
+- **[Try the HandoffTrace interactive preview](https://handofftrace.htlabs.workers.dev/)**
 - [Public technical case study](projects/revenue-leak-monitor/README.md)
 - [Verification evidence and limitations](projects/revenue-leak-monitor/EVIDENCE.md)
-- [Dated build log](projects/revenue-leak-monitor/BUILD_LOG.md)
 - [Architecture decisions](projects/revenue-leak-monitor/ARCHITECTURE.md)
+- [Dated build log](projects/revenue-leak-monitor/BUILD_LOG.md)
 
-The prototype reconciles source and CRM exports, explains exceptions and provides versioned operational rules through a local Django application. An experimental HubSpot contact-read adapter has **only** been tested with mock API responses. No customer CRM deployment or revenue recovery is claimed.
+Authorized HubSpot Sandbox form/Contact/Task diagnostics have been carried out on bounded synthetic examples, but event-specific source-to-sales follow-up, production integration, continuous monitoring, and customer self-service remain **unverified or unreleased**. A scoped, read-only pilot may be discussed only after feasibility, permission and security reviews. No customer deployment or recovered revenue is claimed.
 
 ---
 
@@ -189,14 +192,14 @@ The prototype reconciles source and CRM exports, explains exceptions and provide
 
 These projects and the in-development product are documented engineering implementations using synthetic or public-safe evidence. Some were built with AI-assisted implementation, guided by explicit engineering requirements and local validation.
 
-They do not represent client deployments, employer projects, paid engagements, production SaaS implementations, or claimed commercial revenue results. The Revenue Leak Monitor source is private and not licensed under this public portfolio's MIT license.
+They do not represent client deployments, employer projects, paid engagements, production SaaS implementations, or claimed commercial revenue results. The HandoffTrace (formerly Revenue Leak Monitor) commercial source is private and not licensed under this public portfolio's MIT license.
 
 The portfolio is intended to demonstrate practical Revenue Systems and GTM Engineering capability through implemented, tested, documented, and evidence-backed systems.
 
 ## Contact
 
 - **GitHub:** [github.com/mahdi-eqbal](https://github.com/mahdi-eqbal)
-- **LinkedIn:** [linkedin.com/in/mahdi-eqbal-b50329296](https://www.linkedin.com/in/mahdi-eqbal-b50329296)
+- **LinkedIn:** [linkedin.com/in/mahdi-eqbal-b50329296](https://www.linkedin.com/in/mahdi-eqbal)
 - **Email:** [m.mahdi.eqbal@gmail.com](mailto:m.mahdi.eqbal@gmail.com)
 
 ---
