@@ -1,43 +1,67 @@
-# Revenue Leak Monitor — Public architecture decisions
+# HandoffTrace — Public architecture and design decisions
 
-This document summarizes design reasoning. It intentionally omits proprietary source, internal rule tables, private access details, credentials and customer-specific configurations.
+**Updated:** 2026-11-03 · **Product:** HandoffTrace (formerly developed as Revenue Leak Monitor) · **Deployment boundary:** the published v0.5 website is a synthetic static preview, **not** the private Django audit application.
 
-## Decision 1 — Independent assurance layer, not another CRM
+This is a deliberately public-level explanation. It does not disclose commercial source code, private security internals, credentials, event payloads, unreleased policies, or customer information.
 
-The product compares evidence from a source of lead events with separately obtained evidence from a CRM/sales process. It is a *reader and verifier* in the current milestone, not a replacement for Salesforce, HubSpot, Make or n8n.
+## Two different runtime surfaces
 
-**Why:** A workflow's successful execution and a CRM contact's existence are necessary data points in some workflows, not sufficient proof of the expected operational result.
+| Surface | What runs | Audience and current status |
+|---|---|---|
+| **Private audit implementation** | Framework-independent Python reconciliation engine, private Django operator interface, policies, exports and experimental read-only adapters | Development and controlled local/sandbox testing; **not public production SaaS** |
+| **[Public interactive preview](https://handofftrace.htlabs.workers.dev/)** | One self-contained HTML artifact with CSS, JavaScript and sanitized, precomputed fictional findings | Publicly viewable; no accounts, uploads, live analysis, or CRM connections |
 
-## Decision 2 — Deterministic reconciliation before ML/AI matching
+A Python build step generates the public output using pinned fictional source and CRM fixtures, runs the engine, verifies selected result expectations, and exports only a bounded synthetic result. Public visitors navigate that result; they do **not** execute the engine or submit data for processing.
 
-The prototype requires an explicit shared source event identifier and declared expected record cardinality. Ambiguous or missing evidence is reported as uncertainty or an exception rather than silently guessed.
+## Decision 1 — Independent assurance, not another workflow
 
-**Why:** Operational audits require reproducible and explainable findings. A visually appealing score is less useful than a traceable decision that an operator can inspect.
+HandoffTrace evaluates **the outcome supported by records and evidence**, not the execution status of an upstream tool. A 200 response, completed automation, or existing Contact is insufficient evidence that an individual submission was handed off correctly. The product neither replaces a CRM nor currently executes automatic repairs.
 
-**Known trade-off:** Not all customer systems preserve a common event key. Identity strategies for more complex paths will require separate adapters and explicit validation, not optimistic assumptions.
+## Decision 2 — Event identity differs from Contact identity
 
-## Decision 3 — Time is part of the evidence
+Multiple form submissions can refer to one Contact. The system treats a **source event** as the unit of review and does not silently turn one Contact into proof of delivery for every event. Deterministic matching depends on explicit identifiers and declared mapping rules. Inaccessible, duplicate, or ambiguous mappings must not be guessed into success or failure.
 
-Different timestamps describe when a source event happened, when a CRM snapshot was taken, when follow-up evidence appeared and when an audit was evaluated. A missing task *before* its deadline is different from a missing task *after* a complete and timely snapshot.
+The current selected-data engine demonstrates explicit event-key reconciliation; this must not be misrepresented as universal production-grade identity resolution for all CRMs or form platforms.
 
-**Why:** Without this separation, an audit can create false overdue or missing-lead alerts.
+## Decision 3 — Time, completeness and provenance are part of a conclusion
 
-## Decision 4 — Version rules without rewriting history
+The audit distinguishes event time, snapshot time, Task creation evidence, SLA deadline, source coverage, and rule version. A Task absent from an incomplete or early snapshot is not a proven failure. Missing evidence and evidence of missing action are **different claims**.
 
-Per-run policy snapshots identify the rule version and relevant evidence boundary used for a decision. Reusable client profiles provide defaults; a later rule change should not silently mutate the findings stored for an older audit.
+Operator declarations of completeness are not automatically independently verified. Without independent source coverage, findings remain limited to the supplied evidence boundary.
 
-**Why:** Customers need to explain why the system classified the same event differently under different operational policies.
+## Decision 4 — Deterministic, inspectable findings before AI
 
-## Decision 5 — Modular monolith and controlled extension points
+The Python engine produces reviewable classifications, multiple reason codes, next checks, and reproducible policy-dependent decisions. AI-generated summaries and autonomous actions are **not required for current outputs** and are not advertised as released customer features.
 
-A framework-independent Python reconciliation engine is kept separate from a Django web adapter and future source/CRM connectors. PostgreSQL and hosted multi-workspace isolation are planned production architecture, **not** features claimed as completed in the local v0.4 milestone.
+## Decision 5 — Configurable policies without retroactively rewriting runs
 
-**Why:** A small commercial beta benefits from traceability and low operational complexity. Additional connectors and rule modules should extend a tested contract rather than require a rewrite of the decision engine.
+Versioned policy profiles can describe eligibility/exclusion, ownership expectations, timing and SLA criteria. Existing audit records retain the policy context used at the time of evaluation. A customer-specific mapping or rule change requires source and identity validation; there is no public self-service rule editor in the preview.
 
-## Decision 6 — Commercial source stays private
+## Decision 6 — Separate experimental connectors from validated customer onboarding
 
-The source repository uses private visibility, source-control reviews, automated CI checks and an All-rights-reserved notice. This public site documents technical capability without releasing implementation secrets.
+- **HubSpot:** Authorized Sandbox experiments, selected Form export comparisons, Contact and Task reads, OAuth lifecycle/guard development. These demonstrate technical progress, **not** complete event-to-follow-up lineage, historical completeness, or production customer readiness.
+- **Salesforce:** Bounded read-only experimental inventory, without live-org acceptance or production OAuth.
+- **CRM writes:** Absent from the public preview; automated remediation remains a proposed future capability, not a feature users can execute.
 
-**Limits:** Private repository visibility is not a substitute for security testing, contractual terms, access auditing or a production deployment review.
+The first potential managed pilot should be **read-only and explicitly scoped**. Real customer data must not enter the local prototype or an unreviewed service until the required permissions, security, storage, recovery, tenant/access, and evidence-coverage controls have been accepted.
 
-[Return to the case study](README.md).
+## Decision 7 — Public code visibility is not part of the product offer
+
+The private commercial repository contains the underlying implementation and tests; this public case study shows only architecture-level decisions and bounded acceptance observations. A public source disclosure is not required to evaluate the value proposition, but visitors also cannot inspect or reproduce all private tests from this repository alone.
+
+## High-level evidence flow
+
+```mermaid
+flowchart LR
+    A[Source events] --> N[Normalization and identity validation]
+    B[CRM record and Task snapshots] --> N
+    C[Declared coverage + policy version] --> E[Deterministic audit engine]
+    N --> E
+    E --> O[Reason codes, coverage limits and next checks]
+    O --> R[Private human review]
+    O --> S[Sanitized synthetic static showcase]
+```
+
+**No pipeline shown above is proof that a customer deployment, actual salesperson contact, lead loss, or revenue recovery occurred.**
+
+See [the project overview](README.md), [test evidence](EVIDENCE.md), and [development log](BUILD_LOG.md).
