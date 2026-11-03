@@ -1,4 +1,4 @@
-# Revenue Leak Monitor — Public development log
+# HandoffTrace — Public development log (HandoffTrace legacy name)
 
 This log is a **truthful, retrospective milestone record** followed by ongoing public documentation. It does not claim that each local milestone was a separate GitHub commit.
 | Period | Milestone | What was actually verified | Remaining limitation |
@@ -20,6 +20,24 @@ This log is a **truthful, retrospective milestone record** followed by ongoing p
 | 2026-10-29 | HubSpot Task candidate evidence reader | Private GET-only connector code passed three Linux Python CI environments and 36 Windows synthetic tests; collects bounded associated Task IDs, creation times and status candidates without silently treating them as event-specific follow-up | Not connected to live HubSpot, web UI or certified task-completeness evidence. Contact association alone cannot prove a particular lead was followed up |
 
 | 2026-10-29 | Revenue Assurance UI v1 — responsive design foundation | Private code PR merged after passing three Linux Python CI jobs and the Windows regression suite; redesigned home, audit KPIs, evidence table, navigation, saved history, rule profiles and workspaces, with accessible focus and mobile layout rules | Automated HTML/CSS tests are not visual QA; desktop/mobile browser acceptance still pending. Source, data and engine rules remain private |
+
+## Newer checkpoints — evidence and public-preview release
+
+The earlier entries above are **dated historical checkpoints**; phrases such as “not yet hosted,” “not tested on-device,” or “no sandbox call” describe what was known **at that particular milestone**, not the current status.
+
+| Date | Milestone | Observed evidence | Still not proven |
+|---|---|---|---|
+| 2026-10-30 | HubSpot selected native Form export acceptance | Three independent synthetic form submissions observed 3/3 in an owner-selected export; two referenced one Contact, the third a different Contact | Historical source completeness, production OAuth and exact event-to-Task follow-up |
+| 2026-10-31 | Review continuity and private operator triage | Source-controlled local/private tests for immutable audit comparison, workspace-scoped Review Board and non-writing repair-readiness output | Hosted customer-safe workflows, actual corrective CRM writes |
+| 2026-10-31–2026-11-01 | Controlled HubSpot read-only acceptance | Restricted Sandbox OAuth and bounded Contact/Task candidate diagnostics; source API coverage concerns remained fail-closed | Comprehensive form-history pagination, verified source-event → Task/owner lineage, production credential lifecycle |
+| 2026-11-01 | Commercial V1 release gates defined | Explicit checklist covering authorized source identity, complete evidence, secure production operation and regression | These gates are not all passed; no production customer onboarding |
+| 2026-11-03 | HandoffTrace branded public static preview v0.5 | Engine-based synthetic one-file build; 10 targeted local pytest checks passed; release-preflight PASS; owner screenshots of desktop and 390px mobile; Incognito opened public `workers.dev` address | Browser-only synthetic replay, not live CRM ingestion, monitoring, payments or customer audits |
+| 2026-11-03 | Public documentation synchronization | Case study, architecture, evidence and public portfolio entry updated to reflect published HandoffTrace name and preview | Public docs do not disclose the proprietary code or certify customer readiness |
+
+**Public preview:** https://handofftrace.htlabs.workers.dev/  
+**Public technical record:** [Overview](README.md) · [Architecture](ARCHITECTURE.md) · [Evidence](EVIDENCE.md)
+
+The **public** product name is HandoffTrace; the `revenue-leak-monitor` URL path remains as a historical compatibility link. Any alternative prototype branch, draft pull request, or future roadmap item should not be described as an already deployed customer capability.
 
 ## Future update standard
 
