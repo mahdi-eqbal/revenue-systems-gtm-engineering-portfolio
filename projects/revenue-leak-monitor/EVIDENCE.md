@@ -1,56 +1,72 @@
-# Revenue Leak Monitor — Public verification record
+# HandoffTrace — Public validation evidence and limits
 
-**Evidence scope:** Fictional input data, observed local application behavior and CI metadata. No live customer data, commercial deployment or revenue-recovery claims.
+**Updated:** 2026-11-03. **Project:** HandoffTrace, originally developed under the Revenue Leak Monitor name. **Evidence levels are deliberately separate:** public synthetic replay, local engine/browser checks, selected authorized HubSpot Sandbox observations, and unverified production/customer claims.
 
-## Recorded local acceptance tests
-| Check | Observed outcome | Evidence level |
+**Public preview:** https://handofftrace.htlabs.workers.dev/
+
+## Evidence summary as of 2026-11-03
+
+| Claim | Observed evidence | Boundary / what it does not prove |
 |---|---|---|
-| CSV reconciliation, five unique events from six source rows and three CRM rows | Two verified handoffs; one missing CRM record; one owner-related exception; one intentional exclusion; duplicated E105 evaluated once | Local Windows web UI and CSV/JSON export reviewed |
-| Source/CRM upload, authentication and report rendering | Local Django app rendered an authenticated saved run | User-verified browser session |
-| CSV and JSON exports | Five findings; matching event IDs, reason codes and statuses | Exports were compared against the synthetic test fixture |
-| Saved audit history | Prior report appeared in My runs and reopened | User-verified browser session |
-| Versioned client rule profile | Demo Agency A created with four-hour task SLA; profile changed to v2 with 24-hour SLA | User-verified browser session |
-| Three-record SLA boundary test: four-hour rule | 2 records needed review, 1 handoff verified | Local UI screenshot reviewed |
-| Same inputs: 24-hour rule | 1 needed review, 2 handoffs verified; one task remained absent but was not overdue | Local UI screenshot reviewed |
-| Private source repository import | One baseline commit covering v0.4 source and tests | GitHub private-repository metadata verified |
-| GitHub Actions | Baseline CI and PR CI green; PR jobs were verified as successful for Python 3.11, 3.12 and 3.13 | GitHub workflow status in private repository; **not publicly inspectable** |
-| v0.5 client workspace controls | Same-operator client A/B report, download, deletion and rule-profile access was tested with forged workspace identifiers and cross-client URLs. Unauthorized access was rejected | Private GitHub-hosted Django integration suite; synthetic records |
-| v0.5 migration backfill | Legacy v0.4 user-specific reports and rule profiles were migrated to separate Personal workspaces in an isolated test database; existing policy/report JSON remained unchanged | MigrationExecutor regression test, not yet performed on owner's working Windows database |
-| v0.5 Windows backup and copy-only migration rehearsal | Synthetic v0.4 SQLite records backed up and verified; migration ran on a disposable copy, historical account/report/profile fingerprints matched, and unsafe path/already-migrated inputs were rejected | Private CI: 71 Python tests and 21 Django tests on 3 Python versions; no on-device Windows acceptance yet |
-| v0.5 local Windows workspace acceptance | Preserved historical saved reports and v2 profile remained accessible in the original workspace; a separate synthetic workspace had empty audit/profile lists; direct URL to an original-workspace report returned HTTP 404 while the second workspace was active | Owner-provided localhost screenshots and existing private CI; not a penetration test or production authorization assessment |
-| v0.5 local/deployment configuration gate | Automated checks reject non-loopback local requests, unsafe local Host settings and insecure production-mode environment configuration | Private CI passed on Python 3.11-3.13 and Windows regression; not a production deployment security assessment |
-| HubSpot connector resilience (synthetic only) | Rejects invalid pagination data, duplicate source event keys across contacts, and concurrent overwrite of CRM CSV snapshots; GET-only optional API path tested with mocks | Private Linux Python CI and Windows regression suite passed; no live API integration verified |
-| Contact–Task candidate evidence (synthetic only) | A bounded GET-only reader retrieves associated Task IDs plus creation timestamps, status and owner metadata, while refusing to claim lead-specific follow-up or task completeness; HTTP failures and malformed IDs/pages abort | Private 3× Linux CI plus 36 Windows synthetic regression tests passed; no live HubSpot calls or completed follow-up evidence |
+| Public product preview is viewable | Owner supplied desktop screenshots of the hosted `workers.dev` site and a successful Chrome Incognito opening without Cloudflare account sign-in | This demonstrates browser access on that occasion, not independent uptime, geographic availability or a secured customer service |
+| Public sample data comes from the implemented audit engine | Private build runs deterministic reconciliation on pinned fictional fixture data before emitting one HTML file; release-preflight checks content boundaries | Visitors interact with **precomputed output**, not with the live Python engine or a customer dataset |
+| Five fictional event outcomes are inspectable | Five distinct source events from six source rows and three CRM rows; two handoff-evidence findings, two review exceptions, one intentional exclusion, with a repeated event deduplicated | No customer leads, lost revenue, completed prospect contact or operational completeness implied |
+| Fixed preview navigation/filtering works | Owner reviewed desktop at approximately 1366px and a mobile 390px full-page capture; local preview displayed interactive evidence cases | Visual review is not exhaustive accessibility or cross-browser acceptance |
+| Static release checks passed locally | On 2026-11-03 owner ran `pytest tests/test_showcase.py tests/test_showcase_release_preflight.py -q`: **10 passed**, followed by build and `verify_showcase_release.py`: **PASS** | Only this subset and generated artifact were observed; not a full production or customer-data regression |
+| Request Pilot action opens an email handler | Screenshot of Windows choosing an email application when the CTA was clicked | Does not prove delivery of an inquiry or functioning email on every device |
+| Configurable rules affect the engine's outcome | Earlier private/local checks of versioned rule profiles and a 4-hour versus 24-hour Task-SLA assessment on otherwise unchanged synthetic data | Public preview has **no** customer rule editor or live audit configuration |
+| Internal Django operator features exist | Earlier local Windows and private-test observations of authenticated audits, workspace-scoped reports, saved run history, read-only review and exports | Not a publicly deployed multi-tenant SaaS, authorization certification or customer-safe data-processing environment |
 
-| UI v1 template and responsive stylesheet regression | Synthetic demo, evidence drill-down, empty workspace/profile states, semantic navigation and mobile CSS breakpoints verified through automated private CI | Browser pixel/contrast/mobile usability testing not yet performed; private PR merged without altering data or engine logic |
+## Selected real HubSpot Sandbox evidence — narrow and explicit
 
-**Interpretation:** The SLA test demonstrates that changing a rule changes the engine's decision on the *same* synthetic data. It is **not** a production-service reliability benchmark.
+Controlled, owner-authorized experiments progressed beyond the original mocked Contact adapter:
 
-## Baseline development and test history
+- **2026-10-30:** Three synthetic Form submissions were sent to a separately controlled test account. A selected **operator-exported native HubSpot Form CSV** contained the three independent probe tokens and distinct Conversion IDs (**3/3** in that selected file). Two submissions referred to the **same Contact**, and one to another Contact (**two distinct Contacts**). This demonstrates the event-versus-Contact identity distinction in one bounded export, **not complete source coverage**.
+- **2026-10-31 to 2026-11-01:** Restricted sandbox OAuth and bounded, read-only Contact/Task diagnostics were exercised in a controlled environment. Three selected Task IDs were read for candidate metadata. Contact–Task association is **not** equivalent to proven event-attributed sales follow-up.
+- **Form history/API pagination:** Repeated offsets and missing trustworthy termination/completeness evidence prevented an end-to-end API coverage claim. Under such conditions the safe conclusion is **unknown / review required**, not “lead missing.”
+- OAuth credential-vault, guarded refresh, restore containment and fencing designs have isolated synthetic/private regression evidence. These are **not** certifications of a hosted credential-management service or approval to connect customer production portals.
 
-- v0.1: deterministic CLI reconciliation and unit tests (43/43 reported successful during local development).
-- v0.2: Django app and audit-service testing (53/53 independent tests reported successful); local browser execution subsequently verified.
-- v0.3: versioned rule profiles and explanatory output (56/56 independent tests reported successful); four-versus-24-hour boundary behavior verified in the app.
-- v0.4: clearer pending/overdue/unverifiable semantics and isolated mocked HubSpot contact reader (68/68 independent tests reported successful); private GitHub CI subsequently passed.
+**Not established:** independent historical submission completeness; an unambiguous event → form → CRM record → eligible owner → event-specific Task → actual human follow-up chain; production scopes, recovery, or universal HubSpot tenant support.
 
-**Important:** These are development milestones and test observations. Versions v0.1–v0.4 were not individually published as GitHub commits when first developed. They were imported as a single private baseline at v0.4 on 2026-10-29. See [the build log](BUILD_LOG.md). The unit-test counts are not claims of 68 end-to-end customer scenarios.
+## Experimental Salesforce status
 
-## Representative coverage
+The private code includes bounded GET-only inventory for Lead, Contact and Task metadata and conservative normalization. It is **not** linked to a public customer OAuth flow or validated end-to-end against an authorized live Salesforce organization. A Task related to a person is not proof it was created for the source event.
 
-The regression design includes exact matching, conflicting duplicate event IDs, incomplete or stale snapshots, missing CRM records, ambiguous matches, unknown owners, pending sync windows, absent or late task evidence, evidence timestamps beyond the snapshot, CSV export safety, access-control failures and rule-profile versioning.
+## Historical development acceptance record
 
-### Claims we explicitly do not make
+These dated observations remain useful, but should not be interpreted as the **current** hosting or integration state.
 
-- That a green workflow or a task record proves an actual salesperson contacted a lead.
-- That a record mismatch equals a lost lead, a lost deal or a quantified amount of lost revenue.
-- That every HubSpot account can be reconciled without a shared identifier.
-- That an operator's declaration of a complete snapshot has been independently proven.
-- That the mocked HubSpot reader is a fully working live OAuth/task connector.
-- That per-user Django ownership is equivalent to tested multi-company SaaS isolation.
-- That synthetic-data performance proves hosted production scalability.
+| Period | Recorded private/local development observation | Important qualification |
+|---|---|---|
+| v0.1, October 2026 | Deterministic Python CSV reconciliation with 43 reported local unit checks | Not end-to-end customer cases |
+| v0.2, October 2026 | Local Django audit page, sign-in, uploads, saved history and exports | Local development only |
+| v0.3, October 2026 | Explainable findings and versioned policy profiles; 4h versus 24h synthetic SLA outcome changed as expected | Policy-dependent synthetic evidence, not real customer validation |
+| v0.4, October 2026 | Mocked connector and pending-versus-overdue distinction with local tests | Mock results not proof of provider behavior |
+| 2026-10-29 | Private GitHub baseline, CI on multiple Python versions, v0.5 workspace and upgrade regression | Private workflow details are not publicly reproducible from this case study |
+| 2026-10-29 | Owner-observed isolated Windows preview, preserved historical reports/profile and cross-workspace 404 | Not multi-tenant penetration testing or hosted service |
+| 2026-10-31 | Internal private operator review board, read-only repair-readiness preview and synthetic secure-credential controls | None authorizes CRM writes, customer processing or autonomous repairs |
+| 2026-11-03 | v0.5 static synthetic product page built, preflight PASS, public browser screenshot and Incognito check | The public page remains a demonstration rather than a live audit system |
 
-## How technical reviewers can evaluate the work
+## What the system deliberately does not infer
 
-The public materials describe **problem framing, test boundaries, engineering decisions and observed outputs**. Detailed implementation, test runs and code review history remain private for commercial-IP protection. A controlled, synthetic-only demonstration or guided technical walkthrough can be arranged; a public case study alone cannot independently prove every internal implementation detail.
+- A workflow success code means that the right salesperson received or contacted the lead.
+- A Task associated with a Contact is automatically proof for every submission by that Contact.
+- A missing CRM record in a **selected snapshot** necessarily means the lead was lost.
+- An operator-declared complete source/CRM export is independently verified complete.
+- A synthetic rule passing means revenue was recovered or real money was lost.
+- A local encrypted-vault test and CI pass mean all security, restore, KMS and customer-onboarding gates are satisfied.
+- The published static page can accept production data, connect to HubSpot/Salesforce, remediate CRM records or send alerts.
 
-No proprietary source, private workflow log, token, customer record, machine path, API endpoint credential, or sensitive screenshot is published in this evidence record.
+## Read-only managed-pilot release gates
+
+Before any use of real customer records, the project must accept the specifically relevant requirements for the proposed scope: owner authorization, source coverage, exact event-specific correlation, tenant/role isolation, secure file/secret handling, approved nondevelopment hosting, backup/recovery, data retention, and end-to-end regression. Customer data must **not** be uploaded to the public preview or emailed to request a pilot.
+
+## How technical reviewers can assess the work
+
+1. Explore the [public fictional demonstration](https://handofftrace.htlabs.workers.dev/) and its reason codes.
+2. Read [the architecture choices](ARCHITECTURE.md) and [dated development milestones](BUILD_LOG.md).
+3. Request a controlled technical walkthrough to discuss requirements, the selected-data limitations and possible read-only pilot evidence.
+
+**Source/test limitation:** Proprietary code and most private tests are not public, so this GitHub case study cannot independently establish every internal implementation claim. The descriptions above distinguish owner-observed results from source-level/private verification.
+
+[Return to HandoffTrace overview](README.md).
