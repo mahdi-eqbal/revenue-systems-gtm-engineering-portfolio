@@ -1,69 +1,91 @@
-# Revenue Leak Monitor — Evidence-first lead handoff assurance
+# HandoffTrace — Evidence-first Lead Handoff Assurance
 
-**Status:** v0.5 development code merged in private GitHub; currently installed Windows prototype remains v0.4 · **Source:** proprietary/private · **Case study updated:** 2026-10-29
+**Public status (2026-11-03):** Interactive **v0.5 product preview is published** at **https://handofftrace.htlabs.workers.dev/**. This is a **static, synthetic-data demonstration** of a real, independently implemented audit engine's output—not a customer-connected SaaS deployment or a live monitoring service.
 
-**Engineering direction, requirements and local acceptance testing:** Mahdi Eqbal. Implementation and testing have included AI-assisted development. This is an independent product-development project, **not** a claim of a paid customer deployment or recovered revenue.
+**Product identity:** HandoffTrace is the public name for the proprietary product developed under the earlier working name **Revenue Leak Monitor**. The original `projects/revenue-leak-monitor/` documentation path remains in place to preserve existing links.
 
-> A successful webhook or CRM write does not prove that a lead reached the right owner and received the required follow-up.
+**Engineering direction, product requirements, and acceptance review:** Mahdi Eqbal. Implementation and testing have included AI-assisted development. The product is independently developed and actively evolving. No paid customer deployment, recovered revenue, or completed production rollout is claimed.
 
-## The problem
+> A successful workflow execution is not, by itself, proof of an event-specific CRM handoff.
 
-Marketing operations, lead-generation agencies, and B2B sales teams frequently rely on several connected systems: forms, advertising platforms, automation tools and CRMs. Each can report a technically successful step while the end-to-end business handoff remains incomplete.
+## The operational problem
 
-Revenue Leak Monitor is being built as a **read-only assurance layer** that reconciles separately observed source events with CRM handoff evidence. Its job is to distinguish confirmed behavior, missing records, uncertain evidence and pending work — **not** to calculate revenue loss from simple record-count differences.
+A form may submit, an integration may return success, and a Contact may exist in HubSpot or Salesforce—while the question of what happened to **that particular lead event** remains unanswered.
 
-## What has been built and locally validated
+HandoffTrace is a **standalone assurance layer**, not another CRM workflow. Its purpose is to reconcile separately observed source events with CRM records and available handoff evidence, distinguish verified observations from uncertainty, and give an operator reviewable reasons and next checks.
 
-- A deterministic Python engine for comparing source-event exports with CRM exports using an **explicit shared event ID**; no speculative identity matching.
-- Separate states for matched records, duplicate submissions, intentional exclusions, missing CRM records, ambiguous matches, stale snapshots, ownership gaps and follow-up timing.
-- Evidence-first reporting with reason codes, human-readable explanations, CSV/JSON exports, policy identifiers and file fingerprints.
-- A local Django web application for authenticated uploads, audit history and named, versioned rule profiles. The **v0.5 development code** additionally supports owner-verified workspaces to separate one operator's clients, but has not yet been installed on the original Windows environment.
-- Temporal SLA evaluation: task evidence is distinguished from actual human outreach; an event can be *within* its permitted window without being labeled a breach.
-- A demonstration page using synthetic fixtures, currently available **only in the local development app**, not as a hosted public service. A **HubSpot contact-read adapter** has been implemented and tested against mocked API responses; it is **not** a validated live HubSpot integration.
+## Try the public preview
 
-### High-level system boundary
+**[Open the interactive HandoffTrace preview](https://handofftrace.htlabs.workers.dev/)**
+
+Visitors can explore a fixed audit of **five fictional source events** and **three fictional CRM rows**, filter findings, inspect example cases, and read reason codes and suggested read-only checks. The published page also explains current capabilities, an individually assessed assisted-pilot option, and proposed future paid features.
+
+**Important implementation boundary:** The public website serves an exported, self-contained HTML file with a sanitized replay of **precomputed Python-engine findings**. Selecting or filtering cases runs presentation JavaScript; the visitor's browser does **not** execute the reconciliation engine or contact a CRM. There is no login, customer-data upload, live CRM connection, customer-specific report generation, continuous monitoring, or self-service configuration on the public site. Hosting infrastructure may independently log requests.
+
+## Capabilities implemented in private development code
+
+These are capabilities of the underlying prototype and locally evaluated engine, **not promises of publicly available SaaS features**:
+
+- **Deterministic source-to-CRM reconciliation:** Compare separately supplied source-event and CRM snapshots using an explicit shared event identifier and declared scope, timestamps, and expected cardinality.
+- **Event identity and duplicate controls:** Deduplicate repeated input rows, detect conflicting keys, and preserve the distinction between distinct submissions and CRM Contact identity.
+- **Owner, Task, and SLA evidence checks:** Evaluate permitted ownership, presence and chronology of recorded Task evidence, grace windows, and time-based rules. A Task's existence is not proof of real human outreach.
+- **Explainable results:** Return status/reason codes, evidence limitations, review suggestions, and CSV/JSON-safe output.
+- **Configurable policy and rule profiles:** Support different eligibility/exclusion, ownership, timing, and SLA expectations; the local private application has versioned profiles and saved runs. Customer-specific setup is a **scoped engineering/pilot service**, not a public configuration screen.
+- **Private operator experience:** An authenticated, locally exercised Django app includes audit history, workspace-scoped views, evidence review, and dry-run remediation guidance. This is **not** exposed as a production public web app.
+
+### Demonstration examples
+
+| Fictional event | Engine observation | Correct interpretation |
+|---|---|---|
+| E101 | Handoff evidence found | Supplied CRM, owner, and Task timing satisfy the selected synthetic rule; a conversation with the lead is **not** proven |
+| E102 | No matching CRM record in the declared snapshot | Review actual source/CRM completeness and identity before asserting the lead was lost |
+| E103 | Owner-related evidence exception | Inspect owner routing and any missing Task/SLA evidence under the rule |
+| E104 | Intentionally excluded | Ineligible under the synthetic policy; not a lost lead |
+| E105 | Repeated source row, evaluated once | Duplicate input should not create two independent handoff decisions |
+
+These records, IDs, and findings are fictional. **No amount of recovered revenue or real missed follow-up has been established by this showcase.**
+
+## Engineering approach
 
 ```mermaid
 flowchart TD
-    A[Source export or authorized source adapter] --> C[Evidence normalization]
-    B[CRM export or authorized read-only adapter] --> C
-    C --> D[Deterministic reconciliation]
-    E[Versioned rule profile and snapshot coverage] --> D
-    D --> F[Verified / Pending / Exception / Unverifiable]
-    F --> G[Evidence report and review queue]
+    A[Source event evidence] --> C[Normalize and validate]
+    B[CRM record / Task snapshot] --> C
+    P[Versioned policy and declared coverage] --> D[Deterministic event-level audit]
+    C --> D
+    D --> E[Findings + reason codes + next checks]
+    E --> F[Private operator review]
+    E --> G[Build-time synthetic-only public replay]
 ```
 
-The software **does not write to the CRM** in this milestone.
+The core Python audit engine is separate from the Django operator application and from exploratory connector adapters. Public hosting contains **only the static replay**, not the Django service, database, private engine code, or provider credentials. Read the [public architecture notes](ARCHITECTURE.md) for trade-offs.
 
-## Example from the synthetic demonstration
+## Connection research and validation: what is and is not proven
 
-| Event | Observed outcome | What the result means |
-|---|---|---|
-| E101 | Handoff evidence verified | Matching CRM record, permitted owner and task-creation evidence found |
-| E102 | No matching CRM record | Under explicitly attested complete and timely source/CRM snapshots |
-| E103 | Owner missing or invalid | Other reason codes can also identify missing task and breached SLA |
-| E104 | Intentionally excluded | Ineligible by the supplied test rule; not treated as a lost lead |
-| E105 | Duplicate source event | Duplicate input counted once; matching handoff evidence still examined |
+**HubSpot:** Local synthetic connector tests and bounded authorized Sandbox reads have been performed. In a separately controlled test account, an operator-exported form CSV preserved three independent synthetic submissions (including two for the same Contact). Selected Contact/Task reads and OAuth-related controls have been exercised. **Independent source-history completeness and the exact event-to-Task-to-owner handoff were not end-to-end validated.** OAuth/security components under test do not amount to production-ready customer onboarding.
 
-All identifiers above are **fictional**. Even the term *verified handoff* proves only the specified system evidence: **not** a completed sales conversation, lead qualification, new revenue or recovered revenue.
+**Salesforce:** An experimental GET-only Lead/Contact/Task inventory adapter exists in private code. It has **not** been accepted against an authorized live Salesforce customer/org integration.
 
-## Verification and development record
+**Customer CRM connectivity, continuous alerting, automatic CRM remediation, AI-assisted investigation, public accounts, billing, and self-service configuration are not released.** CRM modification is outside the current public preview and initial read-only assessment scope.
 
-- [Test evidence and limitations](EVIDENCE.md) — observed synthetic outcomes, boundary tests, CI verification scope and known constraints.
-- [Public build log](BUILD_LOG.md) — honestly documents the local milestones and the later GitHub migration.
-- [Architecture decisions](ARCHITECTURE.md) — important engineering trade-offs **without releasing source code or proprietary matching implementation**.
+## Assisted-pilot option
 
-The local prototype was exercised on a Windows machine using fictional CSVs. GitHub-hosted CI was subsequently run on the **private source repository** across Python 3.11, 3.12 and 3.13. CI results and source-level review are available to **authorized reviewers only**; anonymous visitors cannot inspect private GitHub Actions or commit history.
+Organizations can request a **narrow, individually assessed read-only lead-handoff review**, potentially using authorized, carefully scoped exports and organization-specific rules. A conversation about a pilot is **not** acceptance of customer data. Any actual delivery requires appropriate authorization, source/event coverage validation, secure handling, workspace access review, and relevant operational gates.
 
-## Current limitations
+To discuss feasibility without sending customer records: **[Request a scoped pilot](mailto:m.mahdi.eqbal@gmail.com?subject=HandoffTrace%20scoped%20pilot)**.
 
-This is a **development prototype**, not a production multi-tenant SaaS or a certified secure service. Completeness of CSV snapshots is currently operator-attested, the local database is SQLite, and the v0.5 workspace model covers one operator's client contexts, **not** production organization membership or complete multi-tenant authorization. Live HubSpot OAuth, full Task evidence collection, tenant isolation, encryption/retention controls and operational deployment require further work.
+## Technical evidence and change history
 
-## Source and IP boundary
+- [Evidence and limitations](EVIDENCE.md) — what was observed, tested, and remains unverified.
+- [Architecture decisions](ARCHITECTURE.md) — event identity, deterministic evaluation, uncertainty, and security boundaries.
+- [Development log](BUILD_LOG.md) — dated milestones, including the November 2026 public launch checkpoint.
 
-**This public case study documents the engineering work; it is not the product source.** The core source, test suite, private Pull Requests, internal security notes and unpublished connectors remain in a private commercial repository under an **All rights reserved** notice. No customer exports, CRM tokens, credentials or local databases are included here. The portfolio repository's MIT license applies to its publicly released contents; it does **not** grant rights to private Revenue Leak Monitor source.
+The source repository, internal CI logs, implementation code, credentials, and sensitive provider acceptance artifacts are **private**. Public documentation can explain engineering decisions and evidence boundaries but does not independently expose the private test suite or certify a production deployment.
 
-For a technical walkthrough, permitted demo or agency collaboration: [contact by email](mailto:m.mahdi.eqbal@gmail.com?subject=Revenue%20Leak%20Monitor%20technical%20walkthrough).
+## Source code and intellectual-property boundary
+
+**This is a public engineering case study, not an open-source release of HandoffTrace.** The commercial source is proprietary and private; the portfolio repository's license does not confer rights to that source. No customer PII, secrets, private exports, credentials, or unrestricted internal security procedures are included here.
 
 ---
-**Engineering record maintained by [Mahdi Eqbal](https://github.com/mahdi-eqbal).**
+
+**Developed by [Mahdi Eqbal](https://github.com/mahdi-eqbal) · [HandoffTrace preview](https://handofftrace.htlabs.workers.dev/) · [LinkedIn](https://www.linkedin.com/in/mahdi-eqbal)**
