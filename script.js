@@ -22,9 +22,11 @@
   const append = (parent, ...nodes) => { nodes.forEach(node => parent.append(node)); return parent; };
 
   data.projects.forEach(p => {
-    const card = E('article','project ' + p.accent);
+    const isProduct = p.kind === 'product';
+    const card = E('article','project ' + p.accent + (isProduct ? ' featured-product' : ''));
     const header = E('div','project-header');
     append(header,E('span','project-num',p.number),E('span','',p.category));
+    if (isProduct) header.append(E('span','product-status','PRODUCT IN DEVELOPMENT · SYNTHETIC DEMO'));
     const heading = E('h3','',p.title);
     const description = E('p','',p.description);
     const list = E('ul');
@@ -32,9 +34,18 @@
     const tags = E('div','chips');
     p.tools.forEach(name => tags.append(E('span','chip',name)));
     const actions = E('div','project-actions');
+    if (p.preview) actions.append(link(p.preview,'Explore interactive preview ↗','preview-link'));
     append(actions,link(p.repo,'View case study ↗'),link(p.evidence,'Review evidence ↗'));
     if (p.video) actions.append(link(p.video,'Watch demo ↗'));
-    append(card,header,heading,description,list,tags,actions);
+    if (isProduct) {
+      const summary = E('div','featured-copy');
+      const details = E('div','featured-details');
+      append(summary,header,heading,description);
+      append(details,list,tags);
+      append(card,summary,details,actions);
+    } else {
+      append(card,header,heading,description,list,tags,actions);
+    }
     $('#project-grid').append(card);
   });
 
