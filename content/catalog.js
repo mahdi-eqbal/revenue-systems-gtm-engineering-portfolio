@@ -43,9 +43,10 @@ window.PORTFOLIO = {
       video: null, accent: 'blue'
     },
     {
-      id: 'rlm', number: '05', category: 'Python / Django / Revenue Assurance',
-      title: 'HandoffTrace: verify the lead handoff, not just the workflow',
-      description: 'Standalone evidence-first audit product, under active development. Published interactive synthetic preview, deterministic source-to-CRM reconciliation and explainable handoff evidence.',
+      id: 'rlm', kind: 'product', number: '05', category: 'Python / Django / Revenue Assurance',
+      preview: 'https://handofftrace.htlabs.workers.dev/',
+      title: 'HandoffTrace — Lead Handoff Assurance',
+      description: 'Independent assurance product in development. Explore a published interactive replay of fictional, engine-generated audit findings; customer-connected monitoring is not released.',
       problem: 'An automation can succeed without proving the individual lead reached the right CRM record, owner and timely Task.',
       built: ['Live public static showcase of five fictional engine-generated findings',
               'Private deterministic event/identity reconciliation and owner/Task/SLA checks',
