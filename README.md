@@ -58,9 +58,9 @@ Product Signal
 - active-deal suppression;
 - retry-safe completion and audit history.
 
-![P1 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p1-product-led-revenue-system/master/evidence/n8n/final-workflow-overview.png)
+![P1 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p1-product-led-revenue-system/main/evidence/n8n/final-workflow-overview.png)
 
-**Review:** [Architecture](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/architecture) · [Workflow](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/workflows) · [Evidence](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/master/evidence)
+**Review:** [Architecture](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/main/architecture) · [Workflow](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/main/workflows) · [Evidence](https://github.com/mahdi-eqbal/p1-product-led-revenue-system/tree/main/evidence)
 
 ---
 
@@ -94,9 +94,9 @@ Inbound Lead
 - CRM-native follow-up task;
 - explicit API retry and failure states.
 
-![P2 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/master/evidence/n8n/00-final-workflow-architecture.png)
+![P2 complete workflow](https://raw.githubusercontent.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/main/evidence/n8n/00-final-workflow-architecture.png)
 
-**Review:** [Architecture](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/master/architecture) · [Test Matrix](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/blob/master/TEST-MATRIX.md) · [Evidence](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/master/evidence/n8n)
+**Review:** [Architecture](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/main/architecture) · [Test Matrix](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/blob/main/TEST-MATRIX.md) · [Evidence](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system/tree/main/evidence/n8n)
 
 ---
 
@@ -130,9 +130,9 @@ Target Accounts
 - confidence and uncertainty handling;
 - manual review before uncertain action.
 
-![P3 actionable accounts](https://raw.githubusercontent.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/master/evidence/clay/09-actionable-accounts-view.png)
+![P3 actionable accounts](https://raw.githubusercontent.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/main/evidence/clay/09-actionable-accounts-view.png)
 
-**Review:** [Implementation Summary](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/docs/implementation-summary.md) · [Prioritization Model](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/docs/prioritization-model.md) · [Evidence Manifest](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/master/evidence/EVIDENCE-MANIFEST.md)
+**Review:** [Implementation Summary](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/docs/implementation-summary.md) · [Prioritization Model](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/docs/prioritization-model.md) · [Evidence Manifest](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/evidence/EVIDENCE-MANIFEST.md)
 
 ---
 
