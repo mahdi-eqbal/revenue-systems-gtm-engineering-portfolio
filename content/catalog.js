@@ -56,6 +56,17 @@ window.PORTFOLIO = {
       repo: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/revenue-leak-monitor',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/revenue-leak-monitor/EVIDENCE.md',
       video: null, accent: 'blue'
+    },
+    {
+      id: 'crm-quality', number: '06', category: 'CRM Data Quality / Controlled Repair',
+      title: 'CRM Data Quality & Controlled Repair',
+      description: 'A reproducible offline demo and developer-test audit for reviewing duplicate candidates, validating proposed repairs and holding uncertain deliveries.',
+      problem: 'Similar CRM records and stale source data can lead to unsafe cleanup. Each proposed change needs review and a traceable outcome.',
+      built: ['Deterministic and fuzzy candidate matching', 'Review gates and in-memory repair verification', 'PostgreSQL delivery journal and Make/Airtable reconciliation', 'Evidence-backed recovery decision for an HTTP 401'],
+      tools: ['Python','HubSpot','PostgreSQL','Make','Airtable'],
+      repo: 'https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair',
+      evidence: 'https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair/blob/main/docs/31-a11-public-verification.md',
+      video: './projects/crm-data-quality/', accent: 'blue'
     }
   ],
   videos: [

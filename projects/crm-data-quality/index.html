@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CRM data quality, controlled repair and delivery verification with two recorded demos and reproducible technical evidence.">
+  <meta name="theme-color" content="#0a111c">
+  <title>CRM Data Quality &amp; Controlled Repair | Mahdi Eqbal</title>
+  <link rel="icon" href="../../favicon.svg">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <header class="wrap nav">
+    <a href="../../">Mahdi Eqbal <span> / Revenue Systems</span></a>
+    <a href="../../">Back to portfolio</a>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <p class="category">CRM reliability · Technical case study</p>
+      <h1>CRM Data Quality &amp; Controlled Repair</h1>
+      <p class="lead">A review-first workflow for suspected duplicates, bounded repair proposals and delivery evidence. Run the synthetic demo offline or follow the implementation through its developer-test audit.</p>
+      <div class="actions">
+        <a class="button" href="#technical">Watch the technical walkthrough</a>
+        <a class="button secondary" href="https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair">View source on GitHub</a>
+      </div>
+    </section>
+    <section class="metrics" aria-label="Synthetic demo results">
+      <div><strong>57</strong><span>synthetic match candidates</span></div>
+      <div><strong>31</strong><span>synthetic repair proposals</span></div>
+      <div><strong>9</strong><span>proposals held for dependencies</span></div>
+    </section>
+    <section class="video-section" id="technical">
+      <h2>Technical walkthrough <span>3:38</span></h2>
+      <p>Follow the actual source and command output from matching and approval checks through recovery, PostgreSQL audit storage and Make/Airtable reconciliation.</p>
+      <video controls preload="none" playsinline poster="technical-poster.png" aria-label="Technical walkthrough with English captions">
+        <source src="technical-demo.mp4" type="video/mp4">
+        <a href="technical-demo.mp4">Download the technical walkthrough</a>
+      </video>
+      <div class="actions">
+        <a href="technical-transcript.txt">Read the transcript</a>
+        <a href="https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair/blob/main/docs/31-a11-public-verification.md">Inspect the verification evidence</a>
+      </div>
+    </section>
+    <section class="video-section" id="overview">
+      <h2>Customer overview <span>1:13</span></h2>
+      <p>See what gets reviewed, what the repair simulation verifies and when the workflow holds an uncertain case.</p>
+      <video controls preload="none" playsinline poster="overview-poster.png" aria-label="Customer overview with English captions">
+        <source src="customer-overview.mp4" type="video/mp4">
+        <a href="customer-overview.mp4">Download the customer overview</a>
+      </video>
+      <div class="actions"><a href="customer-guide.pdf">Download the one-page demo guide</a></div>
+    </section>
+    <section class="scope">
+      <h2>What was verified</h2>
+      <p>The repair demo uses synthetic records and mock review. A separate developer-test audit matched four acknowledged events to Make and Airtable. An HTTP 401 was tied to the exact held event, and PostgreSQL recorded the evidence and the decision to close without replay. Three events were still pending at verification.</p>
+      <a href="https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair/blob/main/docs/32-project-01-case-study-draft.md">Read the case study</a>
+    </section>
+  </main>
+  <footer class="wrap footer">Mahdi Eqbal · Revenue Systems &amp; GTM Engineering</footer>
+</body>
+</html>
