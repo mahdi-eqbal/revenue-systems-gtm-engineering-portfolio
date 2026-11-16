@@ -1,0 +1,20 @@
+{
+  "lead_id": "demo-google-001",
+  "campaign_id": 12345,
+  "google_key": "local-demo-key",
+  "is_test": true,
+  "user_column_data": [
+    {
+      "column_id": "LAST_NAME",
+      "string_value": "Rivera"
+    },
+    {
+      "column_id": "COMPANY_NAME",
+      "string_value": "Example Studio"
+    },
+    {
+      "column_id": "EMAIL",
+      "string_value": "alex@example.com"
+    }
+  ]
+}
