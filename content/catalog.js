@@ -77,10 +77,13 @@ window.PORTFOLIO = {
       tools: ['Zoho CRM','Make','HighLevel','Google Sheets','Python'],
       repo: './projects/zoho-crm-integration/',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/zoho-crm-integration',
-      video: null, accent: 'blue'
+      video: './projects/zoho-crm-integration/#demos', accent: 'blue'
     }
   ],
   videos: [
+    { id: "zoho-intake", type: "Client demo", duration: "0:42", title: "From Inquiry to CRM", description: "Follow a valid inquiry through Make to its lead record in Zoho CRM Sandbox.", video: 'https://youtu.be/XjhBRj_1-nw', thumb: 'https://i.ytimg.com/vi/XjhBRj_1-nw/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
+    { id: "zoho-quality", type: "Client demo", duration: "0:36", title: "Duplicate & Incomplete Leads", description: "See how the workflow skips a duplicate email and stops a lead with a missing last name.", video: 'https://youtu.be/yVkdavs_Cpc', thumb: 'https://i.ytimg.com/vi/yVkdavs_Cpc/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
+    { id: "zoho-technical", type: "Technical walkthrough", duration: "1:55", title: "Make → Zoho CRM", description: "Review the Make execution paths, including the synthetic Google Ads-format webhook test.", video: 'https://youtu.be/CHyGE6ld82c', thumb: 'https://i.ytimg.com/vi/CHyGE6ld82c/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
     { id: 'walkthrough', type: 'Technical walkthrough', duration: 'Detailed demo', title: 'A revenue handoff, with the failure paths included', description: 'A tour of the HubSpot-centered system, from product signal through matching, qualification and sales follow-up.', video: 'https://youtu.be/Q-sc8ETdLwk', thumb: 'https://i.ytimg.com/vi/Q-sc8ETdLwk/hqdefault.jpg', related: 'P1' },
     { id: 'overview', type: 'Short overview', duration: 'Quick watch', title: 'The handoff in two minutes', description: 'A shorter look at the business problem and the workflow outcome.', video: 'https://youtu.be/WypfoN5QbWY', thumb: 'https://i.ytimg.com/vi/WypfoN5QbWY/hqdefault.jpg', related: 'P1' }
   ],
