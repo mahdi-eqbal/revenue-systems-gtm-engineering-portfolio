@@ -67,6 +67,17 @@ window.PORTFOLIO = {
       repo: 'https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair',
       evidence: 'https://github.com/mahdi-eqbal/crm-data-quality-controlled-repair/blob/main/docs/31-a11-public-verification.md',
       video: './projects/crm-data-quality/', accent: 'blue'
+    },
+    {
+      id: 'zoho-lead-intake', number: '07', category: 'Zoho CRM / Lead Intake',
+      title: 'Zoho CRM Lead Intake',
+      description: 'Verified HighLevel and Google Sheets intake in Zoho CRM EU Sandbox, with a direct webhook test for a synthetic Google Ads lead.',
+      problem: 'Estimate inquiries from multiple sources can arrive twice or with required fields missing.',
+      built: ['HighLevel and Google Sheets intake through Make', 'Zoho email uniqueness and duplicate-specific Skip route', 'Visible required-field validation', 'Google Ads-format webhook payload verified through CRM writeback'],
+      tools: ['Zoho CRM','Make','HighLevel','Google Sheets','Python'],
+      repo: './projects/zoho-crm-integration/',
+      evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/zoho-crm-integration',
+      video: null, accent: 'blue'
     }
   ],
   videos: [
