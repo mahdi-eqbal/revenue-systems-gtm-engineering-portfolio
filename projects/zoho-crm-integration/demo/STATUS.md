@@ -13,7 +13,7 @@
 
 ## Verified locally
 
-The Python and SQLite demo covers website forms, CSV preview and import, a synthetic Google Ads payload, and replay. The Sandbox smoke-test helper is covered with mocked responses. Run python -m unittest -v test_demo.
+The Python and SQLite demo covers website forms, CSV preview and import, a synthetic Google Ads payload, and replay. The Sandbox smoke-test helper is covered with mocked responses. Run `python -m unittest discover -v -p "test_*.py"` for the local demo plus newly added offline OAuth and Sandbox safety tests. The new tests are published but not yet rerun in a fresh runtime.
 
 ## OAuth status updated 2026-11-17
 
