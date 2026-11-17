@@ -69,17 +69,6 @@ window.PORTFOLIO = {
       video: './projects/crm-data-quality/', accent: 'blue'
     },
     {
-      id: 'p02-ai-appointment', number: '08', category: 'HighLevel / AI Lead Qualification',
-      title: 'AI website chat to a booked CRM opportunity',
-      description: 'A restricted synthetic HighLevel AI chat qualifies Dublin residential interior-painting leads and moves the same CRM opportunity through the appointment handoff.',
-      problem: 'A chat reply or booking link alone does not establish that a qualified enquiry reached the CRM or that a confirmed appointment advances the same opportunity.',
-      built: ['AI-triggered qualification workflow and contact tagging', 'Opportunity creation in Estimates / Qualified', 'Observed repeat-enquiry guard and commercial/out-of-area exclusion', 'Confirmed API appointment moving the original opportunity to Booked'],
-      tools: ['HighLevel','Conversation AI','Live Chat','Workflows','CRM','Calendar API'],
-      repo: './projects/p02-ai-lead-appointment/',
-      evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
-      video: null, accent: 'violet'
-    },
-    {
       id: 'zoho-lead-intake', number: '07', category: 'Zoho CRM / Lead Intake',
       title: 'Zoho CRM Lead Intake',
       description: 'Verified HighLevel and Google Sheets intake in Zoho CRM EU Sandbox, with a direct webhook test for a synthetic Google Ads lead.',
@@ -89,6 +78,17 @@ window.PORTFOLIO = {
       repo: './projects/zoho-crm-integration/',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/zoho-crm-integration',
       video: './projects/zoho-crm-integration/#demos', accent: 'blue'
+    },
+    {
+      id: 'p02-ai-appointment', number: '08', category: 'HighLevel / AI Lead Qualification',
+      title: 'AI website chat to a booked CRM opportunity',
+      description: 'A restricted synthetic HighLevel AI chat qualifies Dublin residential interior-painting leads and moves the same CRM opportunity through the appointment handoff.',
+      problem: 'A chat reply or booking link alone does not establish that a qualified enquiry reached the CRM or that a confirmed appointment advances the same opportunity.',
+      built: ['AI-triggered qualification workflow and contact tagging', 'Opportunity creation in Estimates / Qualified', 'Observed repeat-enquiry guard and commercial/out-of-area exclusion', 'Confirmed API appointment moving the original opportunity to Booked'],
+      tools: ['HighLevel','Conversation AI','Live Chat','Workflows','CRM','Calendar API'],
+      repo: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
+      evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
+      video: null, accent: 'violet'
     }
   ],
   videos: [
