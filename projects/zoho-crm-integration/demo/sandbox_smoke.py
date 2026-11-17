@@ -6,16 +6,20 @@ from pathlib import Path
 from urllib.parse import quote
 from urllib.request import Request
 
-SANDBOX = "https://sandbox.zohoapis.eu"
-EXPECTED_ALIAS = "zohocrmintegration"
+EU_API_DOMAINS = {"https://sandbox.zohoapis.eu", "https://www.zohoapis.eu"}
+EXPECTED_DOMAIN_NAME = "zohocrmintegration"
+EXPECTED_ORG_ID = "1023543000000023712"
 EMAIL = "portfolio-smoke-test@example.com"
 JOURNAL = Path(__file__).with_name("sandbox-smoke.sqlite3")
 
 
-def check_lead(org, token, send, journal=JOURNAL):
-    if org.get("type") != "sandbox" or org.get("alias") != EXPECTED_ALIAS or not org.get("id"):
-        raise RuntimeError("The expected Sandbox identity could not be confirmed. No Lead was sent.")
-    endpoint = f"{SANDBOX}/crm/v8/Leads"
+def check_lead(org, token, send, journal=JOURNAL, *, api_domain=None):
+    domain = str(api_domain or "").rstrip("/")
+    if (domain not in EU_API_DOMAINS or org.get("type") != "sandbox"
+            or org.get("domain_name") != EXPECTED_DOMAIN_NAME
+            or str(org.get("id")) != EXPECTED_ORG_ID):
+        raise RuntimeError("The expected EU Sandbox identity could not be confirmed. No Lead was sent.")
+    endpoint = f"{domain}/crm/v8/Leads"
     headers = {"Authorization": f"Zoho-oauthtoken {token}", "Content-Type": "application/json"}
     with closing(sqlite3.connect(journal)) as db:
         with db:
