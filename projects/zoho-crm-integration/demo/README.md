@@ -23,7 +23,7 @@ The optional `--smoke-lead` mode checks the Sandbox identity, creates a single s
 The read-only check requires `ZohoCRM.org.READ`. The optional write check also requires `ZohoCRM.modules.leads.CREATE` and `ZohoCRM.modules.leads.READ`. Authorization must target the correct EU Sandbox organization. The confirmed organization identity is `type=sandbox`, ID `1023543000000023712`, and `domain_name=zohocrmintegration` (the `alias` field was empty in the observed response). The helper now checks these values before a write. Keep grant codes, access/refresh tokens and client credentials local; never commit them.
 
 Previously, mocked verification passed for creation/readback, replay, Production rejection and lost-write-response handling. The direct Python smoke test has **not** performed a real write. The earlier OAuth error is historical: an EU Self Client exchange succeeded via PowerShell on 2026-11-17 using `application/x-www-form-urlencoded`, followed by a successful authenticated `/crm/v8/org` read. The token response returned `api_domain=https://www.zohoapis.eu`; the organization response confirmed the Sandbox. The Python helper was corrected to use the same encoding and validate the returned EU API domain and exact organization identity, but the corrected Python helper has not been rerun live.
-See DEMO.md for the customer walkthrough and run python -m unittest -v test_demo for reproducible acceptance checks.
+See DEMO.md for the customer walkthrough. Run `python -m unittest discover -v -p "test_*.py"` from this folder for offline demo and OAuth/Sandbox-safety regression checks (mocked, no live network or CRM writes). The new regression checks have not yet been executed in a fresh runtime after publication.
 
 ## Latest integration evidence
 
