@@ -15,7 +15,14 @@
 
 The Python and SQLite demo covers website forms, CSV preview and import, a synthetic Google Ads payload, and replay. The Sandbox smoke-test helper is covered with mocked responses. Run python -m unittest -v test_demo.
 
+## OAuth status updated 2026-11-17
+
+- The earlier Self Client token exchange had returned HTTP 400 with an HTML response. A fresh EU Self Client authorization code subsequently exchanged successfully using `application/x-www-form-urlencoded` in PowerShell; both an access token and refresh token were returned.
+- A subsequent authenticated GET to `/crm/v8/org` succeeded. The organization response identified `type=sandbox`, `id=1023543000000023712`, and `domain_name=zohocrmintegration`; the token response returned `api_domain=https://www.zohoapis.eu`.
+- The optional Python helper was updated to submit URL-encoded token fields, use the returned EU API domain, and check Sandbox type, organization ID and domain name before any optional write. A separate live run of that updated Python helper has **not** been performed.
+- The live CRM writes/readback for this project were verified through Make; the direct Python write smoke test has only mocked evidence.
+
 ## Remaining verification
 
-- The direct Python OAuth token exchange returned HTTP 400 with text/html. The support inquiry applies to this optional path. The verified Make path can proceed independently.
+- Google Ads console-originated delivery; the downstream synthetic-format webhook test is verified.
 - Native Excel ingestion and a general-purpose REST API remain supplemental. CSV is verified locally.
