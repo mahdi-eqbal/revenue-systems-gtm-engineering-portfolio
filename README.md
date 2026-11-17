@@ -24,6 +24,7 @@ Selected end-to-end implementations across CRM architecture, GTM automation, ope
 | [HandoffTrace — standalone assurance product](projects/revenue-leak-monitor/README.md) ([interactive preview](https://handofftrace.htlabs.workers.dev/)) | Automation success does not prove the event-specific lead handoff | Python, Django, CSV, JavaScript | Engine-generated synthetic replay, deterministic event reconciliation, explainable findings and configurable rules; product in development |
 | [CRM Data Quality & Controlled Repair](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/crm-data-quality/) | CRM duplicate candidates and stale records need evidence before changes proceed | Python, HubSpot, PostgreSQL, Make, Airtable | Review-first matching, simulated repair, delivery reconciliation and recovery audit |
 | [P01 — Zoho CRM Lead Intake](projects/zoho-crm-integration/README.md) | Estimate inquiries arrive from multiple sources with duplicates or missing data | Zoho CRM, Make, HighLevel, Google Sheets, Python | Verified Sandbox lead creation, duplicate-email handling and required-field validation |
+| [P02 — HighLevel AI Lead Qualification & Appointment Handoff](projects/p02-ai-lead-appointment/README.md) | Website chat replies do not guarantee a qualified CRM handoff or preserved opportunity after booking | HighLevel, Conversation AI, Live Chat, Workflows, Calendar API | Verified synthetic AI action, contact tagging, opportunity creation, duplicate/negative tests, and API-driven Booked transition |
 
 These are current selected implementations. The portfolio is not limited to these projects and will expand as additional Revenue Systems capabilities are implemented and validated.
 
@@ -192,6 +193,18 @@ The Campaign Learning Engine is a smaller, review-first n8n prototype rather tha
 | GTM Intelligence | Clay, Claygent, enrichment, GTM signals, ICP rules, deterministic scoring |
 | Reliability | Idempotency, validation, retries, failure paths, testing, observability |
 | Governance | Source-of-truth design, architecture decisions, human review, evidence capture |
+
+## P02 — HighLevel AI Lead Qualification & Appointment Handoff
+
+A restricted synthetic website-chat demonstration for a fictional Dublin residential interior-painting service. The HighLevel conversation agent triggers a qualification workflow, the CRM creates an `Estimates / Qualified` opportunity, and a confirmed appointment created via API for the existing contact moves **that same opportunity** to `Booked`.
+
+**Verified test cases:** positive AI qualification and CRM write, a repeat enquiry without a second opportunity, commercial exterior painting in Cork excluded from qualification, and an API-created confirmed appointment advancing the original opportunity.
+
+**Important boundary:** the public booking form's ability to resolve an anonymous chat visitor to that same CRM contact has **not** been tested. This is not a production deployment or a customer service.
+
+[Detailed case study and evidence](projects/p02-ai-lead-appointment/README.md) · [Synthetic chat test page](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/demos/dublin-painting-ai-chat/)
+
+---
 
 ## Project Positioning
 
