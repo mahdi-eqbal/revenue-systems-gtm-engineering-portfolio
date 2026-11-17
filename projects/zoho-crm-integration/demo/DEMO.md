@@ -17,7 +17,7 @@ Run python -m unittest -v test_demo from the project folder. The test exercises 
 
 ## Deployment status
 
-This demo uses synthetic data stored in local SQLite. The separate HighLevel and Make workflow was verified with saved Leads and readback in Zoho CRM EU Sandbox. The optional direct Python OAuth exchange still returns HTTP 400 with an HTML response.
+This demo uses synthetic data stored in local SQLite. Separate HighLevel and Make workflows were verified with saved Leads and readback in Zoho CRM EU Sandbox. An earlier direct Python OAuth exchange returned HTTP 400; on 2026-11-17 an EU Self Client token exchange succeeded independently in PowerShell using URL-encoded form fields, and an authenticated organization read confirmed the Sandbox identity. The Python helper was corrected accordingly but has not been live-rerun, and no direct Python write is claimed.
 
 For the portfolio, a direct webhook test served as the alternative to the Google Ads console test. A synthetic Google Ads-format JSON lead was posted to Make (scenario 8616887). The webhook returned HTTP 200, and Zoho EU Sandbox record 1023543000000726002 was read back with Lead Source = Advertisement and Company = Not provided. Delivery initiated by Google Ads remains a deployment acceptance check.
 
