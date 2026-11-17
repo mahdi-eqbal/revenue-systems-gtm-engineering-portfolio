@@ -14,22 +14,22 @@ Run `python app.py` and open http://127.0.0.1:8765.
 
 Verified on Windows with a temporary database via HTTP. The test covered new leads, website and webhook replay, cross-source matching, invalid webhook key, CSV preview and reimport, and phone conflicts. It ended with two leads and five unique events.
 
-CRM records currently live in SQLite. The Google Ads payload is synthetic. Live Sandbox writes and readback were verified through Make. The Sandbox exists, but both OAuth flows returned HTTP 400 with an HTML response at the token exchange.
+The local demo stores synthetic data in SQLite. The Google Ads payload is synthetic. Separately, live CRM writes and readback were verified through Make against Zoho EU Sandbox. The earlier direct OAuth HTTP 400 issue was later resolved in a PowerShell Self Client verification on 2026-11-17; see the updated status below.
 
 ## Sandbox write verification
 
 The optional `--smoke-lead` mode checks the Sandbox identity, creates a single synthetic Lead, and reads back its ID and email. The local journal blocks a second creation on replay and blocks an automatic retry if the first write's outcome is uncertain. The mode is separate from the web demo.
 
-The read-only check requires `ZohoCRM.org.READ`. The write check also requires `ZohoCRM.modules.leads.CREATE` and `ZohoCRM.modules.leads.READ`. Authorization must target the EU Sandbox. The expected alias is based on the Sandbox URL and still needs confirmation against the organization API response. Keep credentials and codes local.
+The read-only check requires `ZohoCRM.org.READ`. The optional write check also requires `ZohoCRM.modules.leads.CREATE` and `ZohoCRM.modules.leads.READ`. Authorization must target the correct EU Sandbox organization. The confirmed organization identity is `type=sandbox`, ID `1023543000000023712`, and `domain_name=zohocrmintegration` (the `alias` field was empty in the observed response). The helper now checks these values before a write. Keep grant codes, access/refresh tokens and client credentials local; never commit them.
 
-Mocked verification passed for creation and readback, replay, Production rejection, and a lost write response. This direct OAuth smoke test used mocked writes. Both browser and Self Client authorization reached the token exchange, where real requests returned HTTP 400 with an HTML body. This does not identify the source of the rejection.
+Previously, mocked verification passed for creation/readback, replay, Production rejection and lost-write-response handling. The direct Python smoke test has **not** performed a real write. The earlier OAuth error is historical: an EU Self Client exchange succeeded via PowerShell on 2026-11-17 using `application/x-www-form-urlencoded`, followed by a successful authenticated `/crm/v8/org` read. The token response returned `api_domain=https://www.zohoapis.eu`; the organization response confirmed the Sandbox. The Python helper was corrected to use the same encoding and validate the returned EU API domain and exact organization identity, but the corrected Python helper has not been rerun live.
 See DEMO.md for the customer walkthrough and run python -m unittest -v test_demo for reproducible acceptance checks.
 
 ## Latest integration evidence
 
 - The local Google Ads test receiver supports the key spelling shown in Google's test samples and accepts a test form without a company field, recording the missing company as `Not provided`.
 - HighLevel form -> Make -> Zoho CRM EU Sandbox passed using synthetic data. Make handles the Zoho duplicate-email error separately from invalid input.
-- The direct Python OAuth flow remains unverified against Zoho. The corrected script submits token parameters in the POST body.
+- A direct EU Self Client OAuth token exchange and Sandbox organization read were verified in PowerShell on 2026-11-17. The Python helper now sends token parameters as `application/x-www-form-urlencoded` in the POST body; its updated path has not been separately live-tested.
 
 ## Portfolio webhook validation
 
