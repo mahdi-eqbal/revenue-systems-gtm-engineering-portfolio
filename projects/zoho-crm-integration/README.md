@@ -18,6 +18,7 @@ The direct webhook test exercised the downstream Google Ads flow for the portfol
 - **Duplicate handling:** Zoho enforces email uniqueness. Make takes its Skip route only for `DUPLICATE_DATA` on the email field.
 - **Validation:** A missing `Last_Name` caused `BundleValidationError` before the CRM write. This deliberate negative case marked the overall execution as Error while preserving the successful first write.
 - **Sandbox scope:** The integration runs used synthetic fixtures and Zoho EU Sandbox.
+- **OAuth verification:** The EU Self Client token exchange and Sandbox organization read succeeded in PowerShell on 2026-11-17. The optional Python helper has been corrected but has not been live-retested. Production access or direct Python write execution is not claimed.
 
 ## Run the local demo
 
