@@ -26,7 +26,7 @@ The runnable [demo](demo/) uses Python 3 and SQLite. The hosted Make and Zoho te
 
 ```bash
 cd projects/zoho-crm-integration/demo
-python -m unittest -v test_demo
+python -m unittest discover -v -p "test_*.py"
 python app.py
 ```
 
