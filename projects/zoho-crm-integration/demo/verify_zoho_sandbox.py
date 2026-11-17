@@ -13,7 +13,9 @@ from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
 ACCOUNTS = "https://accounts.zoho.eu"
-SANDBOX = "https://sandbox.zohoapis.eu"
+EU_API_DOMAINS = {"https://sandbox.zohoapis.eu", "https://www.zohoapis.eu"}
+EXPECTED_ORG_ID = "1023543000000023712"
+EXPECTED_DOMAIN_NAME = "zohocrmintegration"
 REDIRECT = "http://localhost:8765/oauth/callback"
 
 
@@ -64,14 +66,10 @@ def safe_error(payload):
 
 
 def token_request(fields):
-    boundary = secrets.token_hex(24)
-    parts = [
-        f'--{boundary}\r\nContent-Disposition: form-data; name="{name}"\r\n\r\n{value}\r\n'
-        for name, value in fields.items()
-    ]
-    body = ("".join(parts) + f"--{boundary}--\r\n").encode()
+    # Zoho's verified EU Self Client exchange accepts URL-encoded form fields.
+    body = urlencode(fields).encode("utf-8")
     return Request(f"{ACCOUNTS}/oauth/v2/token", data=body, headers={
-        "Content-Type": f"multipart/form-data; boundary={boundary}",
+        "Content-Type": "application/x-www-form-urlencoded",
         "User-Agent": "CRM-Lead-Integration/1.0",
     })
 
@@ -146,18 +144,21 @@ def verify_token(client_id, client_secret, code, *, self_client=False):
     token = read_json(token_request(fields))
     if not token.get("access_token"):
         raise RuntimeError("Zoho did not issue an access token. Check the client credentials.")
-    if token.get("api_domain") != SANDBOX:
-        raise RuntimeError("Zoho authorized a different environment. Select the EU Sandbox.")
+    api_domain = str(token.get("api_domain", "")).rstrip("/")
+    if api_domain not in EU_API_DOMAINS:
+        raise RuntimeError("Unexpected API domain. No CRM write was attempted.")
 
-    org = read_json(Request(f"{SANDBOX}/crm/v8/org", headers={
+    org = read_json(Request(f"{api_domain}/crm/v8/org", headers={
         "Authorization": f"Zoho-oauthtoken {token['access_token']}"
     })).get("org", [])
-    if len(org) != 1 or org[0].get("type") != "sandbox":
-        raise RuntimeError("The organization could not be verified as a Sandbox.")
-    print("Sandbox connection verified. No credentials were saved.")
+    if (len(org) != 1 or org[0].get("type") != "sandbox"
+            or str(org[0].get("id")) != EXPECTED_ORG_ID
+            or org[0].get("domain_name") != EXPECTED_DOMAIN_NAME):
+        raise RuntimeError("The expected EU Sandbox organization could not be verified. No CRM write was attempted.")
+    print("Expected EU Sandbox organization verified. No credentials were saved.")
     if "--smoke-lead" in sys.argv:
         from sandbox_smoke import check_lead
-        print(check_lead(org[0], token["access_token"], read_json))
+        print(check_lead(org[0], token["access_token"], read_json, api_domain=api_domain))
 
 
 if __name__ == "__main__":
