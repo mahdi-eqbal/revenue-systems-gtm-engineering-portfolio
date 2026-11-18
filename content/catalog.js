@@ -82,9 +82,9 @@ window.PORTFOLIO = {
     {
       id: 'p02-ai-appointment', number: '08', category: 'HighLevel / AI Lead Qualification',
       title: 'AI website chat to a booked CRM opportunity',
-      description: 'A restricted synthetic HighLevel AI chat qualifies Dublin residential interior-painting leads and moves the same CRM opportunity through the appointment handoff.',
+      description: 'An AI-qualified website enquiry becomes one traceable CRM opportunity, with verified public booking, rebooking and cancellation-review handoffs.',
       problem: 'A chat reply or booking link alone does not establish that a qualified enquiry reached the CRM or that a confirmed appointment advances the same opportunity.',
-      built: ['AI-triggered qualification workflow and contact tagging', 'Opportunity creation in Estimates / Qualified', 'Observed repeat-enquiry guard and commercial/out-of-area exclusion', 'Confirmed API appointment moving the original opportunity to Booked', 'Real public booking form matched the existing chat contact without creating another opportunity'],
+      built: ['AI-triggered qualification workflow and contact tagging', 'Opportunity creation in Estimates / Qualified', 'Observed repeat-enquiry guard and commercial/out-of-area exclusion', 'Confirmed API appointment moving the original opportunity to Booked', 'Real public booking form matched the existing chat contact without creating another opportunity', 'Verified rebooking and cancellation-triggered review task with preserved opportunity identity'],
       tools: ['HighLevel','Conversation AI','Live Chat','Workflows','CRM','Calendar API'],
       repo: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
