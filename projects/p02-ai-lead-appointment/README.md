@@ -119,6 +119,15 @@ The API-created test appointment was scheduled for **19 November 2026, 10:00–1
 
 The observed failure is important technical evidence; do not modify the case-study or customer-facing narrative to say rebooking automation passed until a **fresh confirmed appointment** and resulting CRM stage transition have both been verified.
 
+
+## Cancellation review task — verified 18 November 2026
+
+A **separate cancellation-review workflow**, `Estimate Call - Move to Reschedule Needed` (HighLevel workflow `32c187f6-81ce-42d2-83e2-909117d126f6`), was published at **version 3**. Its appointment status trigger was configured with `Event type = Normal`, `Appointment status = cancelled`, `In calendar = Estimate Call`, and contact `Has tag = p02-ai-test`. It uses Find Opportunity on the existing Open/Booked Estimates opportunity; the `Opportunity Found` branch adds a review task, while `Not Found` is empty. **There is no automated cancellation-stage move.**
+
+A fresh confirmed synthetic QA appointment `HN20yfzgF1pCfbgLMGSw` was created for contact `KAKvjUgMGaydw6MwTxNL`. The published booking workflow moved the same original opportunity to `Booked`. The appointment was then cancelled with `toNotify:true` to let the cancellation workflow run. HighLevel `get-all-tasks` returned exactly one newly created task on that contact: `52hH0g8hzI7l6EeZJMmD`, titled `P02 - Review Cancelled Estimate Call`, assigned to the subaccount user `88mBWm40OltG96Gi5Xcm`, incomplete. The opportunity remained `Booked` and opportunity search returned exactly **one** record with the original ID. **PASS — cancellation-triggered human review task and safe no-write behavior for the tested case.**
+
+The task instructs the reviewer to check the contact's other future confirmed appointments and manually move the same opportunity to `Reschedule Needed` only if no future confirmed booking remains. This step requires a reviewer and is **not** an automated reconciliation. Additional scenarios involving multiple active appointments, duplicate cancellation triggers and unrelated contacts/calendars are not yet verified.
+
 ## Source and implementation boundaries
 
 The public repository hosts the static [demo page](../../demos/dublin-painting-ai-chat/index.html) and this case study. The chatbot agent, workflows, pipeline, calendar, and CRM data are configured inside HighLevel; they are **not** represented as source-code implementations within this repository. No invented backend, custom API integration, or production event processor is claimed.
