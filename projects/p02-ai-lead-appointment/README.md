@@ -52,7 +52,7 @@ Evidence below was checked via HighLevel's conversation, contact, opportunity, a
 | Qualification action target workflow | `e0c2bfa7-346c-4682-b8b0-ec6c452c4be2` |
 | Tag-to-opportunity workflow | `ce2c9588-6fac-4e33-a3fa-51dd6442a61f` |
 
-At the time of verification, the confirmed test appointment was scheduled for **19 November 2026, 10:00–10:30 Europe/Dublin**. Its creation was explicitly marked synthetic; it may occupy calendar capacity until cancelled. No client meeting was claimed.
+The confirmed test appointment was scheduled for **19 November 2026, 10:00–10:30 Europe/Dublin**. It was **cancelled on 18 November 2026** after evidence capture; the appointment record remains for audit. The original opportunity remained in **Booked** after cancellation, so automatic rollback / cancellation-state reconciliation is **not implemented or not verified**. No client meeting was claimed.
 
 ## Controls / architecture decisions
 
@@ -68,15 +68,16 @@ At the time of verification, the confirmed test appointment was scheduled for **
 2. **Broad duplicate-proof guarantees:** The repeat-enquiry test covered only one contact and one conversation. Cross-browser identity, concurrent triggers, tag re-application, multiple opportunities, and error retries need dedicated tests.
 3. **Human handoff execution:** The negative-test agent *suggested* human review, but there is no confirmed review task, owner assignment, ticket, or escalation workflow.
 4. **Production readiness:** Security, consent/privacy, abuse handling, monitoring, operational SLAs, and customer deployment have not been validated.
-5. **Publicly reproducible CRM logs:** HighLevel live records were verified through an authorized connection; this markdown reports observations rather than exposing customer data or publishing an authenticated execution-log export.
+5. **Appointment cancellation reconciliation:** Cancelling the synthetic appointment did not revert the original opportunity from `Booked`. The desired cancellation response and any new automation need explicit business rules and separate validation.
+6. **Publicly reproducible CRM logs:** HighLevel live records were verified through an authorized connection; this markdown reports observations rather than exposing customer data or publishing an authenticated execution-log export.
 
 ## Follow-up checklist
 
-- [ ] Verify anonymous chat-to-public-booking identity stitching with controlled synthetic email/phone and inspect matched contact IDs.
+- [ ] Verify chat-to-public-booking identity stitching. Existing default booking form requires Phone. A user's UK phone could not be saved on the synthetic contact due to HighLevel's duplicate-contact guard; the form builder page failed to load, so no public-form booking was submitted. A synthetic email was added to the contact, but matching remains **untested**.
 - [ ] Expand negative-case matrix: residential exterior in Dublin, residential interior outside Dublin, existing appointment question, ambiguous intent.
 - [ ] Add human-review action and confirm ownership/notifications, if that is part of the desired scope.
 - [ ] Verify repeat workflow triggers and concurrent duplicate suppression explicitly.
-- [ ] Clean up/cancel the synthetic appointment after evidence capture and verify downstream impact before modifying the opportunity.
+- [x] Cancel the synthetic appointment after evidence capture; appointment state verified as `cancelled` on 18 November 2026. Opportunity still `Booked` (documented gap).
 - [ ] Capture redacted screenshots or exported trace artifacts for a customer-facing technical walkthrough.
 
 ## Source and implementation boundaries
