@@ -52,9 +52,9 @@
   data.videos.forEach(v => {
     const card = E('article','video-card');
     const mediaLink = link(v.video,'','video-media');
-    mediaLink.setAttribute('aria-label','Watch ' + v.title + ' on YouTube');
+    mediaLink.setAttribute('aria-label','Watch or download ' + v.title);
     const img = E('img');
-    img.src = v.thumb;
+    if (v.thumb) img.src = v.thumb;
     img.alt = 'Video preview for ' + v.title;
     img.loading = 'lazy';
     img.referrerPolicy = 'no-referrer';
