@@ -30,7 +30,7 @@ window.PORTFOLIO = {
       tools: ['Clay','Claygent','GTM Signals','AI','Scoring'],
       repo: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system',
       evidence: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/evidence/EVIDENCE-MANIFEST.md',
-      video: null, accent: 'violet'
+      video: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/releases/download/p02-natural-voice-demos-2026-11-18/P02_Client_New_Natural_Voice_1080p.mp4', accent: 'violet'
     },
     {
       id: 'cle', number: '04', category: 'n8n / GTM Operations', title: 'Campaign learning with evidence and review gates',
@@ -92,6 +92,8 @@ window.PORTFOLIO = {
     }
   ],
   videos: [
+    { id: 'p02-client', type: 'Client demo', duration: '0:49', title: 'From website enquiry to a booked estimate', description: 'See how the qualified visitor, calendar booking and cancellation follow-up stay connected to the same CRM opportunity.', video: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/releases/download/p02-natural-voice-demos-2026-11-18/P02_Client_New_Natural_Voice_1080p.mp4', thumb: null, related: 'P02 — HighLevel' },
+    { id: 'p02-engineering', type: 'Technical walkthrough', duration: '2:02', title: 'HighLevel workflow traces, rebooking fix and cancellation review', description: 'Inspect qualification and booking triggers, the HTTP 400 root cause, pipeline-order correction and verified task creation.', video: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/releases/download/p02-natural-voice-demos-2026-11-18/P02_Technical_New_Natural_Voice_1080p.mp4', thumb: null, related: 'P02 — HighLevel' },
     { id: "zoho-intake", type: "Client demo", duration: "0:42", title: "From Inquiry to CRM", description: "Follow a valid inquiry through Make to its lead record in Zoho CRM Sandbox.", video: 'https://youtu.be/XjhBRj_1-nw', thumb: 'https://i.ytimg.com/vi/XjhBRj_1-nw/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
     { id: "zoho-quality", type: "Client demo", duration: "0:36", title: "Duplicate & Incomplete Leads", description: "See how the workflow skips a duplicate email and stops a lead with a missing last name.", video: 'https://youtu.be/yVkdavs_Cpc', thumb: 'https://i.ytimg.com/vi/yVkdavs_Cpc/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
     { id: "zoho-technical", type: "Technical walkthrough", duration: "1:55", title: "Make → Zoho CRM", description: "Review the Make execution paths, including the synthetic Google Ads-format webhook test.", video: 'https://youtu.be/CHyGE6ld82c', thumb: 'https://i.ytimg.com/vi/CHyGE6ld82c/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
