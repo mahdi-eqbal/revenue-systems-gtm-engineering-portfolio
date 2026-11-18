@@ -5,7 +5,7 @@ on:
       - '.github/workflows/p02-voice-remaster.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -52,3 +52,15 @@ jobs:
           name: P02-Updated-Natural-Voice-1080p
           path: P02_*_New_Natural_Voice_1080p.mp4
           retention-days: 30
+      - name: Publish stable client and technical MP4 download URLs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag='p02-natural-voice-demos-2026-11-18'
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" P02_*_New_Natural_Voice_1080p.mp4 --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$tag" P02_*_New_Natural_Voice_1080p.mp4 --repo "$GITHUB_REPOSITORY" --title 'P02 — Client and Technical Demonstrations (Natural Voice)' --notes 'Two 1080p demos of the verified HighLevel P02 portfolio implementation: client-facing business story and technical execution walkthrough. Includes edited evidence screenshots from controlled engineering tests. Not a paid customer deployment.'
+          fi
