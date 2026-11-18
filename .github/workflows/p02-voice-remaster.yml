@@ -20,7 +20,9 @@ jobs:
           curl -fLsS --retry 2 'https://resource2.heygen.ai/text_to_speech/d14202275ca54b95bc78f8a02842f0cd/776f9d2ff401499a8f1f2bcb4ca46004/id=47430a7cf4f24a56a275ceddc19da5d3.wav' -o client_narration.wav
           curl -fLsS --retry 2 'https://resource2.heygen.ai/text_to_speech/d14202275ca54b95bc78f8a02842f0cd/80b17a1be1594e578b92c0ddf4a37fc8/id=4b12864c98d345f8b4e80457cdc21a0a.wav' -o technical_narration.wav
           for f in client_visual.mp4 technical_visual.mp4 client_narration.wav technical_narration.wav; do test "$(stat -c%s "$f")" -gt 100000 || { echo "Invalid download: $f"; exit 1; }; done
-      - name: Install FFmpeg\n        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg\n      - name: Render remastered narrated demos at 1080p
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Render remastered narrated demos at 1080p
         shell: bash
         run: |
           set -euo pipefail
