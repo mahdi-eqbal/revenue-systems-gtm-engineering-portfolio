@@ -128,6 +128,13 @@ A fresh confirmed synthetic QA appointment `HN20yfzgF1pCfbgLMGSw` was created fo
 
 The task instructs the reviewer to check the contact's other future confirmed appointments and manually move the same opportunity to `Reschedule Needed` only if no future confirmed booking remains. This step requires a reviewer and is **not** an automated reconciliation. Additional scenarios involving multiple active appointments, duplicate cancellation triggers and unrelated contacts/calendars are not yet verified.
 
+
+### Completed cancellation-review task — 18 November 2026
+
+After the published cancellation workflow automatically created task `52hH0g8hzI7l6EeZJMmD`, an authorized reviewer checked the contact's live HighLevel appointment records. All **seven** test appointments on the `Estimate Call` calendar were `cancelled`; no remaining confirmed/active booking appeared in the returned records. Opportunity search showed exactly **one** existing Open `Estimates` opportunity, `0Lj65DjKimZK2fx2jDcM`, still at `Booked`.
+
+The reviewer **manually** moved that same opportunity to `Reschedule Needed` through the authorized opportunity update API, then marked the existing task **completed**. Follow-up read calls confirmed one opportunity at `Reschedule Needed`, seven cancelled appointments, and task `completed=true`. This **passes the review-assisted cancellation path for the tested synthetic contact**, but does **not** mean the cancellation workflow automatically updated the opportunity stage or that multi-appointment edge cases were tested.
+
 ## Source and implementation boundaries
 
 The public repository hosts the static [demo page](../../demos/dublin-painting-ai-chat/index.html) and this case study. The chatbot agent, workflows, pipeline, calendar, and CRM data are configured inside HighLevel; they are **not** represented as source-code implementations within this repository. No invented backend, custom API integration, or production event processor is claimed.
