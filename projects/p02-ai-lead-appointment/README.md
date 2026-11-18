@@ -41,6 +41,7 @@ Evidence below was checked via HighLevel's conversation, contact, opportunity, a
 | Appointment-driven handoff | A **confirmed appointment was created through the HighLevel API using the original contactId**, for a verified available 30-minute slot. The original opportunity moved from `Qualified` to `Booked`; its ID and open status remained unchanged; opportunity count remained one | **PASS — API-driven stage transition** |
 | Public booking form → existing chat identity (18 Nov) | A tester booked via the real public Estimate Call page in a normal browser, with the exact synthetic email belonging to the qualified chat contact and a reserved synthetic phone. HighLevel returned a **confirmed** appointment linked to the **original contact ID**; contact email lookup returned one matching contact, and opportunity search returned exactly the **original opportunity**. The booking form updated that contact's phone. | **PASS — tested identity reconciliation, one existing opportunity** |
 | Rebooking from Reschedule Needed (18 Nov) | A new `Reschedule Needed` stage was added without removing any existing stage. The original synthetic opportunity was moved there manually and a fresh **confirmed** appointment was booked into an available 23 Nov slot. The opportunity **stayed in Reschedule Needed** during two post-booking reads, despite one existing opportunity and a confirmed appointment. Current booking automation is not verified for rebooking from this stage. The QA appointment was subsequently cancelled with notifications suppressed. | **FAIL — workflow extension required** |
+| Rebooking after user-reported Find Opportunity edit (18 Nov) | After the operator reported removing the Qualified-stage filter, the workflow API still reported published `version 7` unchanged. A new confirmed API appointment `0cQWGeKY2czkM1ZkSJsW` was created for the original contact; two CRM reads still showed the original opportunity at `Reschedule Needed`, count one. The test appointment was cancelled after verification. | **FAIL — edit persistence/publication or execution needs inspection** |
 | Public booking form → stage change | At the time of the public form test, the original opportunity was **already Booked** from the earlier API booking. This public form test verifies contact identity and no new opportunity, **not an independent Qualified → Booked transition**. | **NOT RETESTED IN THIS PATH** |
 
 ### Traceable synthetic record identifiers
@@ -54,6 +55,7 @@ Evidence below was checked via HighLevel's conversation, contact, opportunity, a
 | Original API synthetic appointment (later cancelled) | `KCp5ZqZuQrNjh7aznFJW` |
 | Public booking form synthetic appointment (later cancelled) | `r0sxu0JIRKG7LzpzglFV` |
 | Rebooking API QA appointment (cancelled) | `ft6qbmjlVbR2f52BNKqq` |
+| Post-edit rebooking QA appointment (cancelled) | `0cQWGeKY2czkM1ZkSJsW` |
 | Reschedule Needed stage (new) | `8c19363b-dd68-4d3f-9b59-4f8a28ddd3b6` |
 | Booking workflow (published; not modified) | `bb12e102-44b1-4753-8355-d62145e36d0a` |
 | Estimate Call calendar | `s1XzFCVuxsZzUIKBqeej` |
@@ -76,7 +78,7 @@ The API-created test appointment was scheduled for **19 November 2026, 10:00–1
 2. **Broad duplicate-proof guarantees:** The repeat-enquiry test covered only one contact and one conversation. Cross-browser identity, concurrent triggers, tag re-application, multiple opportunities, and error retries need dedicated tests.
 3. **Human handoff execution:** The negative-test agent *suggested* human review, but there is no confirmed review task, owner assignment, ticket, or escalation workflow.
 4. **Production readiness:** Security, consent/privacy, abuse handling, monitoring, operational SLAs, and customer deployment have not been validated.
-5. **Appointment cancellation reconciliation and rebooking:** A `Reschedule Needed` stage exists, but automatic cancellation routing and rebooking back to `Booked` are **not implemented**. An actual rebooking test observed no automatic stage transition from `Reschedule Needed` to `Booked`. No assertion of a passing end-to-end cancellation/rebooking workflow is supported.
+5. **Appointment cancellation reconciliation and rebooking:** A `Reschedule Needed` stage exists, but automatic cancellation routing and rebooking back to `Booked` are **not implemented**. Two actual rebooking tests (including a post-edit retest) observed no automatic stage transition from `Reschedule Needed` to `Booked`; the workflow list still reported published version 7 after the reported UI edit. No assertion of a passing end-to-end cancellation/rebooking workflow is supported.
 6. **Publicly reproducible CRM logs:** HighLevel live records were verified through an authorized connection; this markdown reports observations rather than exposing customer data or publishing an authenticated execution-log export.
 
 ## Follow-up checklist
@@ -85,7 +87,7 @@ The API-created test appointment was scheduled for **19 November 2026, 10:00–1
 - [ ] Expand negative-case matrix: residential exterior in Dublin, residential interior outside Dublin, existing appointment question, ambiguous intent.
 - [ ] Add human-review action and confirm ownership/notifications, if that is part of the desired scope.
 - [ ] Verify repeat workflow triggers and concurrent duplicate suppression explicitly.
-- [x] Cancel **all three** synthetic QA appointments after evidence capture (original API, public-form, and 23 Nov rebooking tests). Appointment states returned `cancelled` on 18 November 2026. After manually moving the opportunity to `Reschedule Needed`, it remained there; this is not proof of automatic cancellation routing.
+- [x] Cancel **all four** synthetic QA appointments after evidence capture (original API, public-form, first 23 Nov rebooking test, and post-edit 23 Nov retest). Appointment states returned `cancelled` on 18 November 2026. After manually moving the opportunity to `Reschedule Needed`, it remained there; this is not proof of automatic cancellation routing.
 - [x] Define cancellation and rebooking stage policy; create the `Reschedule Needed` pipeline stage without altering existing stage IDs.
 - [ ] Implement and test the *automatic* cancellation workflow and extend the booking workflow to handle rebooking from `Reschedule Needed`. An authorized HighLevel UI editor is required because Workflow Definition API calls are denied with `WORKFLOW_API_NOT_ENABLED_FOR_LOCATION`.
 - [ ] Re-test confirmed rebooking from `Reschedule Needed` after updating the workflow; expect the **same** original opportunity to reach `Booked`, without a duplicate.
@@ -94,7 +96,7 @@ The API-created test appointment was scheduled for **19 November 2026, 10:00–1
 
 ## Cancellation and rebooking design (18 November 2026 — partially implemented)
 
-**Live pipeline change:** `Estimates` now contains `New`, `Qualified`, `Booked`, `Reschedule Needed`, and `Needs Review` in that order. All four original stage IDs were preserved. The P02 synthetic opportunity was manually put in `Reschedule Needed` because all three QA appointments have been cancelled; automatic cancellation routing is **not** claimed.
+**Live pipeline change:** `Estimates` now contains `New`, `Qualified`, `Booked`, `Reschedule Needed`, and `Needs Review` in that order. All four original stage IDs were preserved. The P02 synthetic opportunity was manually put in `Reschedule Needed` because all four QA appointments have been cancelled; automatic cancellation routing is **not** claimed.
 
 **Workflow A — cancellation (new, not yet created).** Use an appointment-status-changed trigger filtered to calendar `Estimate Call` and status `Cancelled`. Restrict safely to tagged P02 test contacts during verification, and only to the existing `Estimates` pipeline. Before changing an opportunity, check for *any other future confirmed or active Estimate Call appointment* for the same contact. If one exists, preserve `Booked`; otherwise locate the existing **Open** `Estimates` opportunity in `Booked` and move that **same opportunity** to `Reschedule Needed`. If no matching opportunity or multiple ambiguous opportunities exist, take the safe no-write/review path. Repeated Cancelled events must be idempotent. Never create a new opportunity in this workflow.
 
