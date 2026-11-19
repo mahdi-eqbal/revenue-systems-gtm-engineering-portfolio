@@ -86,9 +86,9 @@ window.PORTFOLIO = {
       problem: 'A chat reply or booking link alone does not establish that a qualified enquiry reached the CRM or that a confirmed appointment advances the same opportunity.',
       built: ['AI-triggered qualification workflow and contact tagging', 'Opportunity creation in Estimates / Qualified', 'Observed repeat-enquiry guard and commercial/out-of-area exclusion', 'Confirmed API appointment moving the original opportunity to Booked', 'Real public booking form matched the existing chat contact without creating another opportunity', 'Verified rebooking and cancellation-triggered review task with preserved opportunity identity'],
       tools: ['HighLevel','Conversation AI','Live Chat','Workflows','CRM','Calendar API'],
-      repo: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
+      repo: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/p02-ai-lead-appointment/',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
-      video: null, accent: 'violet'
+      video: 'https://youtu.be/wDQ9OIw7vF8', accent: 'violet'
     }
   ],
   videos: [
