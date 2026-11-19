@@ -1,5 +1,7 @@
 # P02 — AI Lead Qualification & Appointment Handoff
 
+**[View the visual case study — business problem, 49-second demo, verified tests, technical walkthrough, and collaboration link](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/p02-ai-lead-appointment/)**
+
 **Stack:** HighLevel Conversation AI · Live Chat · Workflows · Opportunities · Estimate Call Calendar · GitHub Pages  
 **Evidence reviewed:** 17–18 November 2026  
 **Type:** Independent, controlled engineering demonstration for a fictional residential interior-painting business in Dublin, Ireland. Not a paid client deployment or production-readiness claim.
