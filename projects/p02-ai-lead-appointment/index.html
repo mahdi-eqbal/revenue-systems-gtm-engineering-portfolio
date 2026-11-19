@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09111f">
+  <meta name="description" content="HighLevel AI lead qualification and appointment booking case study: 8 documented controlled test scenarios, verified CRM handoffs, rebooking repair, and cancellation review.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Lead to Booked Appointment | Tested HighLevel Case Study">
+  <meta property="og:description" content="From AI chat to the same CRM opportunity and confirmed booking. See the demos, 8 tested scenarios, execution evidence and engineering decisions.">
+  <meta property="og:url" content="https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/p02-ai-lead-appointment/">
+  <meta property="og:image" content="https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/p02-ai-lead-appointment/">
+  <link rel="icon" href="../../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>AI Lead Qualification to Appointment Booking | HighLevel Case Study — Mahdi Eqbal</title>
+  <style>
+    :root{--bg:#09111f;--deep:#0c1728;--panel:#111f32;--panel-2:#15263a;--line:#293c54;--ink:#f0f5ff;--muted:#b2c1d5;--dim:#8ea2bd;--violet:#c5b2ff;--mint:#a8e5c5;--cyan:#8ad9e8;--max:1136px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--mint);outline-offset:5px}::selection{background:#b8a4ff;color:#09111f}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    .skip{position:absolute;left:15px;top:-90px;padding:10px;background:#fff;color:#111;z-index:100}.skip:focus{top:10px}
+    .topbar{position:sticky;top:0;z-index:20;background:#09111fe8;backdrop-filter:blur(16px);border-bottom:1px solid #24364a}
+    .nav{height:75px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:600 14px/1.2 'Space Grotesk',sans-serif;letter-spacing:-.01em}
+    .brand-mark{display:grid;place-items:center;width:39px;height:39px;border:1px solid #55746b;background:#16352e;border-radius:11px;color:var(--mint);font-size:16px}
+    .brand small{display:block;font:400 10px/1.6 'DM Sans',sans-serif;color:var(--dim);margin-top:2px}
+    .nav-links{display:flex;align-items:center;gap:25px}.nav-links a{font-size:12px;font-weight:700;color:#c3d1e4;text-decoration:none}.nav-links a:hover{color:white}.nav-links .contact-link{color:var(--mint);border:1px solid #45685c;border-radius:8px;padding:9px 14px}
+    .hero-shell{position:relative;overflow:hidden;background:radial-gradient(850px 510px at 80% 7%,#4b36752e,transparent 67%),radial-gradient(590px 450px at 4% 58%,#234b5926,transparent 72%)}
+    .hero{padding:95px 0 96px;display:grid;grid-template-columns:1.04fr .96fr;gap:73px;align-items:center}
+    .eyebrow{font-size:11px;letter-spacing:.19em;font-weight:700;text-transform:uppercase;color:var(--violet);margin:0 0 23px}.eyebrow:before{content:'';display:inline-block;width:7px;height:7px;background:var(--violet);border-radius:50%;margin:0 11px 1px 0;box-shadow:0 0 0 4px #c5b2ff1d}
+    h1,h2,h3,.big-num{font-family:'Space Grotesk',sans-serif;letter-spacing:-.05em}h1{font-size:clamp(43px,4.8vw,68px);font-weight:600;line-height:1.11;margin:0 0 27px;max-width:620px}h1 em{font-style:normal;color:var(--violet)}
+    .lead{color:var(--muted);font-size:17px;line-height:1.8;max-width:590px;margin:0 0 32px}.buttons{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{min-height:47px;border-radius:9px;padding:12px 19px;display:inline-flex;gap:18px;align-items:center;justify-content:center;text-decoration:none;font-size:13px;font-weight:700;transition:transform .18s,background .18s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--mint);color:#092017}.btn.primary:hover{background:#c2f5dc}.btn.secondary{border:1px solid #465673;background:#17243b7a;color:#ecf2ff}.btn.secondary:hover{background:#20344b}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:33px}.chip{font-size:11px;line-height:1.2;color:#b7c7dd;padding:9px 11px;border-radius:7px;border:1px solid #34455e;background:#111e30}
+    .diagram{position:relative;background:linear-gradient(154deg,#142439,#101b2b 65%);border:1px solid #41536f;border-radius:19px;padding:25px 25px 23px;box-shadow:0 35px 90px #0005}.diagram:after{content:'';pointer-events:none;position:absolute;inset:0;border-radius:19px;box-shadow:inset 0 1px #ffffff0f}
+    .diagram-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.13em;font-weight:700;color:#94a8bf;margin-bottom:21px}.status{color:var(--mint)}.status:before{content:'●';font-size:9px;margin-right:6px}
+    .d-step{display:flex;gap:13px;align-items:center;background:#1a2a3f;border:1px solid #40526b;border-radius:11px;padding:13px 15px}.d-step.highlight{border-color:#7770a5;background:#282946}.d-step.success{border-color:#58877d;background:#1a3538}
+    .d-icon{flex:0 0 39px;width:39px;height:39px;border-radius:9px;background:#304158;display:grid;place-items:center;font-size:19px;color:var(--cyan)}.highlight .d-icon{background:#403c67;color:#decfff}.success .d-icon{background:#244f49;color:#b3f9d9}
+    .d-text strong{font-size:13px;display:block;line-height:1.35;color:#f3f6ff}.d-text span{display:block;font-size:11px;color:#aabdd1;line-height:1.4;margin-top:3px}
+    .connector{height:26px;display:flex;align-items:center;justify-content:center;color:#708daa;font-size:19px;line-height:1}.diagram-foot{margin-top:17px;border-top:1px solid #2e4058;padding-top:14px;display:flex;justify-content:space-between;gap:12px;font-size:10px;color:#91a9c1}.diagram-foot span:last-child{color:var(--mint)}
+    .proof-strip{border-block:1px solid #25374d;background:#101c2d}.proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}.proof>div{padding:29px 26px 29px 0}.proof>div+div{border-left:1px solid #314158;padding-left:28px}.big-num{display:block;font-size:29px;font-weight:600;color:#e4dcff;line-height:1.2}.proof small{display:block;font-size:12px;color:var(--muted);line-height:1.45;margin-top:7px}
+    .section{padding:103px 0}.section.alt{background:#0e1a2b;border-block:1px solid #1e3045}.section-top{display:grid;grid-template-columns:1fr 320px;align-items:end;gap:40px;margin-bottom:36px}.kicker{font-weight:700;font-size:11px;letter-spacing:.17em;color:var(--violet);text-transform:uppercase;margin:0 0 12px}.section h2{font-size:clamp(34px,3.8vw,50px);line-height:1.16;font-weight:600;margin:0;max-width:760px}.section h2 span{color:#9cb0c8}.section-top>p{margin:0;color:var(--muted);font-size:14px}
+    .pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.panel{border:1px solid #33465f;border-radius:13px;padding:25px;background:#132338}.panel .tiny{display:block;text-transform:uppercase;font-size:10px;letter-spacing:.13em;color:#92a8c3;margin-bottom:26px}.panel h3{font-size:21px;margin:0 0 11px;font-weight:600}.panel p{margin:0;color:#b4c4d7;font-size:14px;line-height:1.75}.pain-panel{background:#152339}.pain-panel .tiny{color:#e0b9b9}.pain-panel h3{color:#f4f6ff}
+    .solution{margin-top:18px;border:1px solid #476f71;border-radius:14px;background:linear-gradient(120deg,#19323d,#17283b);padding:23px 28px;display:flex;align-items:center;gap:20px}.solution .tick{display:grid;place-items:center;background:#2b625a;color:#c2ffdf;border-radius:10px;font-size:24px;width:44px;height:44px;flex:0 0 44px}.solution strong{display:block;font-size:16px}.solution p{margin:3px 0 0;color:#b5cfda;font-size:13px}
+    .video-layout{display:grid;grid-template-columns:1.55fr .88fr;gap:18px;align-items:stretch}.video-main,.video-side{border:1px solid #34485f;background:#132337;border-radius:15px;overflow:hidden}.video-frame{aspect-ratio:16 / 9;background:#081220}.video-frame iframe{display:block;border:0;width:100%;height:100%}.video-details{padding:25px 28px 28px}.meta{font-size:10px;color:#c3afff;text-transform:uppercase;letter-spacing:.15em;font-weight:700}.video-details h3,.video-side h3{font-size:24px;line-height:1.2;margin:10px 0}.video-details p,.video-side p{font-size:13px;color:var(--muted);margin:0 0 18px}.text-link{font-size:13px;font-weight:700;text-decoration:none;color:var(--mint)}.text-link:hover{text-decoration:underline}
+    .video-side{display:flex;flex-direction:column}.video-poster{position:relative;display:block;aspect-ratio:16 / 9;overflow:hidden;background:linear-gradient(120deg,#27334c,#1d2440)}.video-poster img{width:100%;height:100%;display:block;object-fit:cover}.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#a8e5c5;color:#0d231b;font-size:23px;box-shadow:0 10px 30px #0009}.video-side .video-details{padding:24px}.mini-callout{margin-top:auto;padding:18px 24px;background:#172a3f;border-top:1px solid #34485f;color:#b1c4d8;font-size:12px}.mini-callout strong{color:var(--ink)}
+    .results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.result{display:flex;align-items:flex-start;gap:14px;background:#142438;border:1px solid #32465f;border-radius:11px;padding:18px 20px}.pass{flex:0 0 auto;font-size:10px;font-weight:700;color:#b6f1d6;border:1px solid #4e786a;background:#1b3938;padding:4px 8px;border-radius:6px;letter-spacing:.05em}.result strong{display:block;font-size:14px;line-height:1.45}.result p{font-size:12px;line-height:1.65;color:#b4c4d7;margin:5px 0 0}.result code{font-family:ui-monospace,monospace;color:#e4d8ff;font-size:11px}
+    .evidence-note{margin-top:21px;padding:20px 22px;border:1px solid #566277;background:#20283a;border-radius:11px;color:#cbd5e4;font-size:13px}.evidence-note strong{color:#f0e0bc}
+    .trace{display:grid;grid-template-columns:1fr 1fr;gap:17px}.trace-panel{border:1px solid #35495f;background:#132438;border-radius:14px;padding:27px}.trace-panel h3{font-size:23px;margin:0 0 14px}.trace-panel p{font-size:14px;color:var(--muted);margin:0 0 15px}.trace-panel ol,.trace-panel ul{padding-left:22px;color:#ccdaea;font-size:13px;line-height:2;margin:0}.trace-panel li+li{margin-top:5px}.trace-panel strong{color:#f4f4ff}.trace-panel .tag{display:inline-block;margin:0 0 15px;border:1px solid #5b6385;color:#c9b8ff;border-radius:5px;font:700 10px/1.5 'DM Sans',sans-serif;letter-spacing:.12em;padding:5px 8px;text-transform:uppercase}
+    .docs{margin-top:24px;border:1px solid #425570;background:#18293d;border-radius:14px;padding:27px;display:flex;justify-content:space-between;gap:24px;align-items:center}.docs h3{font-size:21px;margin:0 0 7px}.docs p{font-size:13px;color:var(--muted);max-width:650px;margin:0}.docs a{white-space:nowrap}
+    .scope{font-size:12px;color:#99abc1;line-height:1.75;margin:18px 0 0}
+    .cta{padding:90px 0;background:radial-gradient(600px 300px at 74% 50%,#5d437738,transparent 74%),#111e31;border-top:1px solid #31435a}.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:45px}.cta h2{font-size:clamp(32px,3.6vw,48px);font-weight:600;line-height:1.15;max-width:630px;margin:10px 0 16px}.cta p{font-size:14px;color:var(--muted);max-width:650px;margin:0}.cta-links{flex:0 0 auto}.cta-links .btn{margin:5px}
+    .footer{padding:30px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;color:#8ea5bd;font-size:12px}.footer a{text-decoration:none;color:#c4d2e4}
+    @media(max-width:990px){.hero{grid-template-columns:1fr;gap:42px;padding:73px 0}.hero h1{max-width:850px}.diagram{max-width:690px}.section-top{grid-template-columns:1fr;gap:14px}.section-top>p{max-width:650px}.proof{grid-template-columns:repeat(2,minmax(0,1fr))}.proof>div:nth-child(3){border-left:0;padding-left:0}.proof>div{padding-top:22px;padding-bottom:22px}.video-layout{grid-template-columns:1fr 1fr}.cta-inner{display:block}.cta-links{margin-top:23px}}
+    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 34px))}.nav{height:66px}.nav-links{gap:12px}.nav-links a{font-size:11px}.nav-links a[href="#evidence"]{display:none}.nav-links .contact-link{padding:7px 10px}.hero{padding:58px 0 66px;gap:30px}h1{font-size:clamp(38px,9vw,55px)}.lead{font-size:15px}.diagram{padding:18px}.proof{grid-template-columns:repeat(2,minmax(0,1fr))}.proof>div{padding:18px 12px 18px 0}.proof>div:nth-child(even){padding-left:16px}.big-num{font-size:24px}.proof small{font-size:11px}.section{padding:67px 0}.section-top{margin-bottom:27px}.pain-grid,.video-layout,.results-grid,.trace{grid-template-columns:1fr}.panel{padding:23px}.panel .tiny{margin-bottom:14px}.solution{align-items:flex-start}.docs{flex-direction:column;align-items:flex-start}.docs a{white-space:normal}.video-details{padding:20px}.cta{padding:65px 0}.footer{flex-direction:column;align-items:flex-start}.chips{margin-top:22px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar"><nav class="nav wrap" aria-label="Primary navigation">
+    <a class="brand" href="../../"><span class="brand-mark">ME</span><span>Mahdi Eqbal<small>Revenue Systems · GTM Engineering</small></span></a>
+    <div class="nav-links"><a href="../../">Portfolio</a><a href="#evidence">Test evidence</a><a class="contact-link" href="#contact">Discuss a workflow ↗</a></div>
+  </nav></header>
+  <main id="main">
+    <div class="hero-shell"><section class="hero wrap" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">HighLevel / AI to CRM · Case Study 08</p>
+        <h1 id="page-title">AI-qualified leads.<br><em>One accountable path to booking.</em></h1>
+        <p class="lead">A chatbot response is not a successful sales handoff. I built and tested a HighLevel workflow that takes an eligible website enquiry through qualification, the <strong>same CRM contact and opportunity</strong>, confirmed booking, rebooking and cancellation review.</p>
+        <div class="buttons"><a class="btn primary" href="#demo">▶ Watch the 49-second demo <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#evidence">Explore verified tests <span aria-hidden="true">↓</span></a></div>
+        <div class="chips"><span class="chip">HighLevel</span><span class="chip">Conversation AI</span><span class="chip">Live Chat</span><span class="chip">CRM &amp; Workflows</span><span class="chip">Appointment Calendar</span></div>
+      </div>
+      <div class="diagram" role="img" aria-label="Illustrated system architecture: website chat, AI qualification, one existing CRM opportunity, confirmed booking, cancellation review">
+        <div class="diagram-head"><span>LEAD-TO-BOOKING SYSTEM</span><span class="status">Tested scenarios</span></div>
+        <div class="d-step"><span class="d-icon" aria-hidden="true">✦</span><div class="d-text"><strong>Website enquiry + AI chat</strong><span>Evaluate location, service and intent</span></div></div>
+        <div class="connector" aria-hidden="true">↓</div>
+        <div class="d-step"><span class="d-icon" aria-hidden="true">✓</span><div class="d-text"><strong>Qualified contact</strong><span>Policy-based tag and workflow action</span></div></div>
+        <div class="connector" aria-hidden="true">↓</div>
+        <div class="d-step highlight"><span class="d-icon" aria-hidden="true">≡</span><div class="d-text"><strong>One CRM opportunity</strong><span>Same contact · same original opportunity</span></div></div>
+        <div class="connector" aria-hidden="true">↓</div>
+        <div class="d-step success"><span class="d-icon" aria-hidden="true">▦</span><div class="d-text"><strong>Confirmed booking / rebooking</strong><span>Existing opportunity moves to Booked</span></div></div>
+        <div class="connector" aria-hidden="true">↓</div>
+        <div class="d-step"><span class="d-icon" aria-hidden="true">↻</span><div class="d-text"><strong>Cancellation → review task</strong><span>Reviewer decides when to change CRM stage</span></div></div>
+        <div class="diagram-foot"><span>Controlled demonstration · Nov 2026</span><span>Actual HighLevel readbacks ✓</span></div>
+      </div>
+    </section></div>
+    <div class="proof-strip"><div class="wrap proof">
+      <div><strong class="big-num">8</strong><small>Documented passing test scenarios</small></div>
+      <div><strong class="big-num">1</strong><small>Original opportunity preserved across tested handoffs</small></div>
+      <div><strong class="big-num">HTTP 400</strong><small>Real workflow failure diagnosed, fixed and retested</small></div>
+      <div><strong class="big-num">7</strong><small>QA bookings cancelled before final review verification</small></div>
+    </div></div>
+
+    <section class="section wrap" aria-labelledby="problem-title">
+      <div class="section-top"><div><p class="kicker">01 / The business problem</p><h2 id="problem-title">A booked calendar is not enough.<br><span>The CRM must tell the same story.</span></h2></div><p>A lead can receive a useful AI answer while the actual revenue process loses the handoff. These are the failure modes the implementation was designed to examine.</p></div>
+      <div class="pain-grid">
+        <article class="panel pain-panel"><span class="tiny">Failure risk 01</span><h3>Qualified in chat. Missing in CRM.</h3><p>If qualification never triggers the correct CRM actions, the sales team inherits an incomplete or invisible lead.</p></article>
+        <article class="panel pain-panel"><span class="tiny">Failure risk 02</span><h3>Booked twice. Tracked twice.</h3><p>Duplicate opportunities and contact mismatches can fragment ownership, reporting and follow-up.</p></article>
+        <article class="panel pain-panel"><span class="tiny">Failure risk 03</span><h3>Booking changed. Pipeline didn't.</h3><p>Rebooking, cancellations and invalid stage transitions can leave the opportunity in the wrong operational state.</p></article>
+      </div>
+      <div class="solution"><span class="tick" aria-hidden="true">✓</span><div><strong>The engineering objective: preserve identity, validate each transition and leave evidence.</strong><p>HighLevel is the system of record. The test focuses on the original contact and opportunity, not merely an AI conversation or calendar confirmation.</p></div></div>
+    </section>
+
+    <section class="section alt" id="demo" aria-labelledby="demo-title"><div class="wrap">
+      <div class="section-top"><div><p class="kicker">02 / See the system</p><h2 id="demo-title">See the business outcome.<br><span>Then inspect the engineering.</span></h2></div><p>Two concise, separately narrated demonstrations use real HighLevel interface captures. The video edits are explanatory montages, not uninterrupted live recordings.</p></div>
+      <div class="video-layout">
+        <article class="video-main"><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/wDQ9OIw7vF8" title="HighLevel AI Lead Qualification & Appointment Booking — Client Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="video-details"><span class="meta">Client / agency demo · 00:49</span><h3>From enquiry to a booked estimate</h3><p>AI qualification, the CRM opportunity, public calendar booking and safe cancellation follow-up.</p><a class="text-link" href="https://youtu.be/wDQ9OIw7vF8" target="_blank" rel="noopener noreferrer">Open client demo on YouTube ↗</a></div></article>
+        <article class="video-side"><a class="video-poster" href="https://youtu.be/YzEYjj9Y1rY" target="_blank" rel="noopener noreferrer" aria-label="Watch technical walkthrough on YouTube"><img src="https://i.ytimg.com/vi/YzEYjj9Y1rY/hqdefault.jpg" alt="Technical walkthrough video thumbnail" loading="lazy"><span class="play" aria-hidden="true">▶</span></a><div class="video-details"><span class="meta">Engineering walkthrough · 02:02</span><h3>The workflow, failure and fix</h3><p>Trigger chain, Find Opportunity execution, pipeline-stage HTTP 400 diagnosis, corrected rebooking and cancellation review.</p><a class="text-link" href="https://youtu.be/YzEYjj9Y1rY" target="_blank" rel="noopener noreferrer">Watch technical walkthrough ↗</a></div><div class="mini-callout"><strong>Interactive test surface:</strong> <a class="text-link" href="../../demos/dublin-painting-ai-chat/" target="_blank" rel="noopener noreferrer">Open the website chat demo ↗</a><br>Test-only environment; no production service is implied.</div></article>
+      </div>
+    </div></section>
+
+    <section id="evidence" class="section wrap" aria-labelledby="evidence-title">
+      <div class="section-top"><div><p class="kicker">03 / Execution evidence</p><h2 id="evidence-title">Eight tests. Eight documented passes.<br><span>Including the failure path.</span></h2></div><p>Results were checked against HighLevel execution logs, appointment states, contact tags and opportunity readbacks on 17–18 November 2026. Each result applies to its described scenario.</p></div>
+      <div class="results-grid">
+        <article class="result"><span class="pass">PASS</span><div><strong>Eligible enquiry</strong><p>AI action applied the qualified tag and created an Open opportunity in Estimates / Qualified.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Repeat enquiry, same chat</strong><p>The original opportunity ID was preserved; no second opportunity appeared for the tested contact.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Out-of-scope enquiry</strong><p>A commercial exterior request from Cork produced no qualification tag, new opportunity or automated booking link.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Confirmed API booking</strong><p>The existing Open opportunity advanced from Qualified to Booked.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Public calendar form</strong><p>Normal browser submission matched the known-email contact and avoided creating another opportunity.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Rebooking after repair</strong><p>An observed <code>HTTP 400</code> backward-stage error was corrected through stage-order configuration; the same opportunity reached Booked on retest.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Cancellation event</strong><p>The published, filtered workflow generated an assigned review task without blindly changing opportunity stage.</p></div></article>
+        <article class="result"><span class="pass">PASS</span><div><strong>Human-reviewed cancellation</strong><p>All seven QA appointments were cancelled; a reviewer changed the same opportunity to Reschedule Needed and completed the task.</p></div></article>
+      </div>
+      <div class="evidence-note"><strong>Why the failed execution matters:</strong> one real run returned “Moving an opportunity backward in the pipeline is not allowed.” The stage order was changed to New → Qualified → Reschedule Needed → Booked → Needs Review while preserving the existing record IDs. A subsequent rebooking test passed. Failure and correction are both retained in the technical case study.</div>
+    </section>
+
+    <section class="section alt" aria-labelledby="design-title"><div class="wrap">
+      <div class="section-top"><div><p class="kicker">04 / Decisions behind the build</p><h2 id="design-title">Built for a reliable handoff.<br><span>Not for a prettier workflow diagram.</span></h2></div><p>The controls below explain which transitions were automated, what was verified, and where a human decision is intentionally required.</p></div>
+      <div class="trace">
+        <article class="trace-panel"><span class="tag">Automation path</span><h3>Qualification → booked</h3><ol><li><strong>AI chat</strong> checks residential interior painting, Dublin location and buying intent.</li><li><strong>Qualification action</strong> tags the matching CRM contact.</li><li><strong>Opportunity workflow</strong> creates the qualified estimate opportunity.</li><li><strong>Confirmed appointment</strong> finds and updates the existing Open opportunity.</li></ol></article>
+        <article class="trace-panel"><span class="tag">Controlled human review</span><h3>Cancelled → reschedule</h3><ol><li><strong>Cancellation event</strong> triggers a calendar- and test-tag-filtered workflow.</li><li><strong>Find Opportunity</strong> locates the existing Booked opportunity.</li><li><strong>Assigned task</strong> asks a reviewer to check other future confirmed appointments.</li><li><strong>Human decision</strong> moves the same opportunity to Reschedule Needed only when appropriate.</li></ol></article>
+      </div>
+      <div class="docs"><div><h3>Want the technical proof?</h3><p>Explore the full architecture, scenario-by-scenario test matrix, workflow IDs, final CRM state, error diagnosis, engineering constraints, and both demo links in the documented GitHub case study.</p></div><a class="btn secondary" href="https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md" target="_blank" rel="noopener noreferrer">Read full technical case study ↗</a></div>
+      <p class="scope"><strong>Scope disclosure:</strong> Independent, controlled engineering demonstration for a fictional residential painting business in Dublin. The documented passes do not establish performance under arbitrary production traffic or general anonymous/cross-device identity resolution. Cancellation-stage reconciliation is human-reviewed, not fully unattended. No client deployment or revenue outcome is claimed.</p>
+    </div></section>
+
+    <section class="cta" id="contact" aria-labelledby="contact-title"><div class="wrap cta-inner"><div><p class="kicker">05 / Work together</p><h2 id="contact-title">Have a lead-to-booking process that breaks between systems?</h2><p>I collaborate with agencies and revenue operations teams on focused CRM integrations and automations—scoped, tested, debugged and documented so the handoff is visible.</p></div><div class="cta-links"><a class="btn primary" href="mailto:m.mahdi.eqbal@gmail.com?subject=HighLevel%20lead-to-booking%20workflow">Discuss a workflow ↗</a><a class="btn secondary" href="https://www.linkedin.com/in/mahdi-eqbal" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a></div></div></section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 Mahdi Eqbal · Revenue Systems Engineering</span><a href="../../">← Back to all projects</a><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
