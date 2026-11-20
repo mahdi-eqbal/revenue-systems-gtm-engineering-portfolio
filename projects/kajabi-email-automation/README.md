@@ -2,6 +2,8 @@
 
 **[View the customer-facing case study](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/)** · **[Explore the guided workflow](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/demo.html)** · **[Main portfolio](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/)**
 
+**[Watch the narrated visual overview](https://youtu.be/pZIc1UYPD8c)** (illustrated workflow explanation, not a recording of the Kajabi UI)
+
 **Platform:** Kajabi · Landing Pages · Native Forms · Double Opt-in · Contacts · Tags · Automations · Email Sequences  
 **Evidence basis:** Controlled account configuration and tests inspected in Work, 20 Nov 2026  
 **Project type:** Independent hands-on implementation for a fictional online-learning business, not a paid-client or production deployment.
@@ -50,6 +52,7 @@ The no-consent case used a previously confirmed test contact. A separate physica
 
 ## Customer-facing review
 
+- [Narrated project overview on YouTube](https://youtu.be/pZIc1UYPD8c) — illustrated walkthrough, not a platform screen capture
 - [Visual project summary](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/)
 - [Interactive explanatory walkthrough](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/demo.html)
 
