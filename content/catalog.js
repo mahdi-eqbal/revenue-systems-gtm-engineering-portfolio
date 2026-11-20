@@ -90,6 +90,18 @@ window.PORTFOLIO = {
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
       video: 'https://youtu.be/wDQ9OIw7vF8', accent: 'violet'
     }
+    ,{
+      id: 'kajabi-nurture', number: '09', category: 'Kajabi / Email Automation',
+      title: 'Consent-based lead capture to a three-step email journey',
+      description: 'A published Kajabi landing-page and resource-access setup, with native form, double opt-in, consent-gated tagging and a configured educational email sequence.',
+      problem: 'A free resource should be delivered after confirmation without putting visitors into marketing email automation unless they consent.',
+      built: ['Two published Kajabi pages and native lead-capture form', 'Double opt-in and separate optional marketing consent', 'Published consent-aware automation, contact tagging and sequence enrollment', 'Three stored emails plus controlled positive/negative enrollment tests'],
+      tools: ['Kajabi','Email Sequences','Landing Pages','Forms','Automations'],
+      repo: './projects/kajabi-email-automation/',
+      preview: './projects/kajabi-email-automation/demo.html',
+      evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/kajabi-email-automation/README.md',
+      video: null, accent: 'violet'
+    }
   ],
   videos: [
     { id: 'p02-client', type: 'Client demo', duration: '0:49', title: 'From website enquiry to a booked estimate', description: 'See how the qualified visitor, calendar booking and cancellation follow-up stay connected to the same CRM opportunity.', video: 'https://youtu.be/wDQ9OIw7vF8', thumb: 'https://i.ytimg.com/vi/wDQ9OIw7vF8/hqdefault.jpg', related: 'P02 — HighLevel' },
