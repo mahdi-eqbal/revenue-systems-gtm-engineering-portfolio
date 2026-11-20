@@ -30,7 +30,7 @@ window.PORTFOLIO = {
       tools: ['Clay','Claygent','GTM Signals','AI','Scoring'],
       repo: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system',
       evidence: 'https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system/blob/main/evidence/EVIDENCE-MANIFEST.md',
-      video: 'https://youtu.be/wDQ9OIw7vF8', accent: 'violet'
+      video: null, accent: 'violet'
     },
     {
       id: 'cle', number: '04', category: 'n8n / GTM Operations', title: 'Campaign learning with evidence and review gates',
@@ -89,8 +89,8 @@ window.PORTFOLIO = {
       repo: 'https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/p02-ai-lead-appointment/',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/p02-ai-lead-appointment/README.md',
       video: 'https://youtu.be/wDQ9OIw7vF8', accent: 'violet'
-    }
-    ,{
+    },
+    {
       id: 'kajabi-nurture', number: '09', category: 'Kajabi / Email Automation',
       title: 'Consent-based lead capture to a three-step email journey',
       description: 'A published Kajabi landing-page and resource-access setup, with native form, double opt-in, consent-gated tagging and a configured educational email sequence.',
