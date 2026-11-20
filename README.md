@@ -20,7 +20,7 @@ Selected end-to-end implementations across CRM architecture, GTM automation, ope
 | [P1 — Product-Led Revenue Qualification & Sales Handoff](https://github.com/mahdi-eqbal/p1-product-led-revenue-system) | Product signals do not become reliable sales action | HubSpot, n8n, PostgreSQL/Supabase, APIs, JavaScript | Identity resolution, qualification, deal guards, and sales handoff |
 | [P2 — Lead-to-Opportunity Revenue Operations](https://github.com/mahdi-eqbal/p2-lead-to-opportunity-revenue-system) | Inbound leads enter the CRM with inconsistent quality, routing, and follow-up | Salesforce, Salesforce Flow, n8n, PostgreSQL/Supabase, APIs | Validation, routing, SLA, CRM identity, and failure handling |
 | [P3 — AI-Assisted GTM Intelligence & Account Prioritization](https://github.com/mahdi-eqbal/p3-ai-gtm-intelligence-system) | Target-account lists lack evidence, timing, prioritization, and uncertainty controls | Clay, Claygent, GTM Signals, structured AI, deterministic scoring | Enrichment, evidence-aware research, scoring, and human review |
-| [Campaign Learning Engine — controlled experiment learning](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/campaign-learning-engine) | Campaign signals can drive premature conclusions or outreach | n8n, JavaScript, Data Tables | Synthetic-only, review-first outcome analysis |
+| [Kajabi Lead Capture & Email Nurturing](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/) | Free-resource signups need a consent-aware route into email nurturing | Kajabi Landing Pages, Forms, Double Opt-in, Automations, Tags, Email Sequences | Published pages, controlled enrollment and a configured three-message educational journey |\n| [Campaign Learning Engine — controlled experiment learning](https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/tree/main/projects/campaign-learning-engine) | Campaign signals can drive premature conclusions or outreach | n8n, JavaScript, Data Tables | Synthetic-only, review-first outcome analysis |
 | [HandoffTrace — standalone assurance product](projects/revenue-leak-monitor/README.md) ([interactive preview](https://handofftrace.htlabs.workers.dev/)) | Automation success does not prove the event-specific lead handoff | Python, Django, CSV, JavaScript | Engine-generated synthetic replay, deterministic event reconciliation, explainable findings and configurable rules; product in development |
 | [CRM Data Quality & Controlled Repair](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/crm-data-quality/) | CRM duplicate candidates and stale records need evidence before changes proceed | Python, HubSpot, PostgreSQL, Make, Airtable | Review-first matching, simulated repair, delivery reconciliation and recovery audit |
 | [P01 — Zoho CRM Lead Intake](projects/zoho-crm-integration/README.md) | Estimate inquiries arrive from multiple sources with duplicates or missing data | Zoho CRM, Make, HighLevel, Google Sheets, Python | Verified Sandbox lead creation, duplicate-email handling and required-field validation |
@@ -203,6 +203,14 @@ A restricted synthetic website-chat demonstration for a fictional Dublin residen
 **Important boundary:** the public booking form's ability to resolve an anonymous chat visitor to that same CRM contact has **not** been tested. This is not a production deployment or a customer service.
 
 [Detailed case study and evidence](projects/p02-ai-lead-appointment/README.md) · [Synthetic chat test page](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/demos/dublin-painting-ai-chat/)
+
+---
+
+## Kajabi — Consent-Based Lead Capture & Email Nurturing
+
+[**View visual case study and guided walkthrough**](https://mahdi-eqbal.github.io/revenue-systems-gtm-engineering-portfolio/projects/kajabi-email-automation/) · [**Implementation details**](projects/kajabi-email-automation/README.md)
+
+An independent hands-on Kajabi build for a fictional online-learning business. Two public pages, a native form, Double Opt-in and optional marketing-consent capture lead into a published conditional workflow. When consent is present, the workflow tags the contact and enrolls them in a configured Day 0 / Day 2 / Day 4 email series. Controlled tests observed form confirmation, positive consent enrollment, absence of enrollment for a no-consent test and browser access to the Starter Kit. The public walkthrough is an explanatory simulation and does not submit leads or send email.
 
 ---
 
