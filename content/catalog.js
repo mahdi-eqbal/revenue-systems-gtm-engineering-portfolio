@@ -100,10 +100,11 @@ window.PORTFOLIO = {
       repo: './projects/kajabi-email-automation/',
       preview: './projects/kajabi-email-automation/demo.html',
       evidence: 'https://github.com/mahdi-eqbal/revenue-systems-gtm-engineering-portfolio/blob/main/projects/kajabi-email-automation/README.md',
-      video: null, accent: 'violet'
+      video: 'https://youtu.be/pZIc1UYPD8c', accent: 'violet'
     }
   ],
   videos: [
+    { id: 'kajabi-overview', type: 'Illustrated project overview', duration: 'Short walkthrough', title: 'Kajabi lead capture and consent-based email automation', description: 'Narrated overview of a published Kajabi funnel, marketing-consent branch, contact tagging and a configured three-message nurture series. Illustrative graphics, not a screen recording.', video: 'https://youtu.be/pZIc1UYPD8c', thumb: 'https://i.ytimg.com/vi/pZIc1UYPD8c/hqdefault.jpg', related: 'Kajabi Email Automation' },
     { id: 'p02-client', type: 'Client demo', duration: '0:49', title: 'From website enquiry to a booked estimate', description: 'See how the qualified visitor, calendar booking and cancellation follow-up stay connected to the same CRM opportunity.', video: 'https://youtu.be/wDQ9OIw7vF8', thumb: 'https://i.ytimg.com/vi/wDQ9OIw7vF8/hqdefault.jpg', related: 'P02 — HighLevel' },
     { id: 'p02-engineering', type: 'Technical walkthrough', duration: '2:02', title: 'HighLevel workflow traces, rebooking fix and cancellation review', description: 'Inspect qualification and booking triggers, the HTTP 400 root cause, pipeline-order correction and verified task creation.', video: 'https://youtu.be/YzEYjj9Y1rY', thumb: 'https://i.ytimg.com/vi/YzEYjj9Y1rY/hqdefault.jpg', related: 'P02 — HighLevel' },
     { id: "zoho-intake", type: "Client demo", duration: "0:42", title: "From Inquiry to CRM", description: "Follow a valid inquiry through Make to its lead record in Zoho CRM Sandbox.", video: 'https://youtu.be/XjhBRj_1-nw', thumb: 'https://i.ytimg.com/vi/XjhBRj_1-nw/hqdefault.jpg', related: 'Zoho CRM Lead Intake' },
