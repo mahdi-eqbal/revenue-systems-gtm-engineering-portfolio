@@ -95,7 +95,7 @@ window.PORTFOLIO = {
       title: 'Consent-based lead capture to a three-step email journey',
       description: 'A published Kajabi landing-page and resource-access setup, with native form, double opt-in, consent-gated tagging and a configured educational email sequence.',
       problem: 'A free resource should be delivered after confirmation without putting visitors into marketing email automation unless they consent.',
-      built: ['Two published Kajabi pages and native lead-capture form', 'Double opt-in and separate optional marketing consent', 'Published consent-aware automation, contact tagging and sequence enrollment', 'Three stored emails plus controlled positive/negative enrollment tests'],
+      built: ['Two published Kajabi pages and native lead-capture form', 'Double opt-in and separate optional marketing consent', 'Published consent-aware automation, contact tagging and sequence enrollment', 'Three stored emails; consent-positive and negative workflow tests', 'Day 0 welcome email received in the Gmail test inbox on 21 Nov 2026'],
       tools: ['Kajabi','Email Sequences','Landing Pages','Forms','Automations'],
       repo: './projects/kajabi-email-automation/',
       preview: './projects/kajabi-email-automation/demo.html',
