@@ -14,7 +14,7 @@
 | Consent-negative enrollment | The tested no-consent resubmission did not increase sequence enrollment | Verified for the specified case |
 | Resource access | Confirmation link opened the published Starter Kit page in the browser | Verified in controlled test |
 | **Day 0 marketing email inbox delivery** | **`Your AI Productivity Starter Kit`** appeared in the Gmail recipient inbox on **21 Nov 2026** after the test opt-in and confirmation; the received body included the welcome, three example AI prompts, checklist and email-preferences link | **Verified** |
-| Day 2 sequence email | Configured/scheduled for Day 2; delivery was not due at the 21 Nov review | Pending scheduled observation |
+| **Day 2 sequence email inbox delivery** | **`Try this 10-minute meeting follow-up`** was received in the test Gmail inbox on **23 Nov 2026, 19:07 UTC**; a separate earlier test contact also received this message on 22 Nov 2026 | **Verified for controlled test inboxes** |
 | Day 4 sequence email | Configured/scheduled for Day 4; delivery was not due at the 21 Nov review | Pending scheduled observation |
 | Unsubscribe / opt-out after enrollment | No completed, separately documented unsubscribe-delivery test | Not independently verified |
 
@@ -29,7 +29,15 @@ The Gmail message was opened and read directly through authorized account access
 - **Observed content:** Welcome to Workflow Lab Academy; three AI productivity prompts; a checklist; preferences-management link
 - **Privacy:** The raw private Gmail message, recipient address, and Kajabi account details are not copied into the public repository.
 
-This verifies successful receipt of **one Day 0 message by one test inbox**. It is not a general deliverability-rate measurement or proof that Day 2/Day 4 emails have been received.
+This verifies successful receipt of **one Day 0 message by one test inbox**. Day 2 receipt was subsequently independently verified on 23 Nov 2026 in the recipient Gmail inbox; this is not a general deliverability-rate measurement or proof of Day 4 delivery.
+
+### Recipient-side Day 2 evidence
+
+- **Subject:** Try this 10-minute meeting follow-up
+- **Date:** 23 Nov 2026, 19:07 UTC (fresh Day 0 test alias enrolled on 21 Nov)
+- **Mailbox:** Inbox / Updates
+- **Observed content:** meeting-note review exercise, owner/due-date extraction steps, final action prompt, and email-preferences link.
+- **Privacy:** Recipient addresses and raw mailbox messages remain private.
 
 ### Delivery investigation
 
@@ -39,8 +47,7 @@ The confirmed receipt establishes the current Day 0 test outcome; it does **not*
 
 ### Open checks
 
-1. Verify Day 2 email receipt after its scheduled date (**23 Nov 2026** according to the Work test plan).
-2. Verify Day 4 email receipt after its scheduled date (**25 Nov 2026** according to the Work test plan).
-3. If this project is used as a customer deployment reference, test opt-out behavior, mobile public-form submission and recipient-domain variation in the appropriate client environment.
+1. Verify Day 4 email receipt after its scheduled date (**25 Nov 2026** according to the Work test plan).
+2. If this project is used as a customer deployment reference, test opt-out behavior, mobile public-form submission and recipient-domain variation in the appropriate client environment.
 
 **Scope statement:** This is an independent demo; no paid client deployment, production-conversion improvement or broad email-delivery performance is claimed.
