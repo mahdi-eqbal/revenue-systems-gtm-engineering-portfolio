@@ -46,15 +46,16 @@ The diagram describes the implemented resource-access and marketing-consent path
 | Published public pages | Both published pages returned HTTP 200 without administrator session |
 | Sequence configuration | Three stored messages and Day 0 / Day 2 / Day 4 scheduling inspected |
 | **Day 0 inbox delivery** | **A fresh `Your AI Productivity Starter Kit` email was actually received and read in the test Gmail inbox on 21 Nov 2026** |
-| Day 2 and Day 4 inbox delivery | Scheduled after the review date; recipient-side delivery not yet assessed |
+| **Day 2 inbox delivery** | **`Try this 10-minute meeting follow-up` received in test Gmail on 23 Nov 2026** |
+| Day 4 inbox delivery | Scheduled for 25 Nov 2026; not yet verified |
 
-The Day 0 Gmail observation establishes **actual recipient-side delivery of one test welcome message**, in addition to configuration and enrollment evidence. It does not yet establish delivery of Day 2 or Day 4 messages, general deliverability rates, campaign performance, or commercial conversions. [Review the sanitized QA evidence](QA-VERIFICATION.md).
+The Day 0 Gmail observation establishes **actual recipient-side delivery of one test welcome message**, in addition to configuration and enrollment evidence. Day 2 recipient-side delivery was also independently verified on 23 Nov 2026. These tests do not establish delivery of Day 4, general deliverability rates, campaign performance, or commercial conversions. [Review the sanitized QA evidence](QA-VERIFICATION.md).
 
 The no-consent case used a previously confirmed test contact. A separate physical-device post-publication submission is not included in these observations.
 
 ## Delivery investigation
 
-Kajabi Support identified an incomplete **Marketing Contact Address** in the account settings as a potential cause of the initial failure to observe marketing-email delivery. After the account investigation and a fresh signup/confirmation test on 21 November, the Day 0 email arrived in the test Gmail inbox. The original earlier sends were not retrospectively validated. Day 2 and Day 4 will be checked after their scheduled dates.
+Kajabi Support identified an incomplete **Marketing Contact Address** in the account settings as a potential cause of the initial failure to observe marketing-email delivery. After the account investigation and a fresh signup/confirmation test on 21 November, the Day 0 email arrived in the test Gmail inbox. The original earlier sends were not retrospectively validated. Day 2 was subsequently received in Gmail on 23 Nov; Day 4 remains scheduled for verification after 25 Nov.
 
 See the [public-safe QA record](QA-VERIFICATION.md) for the verified result, evidence boundaries, and remaining scheduled checks.
 
@@ -69,6 +70,6 @@ The interactive walkthrough is a **static browser simulation**. It neither submi
 
 ## Scope and positioning
 
-This work demonstrates practical setup and testing of Kajabi lead capture, consent-aware routing and three-part email sequence configuration. It does not imply prior paid Kajabi client engagements, production campaign metrics, verified delivery of the subsequent Day 2 and Day 4 emails or general email-delivery performance, or access to an unrestricted Kajabi marketing plan.
+This work demonstrates practical setup and testing of Kajabi lead capture, consent-aware routing and three-part email sequence configuration. It does not imply prior paid Kajabi client engagements, production campaign metrics, verified delivery of the subsequent Day 4 email or general email-delivery performance, or access to an unrestricted Kajabi marketing plan.
 
 **Built and documented by [Mahdi Eqbal](https://github.com/mahdi-eqbal).**
